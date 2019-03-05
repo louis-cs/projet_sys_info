@@ -1,6 +1,6 @@
 %%
-"adore" {printf("tADORE");}
-"le"    {printf("tLE");}
-"PSI"   {printf("tPSI");}
+"adore" {printf("tADORE\n");}
+"le"    {printf("tLE\n");}
+"PSI"   {printf("tPSI\n");}
 [a-z]+  {printf("tPRENOM %s \n", yytext);}
-.       {printf("Etat Puit => ERREUR")}
+.       {printf("Etat Puit => ERREUR\n");}
