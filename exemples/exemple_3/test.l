@@ -1,2 +1,0 @@
-%%
-[ \t]+$ {printf("ESPACE\n");}
