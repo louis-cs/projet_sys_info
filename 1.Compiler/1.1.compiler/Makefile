@@ -2,11 +2,13 @@ LEXFILE=lexicograph.l
 YACCFILE=compiler.y
 # TESTFILE=testfile.c
 OUTBINARY=compiler.bin
+OUTBINARY_LEX=lexicograph.bin
 OUTDIR=./compiler/
 
 all: compile
 
 compile: mk_yacc_tab mk_lex_yy
+	gcc ${OUTDIR}lex.yy.c -o ${OUTDIR}${OUTBINARY_LEX} -ll
 	gcc ${OUTDIR}y.tab.c ${OUTDIR}lex.yy.c -o ${OUTDIR}${OUTBINARY} -ly -ll
 
 mk_yacc_tab: ${OUTDIR}${YACCFILE}

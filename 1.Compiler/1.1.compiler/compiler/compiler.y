@@ -1,4 +1,5 @@
 %{
+    #include <stdio.h>
     int yylex(void);
     void yyerror(char *);
 %}
@@ -23,5 +24,6 @@
 %token tCOMMENT
 
 %%
-start : tMAIN;
+%start entry_point;
+entry_point : tMAIN tPARF tPARO;
 %%
