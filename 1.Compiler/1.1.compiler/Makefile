@@ -1,8 +1,8 @@
 LEXFILE=lexicograph.l
 YACCFILE=compiler.y
 # TESTFILE=testfile.c
-OUTBINARY=compiler.bin
-OUTBINARY_LEX=lexicograph.bin
+OUTBINARY=compiler
+OUTBINARY_LEX=lexicograph
 OUTDIR=./compiler/
 
 all: compile
@@ -22,3 +22,4 @@ clean:
 	@if [ -f ${OUTDIR}y.tab.h ] ;		then rm ${OUTDIR}y.tab.h ; 	fi;
 	@if [ -f ${OUTDIR}lex.yy.c ] ;		then rm ${OUTDIR}lex.yy.c ; 	fi;
 	@if [ -f ${OUTDIR}${OUTBINARY} ] ;	then rm ${OUTDIR}${OUTBINARY}; fi;
+	@if [ -f ${OUTDIR}${OUTBINARY_LEX} ] ;	then rm ${OUTDIR}${OUTBINARY_LEX}; fi;

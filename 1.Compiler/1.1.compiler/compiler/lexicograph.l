@@ -3,23 +3,25 @@
 #include "y.tab.h"
 %}
 %%
-"const"   {printf("tCONST\n");  }
-"int"     {printf("tINT\n");    }
-"main"    {printf("tMAIN\n");   }
-"printf"  {printf("tPRINTF\n"); }
-"("       {printf("tPARO\n");   }
-")"       {printf("tPARF\n");   }
-"{"       {printf("tACCO\n");   }
-"}"       {printf("tACCF\n");   }
-"*"       {printf("tMUL\n");    }
-"+"       {printf("tPLUS\n");   }
-"-"       {printf("tMINUS\n");  }
-"/"       {printf("tDIV\n");    }
-"="       {printf("tEQU\n");    }
-[ \t\n]+  {}
-","       {printf("tVIRGULE\n");}
-";"       {printf("tPV\n");     }
-[0-9]+    {printf("tNB\n");     }
-[A-Za-z][A-Za-z_0-9]* {printf("tID\n");}
+"const"   {return tCONST;}
+"int"     {return tINT;}
+"if"      {return tIF;}
+"while"   {return tWHILE;}
+"main"    {return tMAIN;}
+"printf"  {return tPRINTF;}
+"("       {return tPARO;}
+")"       {return tPARF;}
+"{"       {return tACCO;}
+"}"       {return tACCF;}
+"*"       {return tMUL;}
+"+"       {return tPLUS;}
+"-"       {return tMINUS;}
+"/"       {return tDIV;}
+"="       {return tEQU;}
+[ \t\n]+  {return tSEPARATOR;}
+","       {return tVIRGULE;}
+";"       {return tPV;}
+[0-9]+    {return tNB;}
+[A-Za-z][A-Za-z_0-9]* {return tID;}
 [/]{2}[\t A-Za-z_0-9]*[\n] {printf("tCOMMENT : %s",yytext);}
 .+  {}

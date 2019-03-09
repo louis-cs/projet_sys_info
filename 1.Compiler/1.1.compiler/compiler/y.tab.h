@@ -49,20 +49,23 @@ extern int yydebug;
     tINT = 259,
     tMAIN = 260,
     tPRINTF = 261,
-    tPARO = 262,
-    tPARF = 263,
-    tACCO = 264,
-    tACCF = 265,
-    tMUL = 266,
-    tPLUS = 267,
-    tMINUS = 268,
-    tDIV = 269,
-    tEQU = 270,
-    tVIRGULE = 271,
-    tPV = 272,
-    tNB = 273,
-    tID = 274,
-    tCOMMENT = 275
+    tIF = 262,
+    tWHILE = 263,
+    tMUL = 264,
+    tPLUS = 265,
+    tMINUS = 266,
+    tDIV = 267,
+    tEQU = 268,
+    tPARO = 269,
+    tPARF = 270,
+    tACCO = 271,
+    tACCF = 272,
+    tVIRGULE = 273,
+    tPV = 274,
+    tSEPARATOR = 275,
+    tNB = 276,
+    tID = 277,
+    tCOMMENT = 278
   };
 #endif
 /* Tokens.  */
@@ -70,20 +73,23 @@ extern int yydebug;
 #define tINT 259
 #define tMAIN 260
 #define tPRINTF 261
-#define tPARO 262
-#define tPARF 263
-#define tACCO 264
-#define tACCF 265
-#define tMUL 266
-#define tPLUS 267
-#define tMINUS 268
-#define tDIV 269
-#define tEQU 270
-#define tVIRGULE 271
-#define tPV 272
-#define tNB 273
-#define tID 274
-#define tCOMMENT 275
+#define tIF 262
+#define tWHILE 263
+#define tMUL 264
+#define tPLUS 265
+#define tMINUS 266
+#define tDIV 267
+#define tEQU 268
+#define tPARO 269
+#define tPARF 270
+#define tACCO 271
+#define tACCF 272
+#define tVIRGULE 273
+#define tPV 274
+#define tSEPARATOR 275
+#define tNB 276
+#define tID 277
+#define tCOMMENT 278
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
