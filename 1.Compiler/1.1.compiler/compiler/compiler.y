@@ -10,34 +10,44 @@
 /* Operators */
 %token tMUL tPLUS tMINUS tDIV tEQU
 /* Delimiters */
-%token tPARO tPARF tACCO tACCF tVIRGULE tPV tSEPARATOR
+%token tPARO tPARF tACCO tACCF tVIRGULE tPV
 /* Others */
 %token tNB tID tCOMMENT
 
 %start entry_point;
 
 %%
+entry_point           : MainFunction;
+MainFunction          : Type tMAIN tPARO Args tPARF Body;
 
-entry_point           : Functions;
+Body                  : tACCO Declarations Instructions tACCF | tACCO Instructions tACCF | tACCO Declarations tACCF;
 
-Functions             : Function Functions | Function;
-Function              : Type tID tPARO Args tPARF Body;
+Declarations          : Declaration Declarations | Declaration;
+Declaration           : Type ListDecs tPV;
+ListDecs              : ListDec tVIRGULE ListDecs | ListDec;
+ListDec               : tID | tID tEQU Exp;
 
-Body                  : tACCO Instructions tACCF;
-Args                  : VarDec tVIRGULE Args | VarDec;
-Type                  : tINT;
+/* Constante             : ; */
+
+Affectation           : Type tID tEQU Exp tPV;
 
 Instructions          : Instruction Instructions | Instruction;
-Instruction           : VarDef | VarDec | VarAff; /* | If | While;*/
+Instruction           : Affectation | Print;
+Print                 : tPRINTF tPARO tID tPARF tPV;
 
-/*VarDefs               : VarDef VarDefs | VarDef;*/
-VarDef                : Type tID tEQU tNB tPV;
-VarDec                : tID tEQU tNB tPV;
-VarAff                : Type tID tPV;
-/*
-If                    : ;
-While                 : ;
-*/
+ListIDs               : tID | tID tVIRGULE ListIDs;
+Args                  : Arg tVIRGULE Args | Arg;
+Arg                   : Type ListIDs;
+
+Type                  : tINT;
+
+Exp                   : Exp tPLUS Exp
+                      | Exp tMINUS Exp
+                      | Exp tDIV Exp
+                      | Exp tMUL Exp
+                      | tNB
+                      | tID
+                      ;
 %%
 
 void yyerror(const char* error) {
