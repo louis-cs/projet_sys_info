@@ -1,9 +1,50 @@
 %{
     #include <stdio.h>
+    #include <stdlib.h>
+
+    /* Structure de la liste chainée pour la table des symboles */
+    typedef struct Element Element;
+    typedef struct LList LList;
+    struct Element
+    {
+      int elemId;
+      int addr;
+      int init;
+      int constante;
+      char* name;
+      char* type;
+      int depth;
+      Element* suivant;
+    };
+    struct LList
+    {
+      Element* first;
+      int size;
+      int next_id;
+    };
+
+    /* Fonctions pour la liste chainée */
+    LList* create_llist();
+    int add(LList* llist, char* name, char* type, int depth);
+    int add_tmp(LList* llist, char* type, int depth);
+    int get_id_by_name(LList* llist, char* name);
+    int get_addr(LList* llist, int id);
+    void remove(LList* llist, int id);
+
+    /* Définition de la table des symboles */
+    LList ts;
 
     int yylex(void);
     void yyerror(const char* error);
 %}
+
+/* Définition des types pour l'association avec LEX */
+%union {
+  int entier;
+  char* str;
+}
+%type <entier> tNB
+%type <str> tID
 
 /* Keywords */
 %token tCONST tINT tMAIN tPRINTF tIF tWHILE
@@ -13,6 +54,11 @@
 %token tPARO tPARF tACCO tACCF tVIRGULE tPV
 /* Others */
 %token tNB tID tCOMMENT
+
+/* Priorité des opérateurs pour l'arithmétique */
+%left tPLUS tMINUS
+%left tDIV tMUL
+
 
 %start entry_point;
 
@@ -49,6 +95,44 @@ Exp                   : Exp tPLUS Exp
                       | tID
                       ;
 %%
+
+LList* create_llist() {
+  LList liste = malloc(sizeof(*liste));
+
+  if (liste == NULL )
+  {
+    exit(EXIT_FAILURE);
+  }
+  liste->size = 0;
+  liste->next_id = 0;
+  return liste;
+}
+
+int add(LList* llist, char* name, char* type, int depth, int init, int cte) {
+  Element *nouveau = malloc(sizeof(*nouveau));
+  if (llist == NULL || nouveau == NULL)
+  {
+    exit(EXIT_FAILURE);
+  }
+  nouveau->elemId = llist->next_id;
+  nouveau->addr = 0;
+  nouveau->init = init;
+  nouveau->constante = cte;
+  nouveau->name = name;
+  nouveau->type = type;
+  nouveau->depth = depth;
+  nouveau->suivant = llist->first;
+  llist->first = nouveau;
+  llist->size = llist->size + 1;
+  llist->next_id = llist->next_id + 1;
+
+  return nouveau->elemId;
+}
+
+int add_tmp(LList* llist, char* type, int depth);
+int get_id_by_name(LList* llist, char* name);
+int get_addr(LList* llist, int id);
+void remove(LList* llist, int id);
 
 void yyerror(const char* error) {
     printf("ERROR: %s\n", error);
