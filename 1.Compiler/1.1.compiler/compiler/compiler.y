@@ -4,6 +4,8 @@
 
     /* Définition de la table des symboles */
     LList * ts;
+    int currentdepth;
+    Types currenttype;
 
     int yylex(void);
     void yyerror(const char* error);
@@ -40,11 +42,15 @@ MainFunction          : Type tMAIN tPARO Args tPARF Body;
 Body                  : tACCO Declarations Instructions tACCF | tACCO Instructions tACCF | tACCO Declarations tACCF;
 
 Declarations          : Declaration Declarations | Declaration;
-Declaration           : Type ListDecs tPV;
+Declaration           : Type ListDecs tPV | Constante;
 ListDecs              : ListDec tVIRGULE ListDecs | ListDec;
-ListDec               : tID | tID tEQU Exp;
+ListDec               : tID {add(ts, $1, currenttype, currentdepth, false, false);}
+                      | tID {add(ts, $1, currenttype, currentdepth, true, false);} tEQU Exp;
 
-/* Constante             : ; */
+Constante             : tCONST Type ListConstDecs tPV;
+ListConstDecs         : ListConstDec tVIRGULE ListConstDecs | ListConstDec;
+ListConstDec          : tID {add(ts, $1, currenttype, currentdepth, true, false);} tEQU Exp;
+
 
 Affectation           : Type tID tEQU Exp tPV;
 
@@ -56,7 +62,7 @@ ListIDs               : tID | tID tVIRGULE ListIDs;
 Args                  : Arg tVIRGULE Args | Arg;
 Arg                   : Type ListIDs;
 
-Type                  : tINT;
+Type                  : tINT {currenttype=TypeInt;};
 
 Exp                   : Exp tPLUS Exp
                       | Exp tMINUS Exp

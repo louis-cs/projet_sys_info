@@ -11,7 +11,7 @@ LList* llist_create() {
     return liste;
 }
 
-int add(LList* llist, char* name, char* type, int depth, Bool init, Bool cte) {
+int add(LList* llist, char* name, Types type, int depth, Bool init, Bool cte) {
     Element* nouveau = malloc(sizeof(*nouveau));
     if (llist == NULL || nouveau == NULL) {
         return -1;
@@ -31,7 +31,7 @@ int add(LList* llist, char* name, char* type, int depth, Bool init, Bool cte) {
     return nouveau->elemId;
 }
 
-int add_tmp(LList* llist, char* type, int depth) {
+int add_tmp(LList* llist, Types type, int depth) {
     return add(llist, "", type, depth, false, false);
 }
 
