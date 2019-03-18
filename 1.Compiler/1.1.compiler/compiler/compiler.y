@@ -1,45 +1,9 @@
 %{
     #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-
-    /* Structure de la liste chainée pour la table des symboles */
-    typedef struct Element Element;
-    typedef struct LList LList;
-    typedef enum Bool Bool;
-    enum Bool
-    {
-      false = 0,
-      true = 1
-    };
-    struct Element
-    {
-      int elemId;
-      int addr;
-      Bool init;
-      Bool constante;
-      char* name;
-      char* type;
-      int depth;
-      Element* suivant;
-    };
-    struct LList
-    {
-      Element* first;
-      int size;
-      int next_id;
-    };
-
-    /* Fonctions pour la liste chainée */
-    LList* create_llist();
-    int add(LList* llist, char* name, char* type, int depth, Bool init, Bool cte);
-    int add_tmp(LList* llist, char* type, int depth);
-    int get_id_by_name(LList* llist, char* name);
-    int get_addr(LList* llist, int id);
-    void remove(LList* llist, int id);
+    #include "./LList.h"
 
     /* Définition de la table des symboles */
-    LList ts;
+    LList * ts;
 
     int yylex(void);
     void yyerror(const char* error);
@@ -103,119 +67,12 @@ Exp                   : Exp tPLUS Exp
                       ;
 %%
 
-LList* create_llist() {
-  LList liste = malloc(sizeof(*liste));
-  if (liste == NULL )
-  {
-    exit(EXIT_FAILURE);
-  }
-  liste->size = 0;
-  liste->next_id = 0;
-  return liste;
-}
-
-int add(LList* llist, char* name, char* type, int depth, Bool init, Bool cte) {
-  Element* nouveau = malloc(sizeof(*nouveau));
-  if (llist == NULL || nouveau == NULL) {
-    exit(EXIT_FAILURE);
-  }
-  nouveau->elemId = llist->next_id;
-  nouveau->addr = 0;
-  nouveau->init = init;
-  nouveau->constante = cte;
-  nouveau->name = name;
-  nouveau->type = type;
-  nouveau->depth = depth;
-  nouveau->suivant = llist->first;
-  llist->first = nouveau;
-  llist->size = llist->size + 1;
-  llist->next_id = llist->next_id + 1;
-
-  return nouveau->elemId;
-}
-
-int add_tmp(LList* llist, char* type, int depth) {
-  return add(llist, "", type, depth, false, false);
-}
-
-int get_id_by_name(LList* llist, char* name) {
-  if (llist == NULL)
-  {
-    exit(EXIT_FAILURE);
-  }
-  LList* aux = llist;
-  Bool found = false;
-  while (!found || (aux != NULL) ) {
-    if (strcmp(aux->first->name, name)) {
-      found = true;
-    } else {
-      aux = aux->first->suivant;
-    }
-  }
-  if (found) {
-    return aux->first->elemId;
-  } else {
-    return -1;
-  }
-}
-
-int get_addr(LList* llist, int id) {
-  if (llist == NULL)
-  {
-    exit(EXIT_FAILURE);
-  }
-  LList* aux = llist;
-  Bool found = false;
-  while (!found || (aux != NULL) ) {
-    if (aux->first->elemId == id)) {
-      found = true;
-    } else {
-      aux = aux->first->suivant;
-    }
-  }
-  if (found) {
-    return aux->first->addr;
-  } else {
-    return -1;
-  }
-}
-
-void remove(LList* llist, int id) {
-  if (llist == NULL) {
-    exit(EXIT_FAILURE);
-  }
-  LList* prec = llist;
-  LList* aux = prec->first->suivant;
-  if (prec->first->elemId == id) {
-    llist->first = aux;
-    llist->size = llist->size - 1;
-  } else {
-    if (aux == NULL) {
-      exit(EXIT_FAILURE);
-    } else {
-      Bool found = false;
-      while (!found || (aux != NULL) ) {
-        if (aux->first->elemId == id)) {
-          found = true;
-          prec->first->suivant = aux->first->suivant;
-          llist->size = llist->size - 1;
-        } else {
-          prec = aux;
-          aux = aux->first->suivant;
-        }
-      }
-      if (!found) {
-        exit(EXIT_FAILURE);
-      }
-    }
-  }
-}
-
 void yyerror(const char* error) {
     printf("ERROR: %s\n", error);
 }
 
 int main(int argc, char const **argv) {
+    ts = llist_create();
     yyparse();
     return 0;
 }

@@ -1,6 +1,6 @@
-%{ECHO;
-#include <stdio.h>
-#include "y.tab.h"
+%{
+    #include <stdio.h>
+    #include "y.tab.h"
 %}
 %%
 "const"   {ECHO; return tCONST;}
@@ -21,7 +21,7 @@
 [ \t\n]+  {printf(" ");/*return tSEPARATOR;*/}
 ","       {ECHO; return tVIRGULE;}
 ";"       {ECHO; return tPV;}
-[0-9]+    {ECHO; yylval.entier=atoi(yytext); return tNB;*/}
+[0-9]+    {ECHO; yylval.entier=atoi(yytext); return tNB;}
 [A-Za-z][A-Za-z_0-9]* {ECHO; yylval.str=yytext; return tID;}
 [/]{2}[\t A-Za-z_0-9]*[\n] {ECHO; printf("tCOMMENT : %s",yytext);}
 .+  {}
