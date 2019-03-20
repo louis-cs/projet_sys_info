@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/mhiri/Arch_Mat/TD1/compteur.xst" -ofn "/home/mhiri/Arch_Mat/TD1/compteur.syr" 
