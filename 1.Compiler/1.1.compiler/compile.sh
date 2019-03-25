@@ -2,5 +2,5 @@
 if [ "$#" -ne 1 ]; then
     echo "Usage : ./compile.sh file"
 else
-    ./compiler/compiler.bin < $1
+    ./compiler/compiler < $1
 fi

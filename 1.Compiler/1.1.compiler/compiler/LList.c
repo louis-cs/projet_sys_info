@@ -17,7 +17,7 @@ int add(LList* llist, char* name, Types type, int depth, Bool init, Bool cte) {
         return -1;
     }
     nouveau->elemId = llist->next_id;
-    nouveau->addr = 0;
+    nouveau->addr = 0x4000 + 0x8 * llist->next_id;
     nouveau->init = init;
     nouveau->constante = cte;
     nouveau->name = name;

@@ -24,4 +24,3 @@
 [0-9]+    {ECHO; yylval.entier=atoi(yytext); return tNB;}
 [A-Za-z][A-Za-z_0-9]* {ECHO; yylval.str=yytext; return tID;}
 [/]{2}[\t A-Za-z_0-9]*[\n] {ECHO; printf("tCOMMENT : %s",yytext);}
-.+  {}
