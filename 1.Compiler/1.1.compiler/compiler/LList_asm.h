@@ -6,6 +6,33 @@
 #include <string.h>
 
 /* Structure de la liste chainée pour la table des symboles */
+<<<<<<< HEAD
+typedef struct Element Element;
+typedef struct LList LList;
+typedef enum Bool { false = 0, true = 1 } Bool;
+typedef enum Types { TypeInt, TypeFloat, TypeChar, TypeBool } Types;
+
+typedef enum op_codes {
+    ADD, MUL, SUB, DIV, COP,
+    AFC, LOAD, STORE, EQU,
+    INF, INFE, SUP, SUPE,
+    JMP, JMPC
+} op_codes;
+
+struct Element {
+    int       elemId;
+    op_codes  op_code;
+    int       a;
+    int       b;
+    int       c;
+    Element*  suivant;
+};
+
+struct LList {
+    Element* first;
+    int size;
+    int next_id;
+=======
 typedef struct Element_asm Element_asm;
 typedef struct LList_asm LList_asm;
 
@@ -22,6 +49,7 @@ struct LList_asm {
   Element_asm* first;
   int size;
   int next_id;
+>>>>>>> 11366a9d2179d6c3195263b75da847b12f5c82fd
 };
 
 /* Fonctions pour la liste chainée */

@@ -5,7 +5,8 @@
 
     /* Définition de la table des symboles */
     LList * ts;
-    LList_asm * tins;
+    LLista * asm_table;
+
     int currentdepth;
     Types currenttype;
 
