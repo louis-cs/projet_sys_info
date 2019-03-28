@@ -1,4 +1,6 @@
-#include "./LList.h"
+#include "./LLista.h"
+
+const char* typestable[] = { "int", "float", "char", "bool", NULL };
 
 LList* llist_create() {
     LList * liste = malloc(sizeof(*liste));
@@ -11,13 +13,13 @@ LList* llist_create() {
     return liste;
 }
 
-int add(LList* llist, char* name, char* type, int depth, Bool init, Bool cte) {
+int add(LList* llist, char* name, Types type, int depth, Bool init, Bool cte) {
     Element* nouveau = malloc(sizeof(*nouveau));
     if (llist == NULL || nouveau == NULL) {
         return -1;
     }
     nouveau->elemId = llist->next_id;
-    nouveau->addr = 0;
+    nouveau->addr = 0x4000 + 0x8 * llist->next_id;
     nouveau->init = init;
     nouveau->constante = cte;
     nouveau->name = name;
@@ -31,7 +33,7 @@ int add(LList* llist, char* name, char* type, int depth, Bool init, Bool cte) {
     return nouveau->elemId;
 }
 
-int add_tmp(LList* llist, char* type, int depth) {
+int add_tmp(LList* llist, Types type, int depth) {
     return add(llist, "", type, depth, false, false);
 }
 
@@ -108,5 +110,19 @@ int llist_remove(LList* llist, int id) {
                 return -1;
             }
         }
+    }
+
+    int llist_print(LList* llist) {
+      if (llist == NULL) {
+        printf("\x1b[1m\x1b[91mERROR : LList vide! \x1b[0m\n");
+        return -1;
+      }
+      printf("Taille de la llist: %d\n",llist->size);
+      Element * aux = llist->first;
+      while (aux != NULL) {
+        printf("Element n° %d: %s type: %s constante: %d adresse: %d profondeur: %d initialisé: %d \n", aux->elemId, aux->name, typestable[aux->type], aux->constante, aux->addr, aux->depth, aux->init );
+        aux = aux->suivant;
+      }
+      return 0;
     }
 }

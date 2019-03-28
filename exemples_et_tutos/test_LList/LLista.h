@@ -8,8 +8,8 @@
 /* Structure de la liste chainée pour la table des symboles */
 typedef struct Element Element;
 typedef struct LList LList;
-typedef enum Bool Bool;
-enum Bool { false = 0, true = 1};
+typedef enum Bool { false = 0, true = 1} Bool;
+typedef enum Types { TypeInt, TypeFloat, TypeChar, TypeBool } Types;
 
 struct Element {
   int elemId;
@@ -17,7 +17,7 @@ struct Element {
   Bool init;
   Bool constante;
   char* name;
-  char* type;
+  Types type;
   int depth;
   Element* suivant;
 };
@@ -30,10 +30,11 @@ struct LList {
 
 /* Fonctions pour la liste chainée */
 LList* llist_create();
-int add(LList* llist, char* name, char* type, int depth, Bool init, Bool cte);
-int add_tmp(LList* llist, char* type, int depth);
+int add(LList* llist, char* name, Types type, int depth, Bool init, Bool cte);
+int add_tmp(LList* llist, Types type, int depth);
 int get_id_by_name(LList* llist, char* name);
 int get_addr(LList* llist, int id);
 int llist_remove(LList* llist, int id);
+int llist_print(LList* llist);
 
 #endif

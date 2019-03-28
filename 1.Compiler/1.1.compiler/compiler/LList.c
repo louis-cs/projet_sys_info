@@ -1,5 +1,7 @@
 #include "./LList.h"
 
+const char* typestable[] = { "int", "float", "char", "bool", NULL };
+
 LList* llist_create() {
     LList * liste = malloc(sizeof(*liste));
     if (liste == NULL) {
@@ -108,5 +110,18 @@ int llist_remove(LList* llist, int id) {
                 return -1;
             }
         }
+    }
+    
+    int llist_print(LList* llist) {
+      if (llist == NULL) {
+        printf("\x1b[1m\x1b[91mERROR : LList vide! \x1b[0m\n");
+        return -1;
+      }
+      printf("Taille de la llist: %d\n",llist->size);
+      Element * aux = llist->first;
+      while (aux != NULL) {
+        printf("Element n° %d: %s type: %s constante: %d adresse: %d profondeur: %d initialisé: %d \n", aux->elemId, aux->name, typestable[aux->type], aux->constante, aux->addr, aux->depth, aux->init );
+        aux = aux->suivant;
+      }
     }
 }

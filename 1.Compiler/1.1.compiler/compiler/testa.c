@@ -1,4 +1,4 @@
-#include "./LLista.h"
+#include "./LList.h"
 
 char * logmsg = "";
 
