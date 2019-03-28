@@ -1,0 +1,10 @@
+//! **************************************************************************
+// Written by: Map O.87xd on Thu Mar 28 11:17:01 2019
+//! **************************************************************************
+
+SCHEMATIC START;
+TIMEGRP CK = BEL "C_0" BEL "C_1" BEL "C_2" BEL "C_3" BEL "C_4" BEL "C_5" BEL
+        "C_6" BEL "C_7" BEL "CK_BUFGP/BUFG";
+TS_CK = PERIOD TIMEGRP "CK" 100 MHz HIGH 50%;
+SCHEMATIC END;
+

@@ -1,0 +1,37 @@
+Running: /usr/local/insa/Xilinx.ISE/13.4/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib simprims_ver -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/mhiri/Documents/git_projects/TD_vhdl/TD1/counter_test_isim_par.exe -prj /home/mhiri/Documents/git_projects/TD_vhdl/TD1/counter_test_par.prj work.counter_test work.glbl 
+ISim O.87xd (signature 0x8ddf5b5d)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file "/home/mhiri/Documents/git_projects/TD_vhdl/TD1/netgen/par/compteur_timesim.v" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/TD_vhdl/TD1/counter_test.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 96124 KB
+Fuse CPU Usage: 970 ms
+Compiling module glbl
+Compiling module X_CKBUF
+Compiling module sffsrce
+Compiling module X_SFF
+Compiling module X_LUT6(INIT=64'b1110111000100010...
+Compiling module X_LUT5(INIT=32'b0110011001100110...
+Compiling module X_CARRY4
+Compiling module X_OPAD
+Compiling module X_OBUF
+Compiling module X_IPAD
+Compiling module X_BUF
+Compiling module X_INV(LOC="PAD170")
+Compiling module X_ZERO
+Compiling module compteur
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package vl_types
+Compiling architecture behavior of entity counter_test
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 4 VHDL Units
+Compiled 68 Verilog Units
+Built simulation executable /home/mhiri/Documents/git_projects/TD_vhdl/TD1/counter_test_isim_par.exe
+Fuse Memory Usage: 666780 KB
+Fuse CPU Usage: 1230 ms
+GCC CPU Usage: 1950 ms

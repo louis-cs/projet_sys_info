@@ -1,0 +1,5 @@
+
+#Created by Constraints Editor (xc6slx16-csg324-3) - 2019/03/27
+#changing clock
+NET "CK" TNM_NET = CK;
+TIMESPEC TS_CK = PERIOD "CK" 100 MHz HIGH 50%;

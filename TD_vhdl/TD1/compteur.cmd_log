@@ -1,1 +1,40 @@
 xst -intstyle ise -ifn "/home/mhiri/Arch_Mat/TD1/compteur.xst" -ofn "/home/mhiri/Arch_Mat/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc7a8-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc7a8-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc7a8-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc7a8-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+par -w -intstyle ise -ol high -mt off compteur_map.ncd compteur.ncd compteur.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml compteur.twx compteur.ncd -o compteur.twr compteur.pcf 
+netgen -intstyle ise -s 3  -pcf compteur.pcf -sdf_anno true -sdf_path "netgen/map" -insert_glbl true -w -dir netgen/map -ofmt verilog -sim compteur_map.ncd compteur_map.v 
+netgen -intstyle ise -s 3  -pcf compteur.pcf -sdf_anno true -sdf_path "netgen/par" -insert_glbl true -insert_pp_buffers true -w -dir netgen/par -ofmt verilog -sim compteur.ncd compteur_timesim.v 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+par -w -intstyle ise -ol high -mt off compteur_map.ncd compteur.ncd compteur.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml compteur.twx compteur.ncd -o compteur.twr compteur.pcf -ucf compteur.ucf 
+netgen -intstyle ise -s 3  -pcf compteur.pcf -sdf_anno true -sdf_path "netgen/par" -insert_glbl true -insert_pp_buffers true -w -dir netgen/par -ofmt verilog -sim compteur.ncd compteur_timesim.v 
+ibiswriter -intstyle ise -vccaux 2.5 -truncate 20 compteur.ncd compteur.ibs 
+netgen -intstyle ise -s 3  -pcf compteur.pcf -sdf_anno true -sdf_path "netgen/par" -insert_glbl true -insert_pp_buffers true -w -dir netgen/par -ofmt verilog -sim compteur.ncd compteur_timesim.v 
+xst -intstyle ise -ifn "/home/mhiri/Documents/git_projects/TD_vhdl/TD1/compteur.xst" -ofn "/home/mhiri/Documents/git_projects/TD_vhdl/TD1/compteur.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+par -w -intstyle ise -ol high -mt off compteur_map.ncd compteur.ncd compteur.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml compteur.twx compteur.ncd -o compteur.twr compteur.pcf -ucf compteur.ucf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+par -w -intstyle ise -ol high -mt off compteur_map.ncd compteur.ncd compteur.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml compteur.twx compteur.ncd -o compteur.twr compteur.pcf -ucf compteur.ucf 
+netgen -intstyle ise -s 3  -pcf compteur.pcf -sdf_anno true -sdf_path "netgen/par" -insert_glbl true -insert_pp_buffers true -w -dir netgen/par -ofmt verilog -sim compteur.ncd compteur_timesim.v 
