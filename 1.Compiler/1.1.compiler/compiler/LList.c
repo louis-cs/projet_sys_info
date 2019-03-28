@@ -2,6 +2,15 @@
 
 const char* typestable[] = { "int", "float", "char", "bool", NULL };
 
+Bool is_initialised(Element e) {
+  return e.init;
+}
+
+void initialise(Element* e) {
+  e->init = true;
+}
+
+
 LList* llist_create() {
     LList * liste = malloc(sizeof(*liste));
     if (liste == NULL) {
@@ -46,7 +55,7 @@ int get_id_by_name(LList* llist, char* name) {
     while (!found && (aux != NULL) ) {
         if (strcmp(aux->name, name) == 0) {
             found = true;
-            printf("[LOG] Found !\n");
+            // printf("[LOG] Found !\n");
         } else {
             aux = aux->suivant;
         }
@@ -56,6 +65,26 @@ int get_id_by_name(LList* llist, char* name) {
     } else {
         return -1;
     }
+}
+
+Element* get_element(LList* llist, int id) {
+  if (llist == NULL || id < 0) {
+      return NULL;
+  }
+  Element* aux = llist->first ;
+  Bool found = false;
+  while (!found && (aux != NULL) ) {
+      if (aux->elemId == id) {
+          found = true;
+      } else {
+          aux = aux->suivant;
+      }
+  }
+  if (found) {
+      return aux;
+  } else {
+      return NULL;
+  }
 }
 
 int get_addr(LList* llist, int id) {
