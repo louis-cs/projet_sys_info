@@ -4,6 +4,8 @@
 
     /* Définition de la table des symboles */
     LList * ts;
+    LLista * asm_table;
+
     int currentdepth;
     Types currenttype;
 
@@ -58,7 +60,7 @@ Constante             : tCONST Type ListConstDecs tPV;
 ListConstDecs         : ListConstDec tVIRGULE ListConstDecs | ListConstDec;
 ListConstDec          : tID {add(ts, $1, currenttype, currentdepth, true, true);} tEQU Exp;
 
-Affectation           : Type tID tEQU Exp tPV;
+Affectation           : Type tID tEQU Exp tPV {add(asm_table);};
 
 Instructions          : Instruction Instructions | Instruction;
 Instruction           : Affectation | Print;

@@ -8,24 +8,29 @@
 /* Structure de la liste chainée pour la table des symboles */
 typedef struct Element Element;
 typedef struct LList LList;
-typedef enum Bool { false = 0, true = 1} Bool;
+typedef enum Bool { false = 0, true = 1 } Bool;
 typedef enum Types { TypeInt, TypeFloat, TypeChar, TypeBool } Types;
 
+typedef enum op_codes {
+    ADD, MUL, SUB, DIV, COP,
+    AFC, LOAD, STORE, EQU,
+    INF, INFE, SUP, SUPE,
+    JMP, JMPC
+} op_codes;
+
 struct Element {
-  int elemId;
-  int addr;
-  Bool init;
-  Bool constante;
-  char* name;
-  Types type;
-  int depth;
-  Element* suivant;
+    int       elemId;
+    op_codes  op_code;
+    int       a;
+    int       b;
+    int       c;
+    Element*  suivant;
 };
 
 struct LList {
-  Element* first;
-  int size;
-  int next_id;
+    Element* first;
+    int size;
+    int next_id;
 };
 
 /* Fonctions pour la liste chainée */
