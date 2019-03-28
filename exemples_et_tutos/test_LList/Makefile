@@ -1,5 +1,5 @@
 OUTBINARY=test
-CSOURCE=main.c LList.c
+CSOURCE=main.c LLista.c
 
 all : clean build
 
