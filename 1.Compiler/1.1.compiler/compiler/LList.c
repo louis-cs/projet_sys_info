@@ -10,7 +10,6 @@ void initialise(Element* e) {
   e->init = true;
 }
 
-
 LList* llist_create() {
     LList * liste = malloc(sizeof(*liste));
     if (liste == NULL) {

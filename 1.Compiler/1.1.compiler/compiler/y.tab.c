@@ -71,13 +71,14 @@
     /* Définition de la table des symboles */
     LList * ts;
     LList_asm * tins;
+
     int currentdepth;
     Types currenttype;
 
     int yylex(void);
     void yyerror(const char* error);
 
-#line 81 "./compiler/y.tab.c" /* yacc.c:339  */
+#line 82 "./compiler/y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -161,12 +162,12 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 19 "./compiler/compiler.y" /* yacc.c:355  */
+#line 20 "./compiler/compiler.y" /* yacc.c:355  */
 
   int entier;
   char* str;
 
-#line 170 "./compiler/y.tab.c" /* yacc.c:355  */
+#line 171 "./compiler/y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -183,7 +184,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 187 "./compiler/y.tab.c" /* yacc.c:358  */
+#line 188 "./compiler/y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -482,10 +483,10 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    43,    43,    44,    45,    47,    47,    49,    50,    51,
-      53,    53,    54,    54,    55,    55,    56,    60,    62,    63,
-      63,    64,    68,    82,    82,    83,    83,    84,    86,    86,
-      87,    87,    88,    90,    92,   100,   108,   116,   124,   129
+       0,    44,    44,    45,    46,    48,    48,    50,    51,    52,
+      54,    54,    55,    55,    56,    56,    57,    61,    63,    64,
+      64,    65,    69,    83,    83,    84,    84,    85,    87,    87,
+      88,    88,    89,    91,    93,   101,   109,   117,   125,   130
 };
 #endif
 
@@ -1301,128 +1302,128 @@ yyreduce:
   switch (yyn)
     {
         case 5:
-#line 47 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 48 "./compiler/compiler.y" /* yacc.c:1646  */
     {currentdepth++;}
-#line 1307 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1308 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 47 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 48 "./compiler/compiler.y" /* yacc.c:1646  */
     {currentdepth--;}
-#line 1313 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1314 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 56 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 57 "./compiler/compiler.y" /* yacc.c:1646  */
     {printf("tid %s = elemId %d\n",(yyvsp[-2].str),(yyvsp[0].entier));
                                       int index = add(ts, (yyvsp[-2].str), currenttype, currentdepth, true, false);
-                                      ins_add(tins,"LOAD",0,get_addr(ts,(yyvsp[0].entier)),-1);
-                                      ins_add(tins,"STORE",get_addr(ts,index),0,-1);}
-#line 1322 "./compiler/y.tab.c" /* yacc.c:1646  */
+                                      ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[0].entier)),-1);
+                                      ins_add(tins,STORE,get_addr(ts,index),0,-1);}
+#line 1323 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 60 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 61 "./compiler/compiler.y" /* yacc.c:1646  */
     {add(ts, (yyvsp[0].str), currenttype, currentdepth, false, false);}
-#line 1328 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1329 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 64 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 65 "./compiler/compiler.y" /* yacc.c:1646  */
     {int index = add(ts, (yyvsp[-2].str), currenttype, currentdepth, true, true);
-                                      ins_add(tins,"LOAD",0,get_addr(ts,(yyvsp[0].entier)),-1);
-                                      ins_add(tins,"STORE",get_addr(ts,index),0,-1);}
-#line 1336 "./compiler/y.tab.c" /* yacc.c:1646  */
+                                      ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[0].entier)),-1);
+                                      ins_add(tins,STORE,get_addr(ts,index),0,-1);}
+#line 1337 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 68 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 69 "./compiler/compiler.y" /* yacc.c:1646  */
     {int index = get_id_by_name(ts,(yyvsp[-3].str));
                                           if (index == -1) {
                                             yyerror("Variable non déclarée");
                                           } else {
                                             printf("adresse de %s : %d \n",(yyvsp[-3].str),get_addr(ts,index));
                                             printf("tid %s = elemId %d\n",(yyvsp[-3].str),(yyvsp[-1].entier));
-                                            ins_add(tins,"LOAD",0,get_addr(ts,(yyvsp[-1].entier)),-1);
-                                            ins_add(tins,"STORE",get_addr(ts,index),0,-1);
+                                            ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-1].entier)),-1);
+                                            ins_add(tins,STORE,get_addr(ts,index),0,-1);
                                             if (!is_initialised(*get_element(ts,index))) {
                                               initialise(get_element(ts,index));
                                             }
                                           };
                                         }
-#line 1354 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1355 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 90 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 91 "./compiler/compiler.y" /* yacc.c:1646  */
     {currenttype = TypeInt;}
-#line 1360 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1361 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 92 "./compiler/compiler.y" /* yacc.c:1646  */
-    {ins_add(tins,"LOAD",0,get_addr(ts,(yyvsp[-2].entier)),-1);
-                                       ins_add(tins,"LOAD",1,get_addr(ts,(yyvsp[0].entier)),-1);
-                                       ins_add(tins,"ADD",2,0,1);
-                                       ins_add(tins,"STORE",get_addr(ts,(yyvsp[-2].entier)),2,-1);
+#line 93 "./compiler/compiler.y" /* yacc.c:1646  */
+    {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
+                                       ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
+                                       ins_add(tins,ADD,2,0,1);
+                                       ins_add(tins,STORE,get_addr(ts,(yyvsp[-2].entier)),2,-1);
                                        printf("elemId %d + elemId %d\n",(yyvsp[-2].entier),(yyvsp[0].entier));
                                        /* llist_remove(ts,$3); */
                                        (yyval.entier)=(yyvsp[-2].entier);
                                      }
-#line 1373 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1374 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 100 "./compiler/compiler.y" /* yacc.c:1646  */
-    {ins_add(tins,"LOAD",0,get_addr(ts,(yyvsp[-2].entier)),-1);
-                                        ins_add(tins,"LOAD",1,get_addr(ts,(yyvsp[0].entier)),-1);
-                                        ins_add(tins,"SOU",2,0,1);
-                                        ins_add(tins,"STORE",get_addr(ts,(yyvsp[-2].entier)),2,-1);
+#line 101 "./compiler/compiler.y" /* yacc.c:1646  */
+    {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
+                                        ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
+                                        ins_add(tins,SOU,2,0,1);
+                                        ins_add(tins,STORE,get_addr(ts,(yyvsp[-2].entier)),2,-1);
                                         printf("elemId %d - elemId %d\n",(yyvsp[-2].entier),(yyvsp[0].entier));
                                         /* llist_remove(ts,$3); */
                                         (yyval.entier)=(yyvsp[-2].entier);
                                       }
-#line 1386 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1387 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 108 "./compiler/compiler.y" /* yacc.c:1646  */
-    {ins_add(tins,"LOAD",0,get_addr(ts,(yyvsp[-2].entier)),-1);
-                                      ins_add(tins,"LOAD",1,get_addr(ts,(yyvsp[0].entier)),-1);
-                                      ins_add(tins,"DIV",2,0,1);
-                                      ins_add(tins,"STORE",get_addr(ts,(yyvsp[-2].entier)),2,-1);
+#line 109 "./compiler/compiler.y" /* yacc.c:1646  */
+    {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
+                                      ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
+                                      ins_add(tins,DIV,2,0,1);
+                                      ins_add(tins,STORE,get_addr(ts,(yyvsp[-2].entier)),2,-1);
                                       printf("elemId %d / elemId %d\n",(yyvsp[-2].entier),(yyvsp[0].entier));
                                       /* llist_remove(ts,$3); */
                                       (yyval.entier)=(yyvsp[-2].entier);
                                     }
-#line 1399 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1400 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 116 "./compiler/compiler.y" /* yacc.c:1646  */
-    {ins_add(tins,"LOAD",0,get_addr(ts,(yyvsp[-2].entier)),-1);
-                                      ins_add(tins,"LOAD",1,get_addr(ts,(yyvsp[0].entier)),-1);
-                                      ins_add(tins,"MUL",2,0,1);
-                                      ins_add(tins,"STORE",get_addr(ts,(yyvsp[-2].entier)),2,-1);
+#line 117 "./compiler/compiler.y" /* yacc.c:1646  */
+    {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
+                                      ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
+                                      ins_add(tins,MUL,2,0,1);
+                                      ins_add(tins,STORE,get_addr(ts,(yyvsp[-2].entier)),2,-1);
                                       printf("elemId %d * elemId %d\n",(yyvsp[-2].entier),(yyvsp[0].entier));
                                       /* llist_remove(ts,$3); */
                                       (yyval.entier)=(yyvsp[-2].entier);
                                     }
-#line 1412 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1413 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 124 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 125 "./compiler/compiler.y" /* yacc.c:1646  */
     {int index_var_tmp = add_tmp(ts,TypeInt,currentdepth);
                              printf("tmp_var n° %d = %d\n",index_var_tmp,(yyvsp[0].entier));
-                             ins_add(tins,"AFC",0,(yyvsp[0].entier),-1);
-                             ins_add(tins,"STORE",get_addr(ts,index_var_tmp),0,-1);
+                             ins_add(tins,AFC,0,(yyvsp[0].entier),-1);
+                             ins_add(tins,STORE,get_addr(ts,index_var_tmp),0,-1);
                              (yyval.entier) = index_var_tmp;}
-#line 1422 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1423 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 129 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 130 "./compiler/compiler.y" /* yacc.c:1646  */
     {int index = get_id_by_name(ts,(yyvsp[0].str));
                         if (index == -1) {
                           yyerror("Variable non déclarée");
@@ -1432,15 +1433,15 @@ yyreduce:
                           }
                           int index_var_tmp = add_tmp(ts,currenttype,currentdepth);
                           printf("tmp_var n° %d <-> elemId %d\n",index_var_tmp,index);
-                          ins_add(tins,"LOAD",0,get_addr(ts,index),-1);
-                          ins_add(tins,"STORE",get_addr(ts,index_var_tmp),0,-1);
+                          ins_add(tins,LOAD,0,get_addr(ts,index),-1);
+                          ins_add(tins,STORE,get_addr(ts,index_var_tmp),0,-1);
                           (yyval.entier) = index_var_tmp;};
                         }
-#line 1440 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1441 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1444 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1445 "./compiler/y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1668,7 +1669,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 142 "./compiler/compiler.y" /* yacc.c:1906  */
+#line 143 "./compiler/compiler.y" /* yacc.c:1906  */
 
 
 void yyerror(const char* error) {
@@ -1679,7 +1680,9 @@ int main(int argc, char const **argv) {
   currentdepth = 0;
   currenttype = TypeInt;
   ts = llist_create();
+  tins = llist_asm_create();
   yyparse();
   llist_print(ts);
+  print_asm(tins);
   return 0;
 }
