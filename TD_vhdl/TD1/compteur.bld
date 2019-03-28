@@ -6,7 +6,8 @@ Command Line:
 -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3
 compteur.ngc compteur.ngd
 
-Reading NGO file "/home/mhiri/Documents/git_projects/TD_vhdl/TD1/compteur.ngc"
+Reading NGO file
+"/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.ngc"
 ...
 Gathering constraint information from source properties...
 Done.
@@ -29,7 +30,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 397880 kilobytes
+Total memory usage is 397944 kilobytes
 
 Writing NGD file "compteur.ngd" ...
 Total REAL time to NGDBUILD completion:  2 sec

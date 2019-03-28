@@ -65,7 +65,7 @@ ARCHITECTURE behavior OF counter_test IS
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
-   constant CK_period : time := 1 ns;
+   constant CK_period : time := 10 ns;
  
 BEGIN
  

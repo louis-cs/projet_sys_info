@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.ncd
+OUTFILE=/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/compteur.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1
+LICENSE=ISE
+USER_INFO=202067218_1777487267_210567960_160

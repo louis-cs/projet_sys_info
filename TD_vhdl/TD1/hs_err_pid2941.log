@@ -1,0 +1,10 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/usr/local/insa/Xilinx.ISE/13.4/ISE_DS/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x5f893d) [0x7f4d7e20093d]
+/usr/local/insa/Xilinx.ISE/13.4/ISE_DS/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x5f5e9b) [0x7f4d7e1fde9b]
+/usr/local/insa/Xilinx.ISE/13.4/ISE_DS/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so(JVM_handle_linux_signal+0x170) [0x7f4d7e2013e0]
+/usr/local/insa/Xilinx.ISE/13.4/ISE_DS/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so(+0x5f5dae) [0x7f4d7e1fddae]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x11390) [0x7f4d8124d390]
+[0x22ed700]

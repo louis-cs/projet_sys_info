@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/impact.xsl
+OUTFILE=/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/impact.xsl
+FAMILY=Single
+PART=Single
+WORKINGDIR=/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1
+LICENSE=iMPACT
+USER_INFO=iMPACT

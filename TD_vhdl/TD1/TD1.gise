@@ -23,13 +23,17 @@
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/bitgen.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/par.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/trce.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="compteur.bgn" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BIT" xil_pn:name="compteur.bit" xil_pn:subbranch="FPGAConfiguration"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="compteur.bld"/>
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="compteur.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_DRC" xil_pn:name="compteur.drc" xil_pn:subbranch="FPGAConfiguration"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_IBS" xil_pn:name="compteur.ibs"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="compteur.lso"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="compteur.ncd" xil_pn:subbranch="Par"/>
@@ -46,11 +50,13 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="compteur.twr" xil_pn:subbranch="Par"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="compteur.twx" xil_pn:subbranch="Par"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_UNROUTES" xil_pn:name="compteur.unroutes" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="compteur.ut" xil_pn:subbranch="FPGAConfiguration"/>
     <file xil_pn:fileType="FILE_XPI" xil_pn:name="compteur.xpi"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="compteur.xst"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="compteur_envsettings.html"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="compteur_guide.ncd" xil_pn:origination="imported"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="compteur_isim_beh.exe"/>
+    <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="compteur_isim_par.exe"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="compteur_map.map" xil_pn:subbranch="Map"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="compteur_map.mrp" xil_pn:subbranch="Map"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="compteur_map.ncd" xil_pn:subbranch="Map"/>
@@ -92,6 +98,11 @@
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/par/compteur_timesim.nlf"/>
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_SDF" xil_pn:name="netgen/par/compteur_timesim.sdf"/>
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/par/compteur_timesim.v"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="planAhead_run_1"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="planAhead_run_2"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="planAhead_run_3"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="usage_statistics_webtalk.html"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="webtalk.log"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
     <file xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini">
       <branch xil_pn:name="BehavioralSim"/>
@@ -164,7 +175,7 @@
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="counter_test_isim_beh.wdb"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
     </transform>
@@ -215,11 +226,11 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1553679887" xil_pn:in_ck="5178895260681834651" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="5472801602986888583" xil_pn:start_ts="1553679887">
+    <transform xil_pn:end_ts="1553770823" xil_pn:in_ck="5178895260681834651" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="5472801602986888583" xil_pn:start_ts="1553770823">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1553768212" xil_pn:in_ck="-4776386020761621648" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-6086716130397048630" xil_pn:start_ts="1553768207">
+    <transform xil_pn:end_ts="1553770828" xil_pn:in_ck="-4776386020761621648" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-6086716130397048630" xil_pn:start_ts="1553770823">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_ngo"/>
@@ -228,10 +239,12 @@
       <outfile xil_pn:name="compteur.ngd"/>
       <outfile xil_pn:name="compteur_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1553768222" xil_pn:in_ck="-3108496505808636687" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="1463976855095865663" xil_pn:start_ts="1553768212">
+    <transform xil_pn:end_ts="1553770836" xil_pn:in_ck="-3108496505808636687" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="1463976855095865663" xil_pn:start_ts="1553770828">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
       <outfile xil_pn:name="compteur.pcf"/>
       <outfile xil_pn:name="compteur_map.map"/>
@@ -242,7 +255,7 @@
       <outfile xil_pn:name="compteur_summary.xml"/>
       <outfile xil_pn:name="compteur_usage.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1553768233" xil_pn:in_ck="5993895370067829770" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-1178055513630676559" xil_pn:start_ts="1553768222">
+    <transform xil_pn:end_ts="1553770847" xil_pn:in_ck="5993895370067829770" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-1178055513630676559" xil_pn:start_ts="1553770836">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
@@ -256,14 +269,35 @@
       <outfile xil_pn:name="compteur_pad.txt"/>
       <outfile xil_pn:name="compteur_par.xrpt"/>
     </transform>
+    <transform xil_pn:end_ts="1553770861" xil_pn:in_ck="5178895260681827026" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="5341574683187206424" xil_pn:start_ts="1553770853">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+      <outfile xil_pn:name="compteur.bgn"/>
+      <outfile xil_pn:name="compteur.bit"/>
+      <outfile xil_pn:name="compteur.drc"/>
+      <outfile xil_pn:name="compteur.ut"/>
+      <outfile xil_pn:name="usage_statistics_webtalk.html"/>
+      <outfile xil_pn:name="webtalk.log"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+    </transform>
+    <transform xil_pn:end_ts="1553771418" xil_pn:in_ck="5178895260681814172" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="8482462020707587906" xil_pn:start_ts="1553771415">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
     <transform xil_pn:end_ts="1553680115" xil_pn:in_ck="5178895260681827026" xil_pn:name="TRANEXT_createIBISModel_spartan6" xil_pn:prop_ck="5066906704819893392" xil_pn:start_ts="1553680107">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
-      <outfile xil_pn:name="compteur.ibs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1553768404" xil_pn:in_ck="5178895260681827026" xil_pn:name="TRAN_postParSimModel" xil_pn:prop_ck="-4722700790514071060" xil_pn:start_ts="1553768398">
+    <transform xil_pn:end_ts="1553770959" xil_pn:in_ck="5178895260681827026" xil_pn:name="TRAN_postParSimModel" xil_pn:prop_ck="-4722700790514071060" xil_pn:start_ts="1553770954">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="netgen"/>
@@ -271,32 +305,36 @@
       <outfile xil_pn:name="netgen/par/compteur_timesim.sdf"/>
       <outfile xil_pn:name="netgen/par/compteur_timesim.v"/>
     </transform>
-    <transform xil_pn:end_ts="1553768722" xil_pn:in_ck="-7746169413618259902" xil_pn:name="TRAN_copyPost-ParAbstractToPreSimulation" xil_pn:start_ts="1553768722">
+    <transform xil_pn:end_ts="1553769167" xil_pn:in_ck="-7746169413618259902" xil_pn:name="TRAN_copyPost-ParAbstractToPreSimulation" xil_pn:start_ts="1553769166">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="compteur_tb.vhd"/>
-      <outfile xil_pn:name="counter_test.vhd"/>
-      <outfile xil_pn:name="netgen/par/compteur_timesim.sdf"/>
-      <outfile xil_pn:name="netgen/par/compteur_timesim.v"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1553768725" xil_pn:in_ck="7907779209667668175" xil_pn:name="TRAN_ISimulatePostPlace&amp;RouteModelRunFuse" xil_pn:prop_ck="1889969115626354932" xil_pn:start_ts="1553768722">
+    <transform xil_pn:end_ts="1553769181" xil_pn:in_ck="7907779209667668175" xil_pn:name="TRAN_ISimulatePostPlace&amp;RouteModelRunFuse" xil_pn:prop_ck="1889969115626354932" xil_pn:start_ts="1553769178">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1553769182" xil_pn:in_ck="-7292481401163069740" xil_pn:name="TRAN_ISimulatePostPlace&amp;RouteModel" xil_pn:prop_ck="-3641078344021809518" xil_pn:start_ts="1553769181">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="counter_test_isim_par.exe"/>
-      <outfile xil_pn:name="counter_test_par.prj"/>
-      <outfile xil_pn:name="fuse.log"/>
-      <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="xilinxsim.ini"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1553768725" xil_pn:in_ck="5496620706168948802" xil_pn:name="TRAN_ISimulatePostPlace&amp;RouteModel" xil_pn:prop_ck="-3641078344021809518" xil_pn:start_ts="1553768725">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="counter_test_isim_par.wdb"/>
-      <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
-    </transform>
-    <transform xil_pn:end_ts="1553768233" xil_pn:in_ck="-1908983595088032147" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416185" xil_pn:start_ts="1553768229">
+    <transform xil_pn:end_ts="1553770847" xil_pn:in_ck="-1908983595088032147" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416185" xil_pn:start_ts="1553770843">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
@@ -309,12 +347,11 @@
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="netgen"/>
-      <outfile xil_pn:name="netgen/map/compteur_map.nlf"/>
-      <outfile xil_pn:name="netgen/map/compteur_map.sdf"/>
-      <outfile xil_pn:name="netgen/map/compteur_map.v"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1553768080" xil_pn:in_ck="-3108496505808636687" xil_pn:name="TRAN_createTimingConstraints" xil_pn:start_ts="1553768080">
       <status xil_pn:value="SuccessfullyRun"/>

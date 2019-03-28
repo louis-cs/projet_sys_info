@@ -7,14 +7,14 @@
 // \   \   \/     Version: O.87xd
 //  \   \         Application: netgen
 //  /   /         Filename: compteur_timesim.v
-// /___/   /\     Timestamp: Thu Mar 28 11:20:03 2019
+// /___/   /\     Timestamp: Thu Mar 28 12:02:39 2019
 // \   \  /  \ 
 //  \___\/\___\
 //             
 // Command	: -intstyle ise -s 3 -pcf compteur.pcf -sdf_anno true -sdf_path netgen/par -insert_glbl true -insert_pp_buffers true -w -dir netgen/par -ofmt verilog -sim compteur.ncd compteur_timesim.v 
 // Device	: 6slx16csg324-3 (PRODUCTION 1.21 2012-01-07)
 // Input file	: compteur.ncd
-// Output file	: /home/mhiri/Documents/git_projects/TD_vhdl/TD1/netgen/par/compteur_timesim.v
+// Output file	: /home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/netgen/par/compteur_timesim.v
 // # of Modules	: 1
 // Design Name	: compteur
 // Xilinx        : /usr/local/insa/Xilinx.ISE/13.4/ISE_DS/ISE/
@@ -119,13 +119,13 @@ module compteur (
   wire [7 : 0] Mcount_C_lut;
   initial $sdf_annotate("netgen/par/compteur_timesim.sdf");
   X_CKBUF #(
-    .LOC ( "BUFGMUX_X3Y13" ))
+    .LOC ( "BUFGMUX_X2Y3" ))
   \CK_BUFGP/BUFG  (
     .I(\NlwBufferSignal_CK_BUFGP/BUFG/IN ),
     .O(CK_BUFGP)
   );
   X_SFF #(
-    .LOC ( "SLICE_X10Y2" ),
+    .LOC ( "SLICE_X18Y9" ),
     .INIT ( 1'b0 ))
   C_3 (
     .CE(_n0025_inv),
@@ -138,30 +138,30 @@ module compteur (
     .SSET(GND)
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X10Y2" ),
-    .INIT ( 64'hEE22DD11EE22DD11 ))
+    .LOC ( "SLICE_X18Y9" ),
+    .INIT ( 64'hEE44BB11EE44BB11 ))
   \Mcount_C_lut<3>  (
     .ADR2(1'b1),
     .ADR3(Din_3_IBUF_0),
-    .ADR0(SENS_IBUF_0),
+    .ADR1(SENS_IBUF_0),
     .ADR4(C[3]),
-    .ADR1(LOAD_IBUF_0),
+    .ADR0(LOAD_IBUF_0),
     .ADR5(1'b1),
     .O(Mcount_C_lut[3])
   );
   X_LUT5 #(
-    .LOC ( "SLICE_X10Y2" ),
-    .INIT ( 32'h33330000 ))
+    .LOC ( "SLICE_X18Y9" ),
+    .INIT ( 32'h55550000 ))
   Mcount_C_mand_2 (
-    .ADR0(1'b1),
     .ADR3(1'b1),
+    .ADR1(1'b1),
     .ADR2(1'b1),
     .ADR4(C[3]),
-    .ADR1(LOAD_IBUF_0),
+    .ADR0(LOAD_IBUF_0),
     .O(Mcount_C_mand3)
   );
   X_SFF #(
-    .LOC ( "SLICE_X10Y2" ),
+    .LOC ( "SLICE_X18Y9" ),
     .INIT ( 1'b0 ))
   C_2 (
     .CE(_n0025_inv),
@@ -174,7 +174,7 @@ module compteur (
     .SSET(GND)
   );
   X_CARRY4 #(
-    .LOC ( "SLICE_X10Y2" ))
+    .LOC ( "SLICE_X18Y9" ))
   \Mcount_C_cy<3>  (
     .CI(1'b0),
     .CYINIT(Mcount_C),
@@ -184,30 +184,30 @@ module compteur (
     .S({Mcount_C_lut[3], Mcount_C_lut[2], Mcount_C_lut[1], Mcount_C_lut[0]})
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X10Y2" ),
-    .INIT ( 64'hBB8888BBBB8888BB ))
+    .LOC ( "SLICE_X18Y9" ),
+    .INIT ( 64'hAACCAA33AACCAA33 ))
   \Mcount_C_lut<2>  (
     .ADR2(1'b1),
     .ADR0(Din_2_IBUF_0),
-    .ADR3(SENS_IBUF_0),
+    .ADR1(SENS_IBUF_0),
     .ADR4(C[2]),
-    .ADR1(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .ADR5(1'b1),
     .O(Mcount_C_lut[2])
   );
   X_LUT5 #(
-    .LOC ( "SLICE_X10Y2" ),
-    .INIT ( 32'h33330000 ))
+    .LOC ( "SLICE_X18Y9" ),
+    .INIT ( 32'h00FF0000 ))
   Mcount_C_mand_1 (
     .ADR0(1'b1),
-    .ADR3(1'b1),
+    .ADR1(1'b1),
     .ADR2(1'b1),
     .ADR4(C[2]),
-    .ADR1(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .O(Mcount_C_mand2)
   );
   X_SFF #(
-    .LOC ( "SLICE_X10Y2" ),
+    .LOC ( "SLICE_X18Y9" ),
     .INIT ( 1'b0 ))
   C_1 (
     .CE(_n0025_inv),
@@ -220,30 +220,30 @@ module compteur (
     .SSET(GND)
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X10Y2" ),
-    .INIT ( 64'hFA0AF505FA0AF505 ))
+    .LOC ( "SLICE_X18Y9" ),
+    .INIT ( 64'hF0AAF055F0AAF055 ))
   \Mcount_C_lut<1>  (
     .ADR1(1'b1),
-    .ADR3(Din_1_IBUF_0),
+    .ADR2(Din_1_IBUF_0),
     .ADR0(SENS_IBUF_0),
     .ADR4(C[1]),
-    .ADR2(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .ADR5(1'b1),
     .O(Mcount_C_lut[1])
   );
   X_LUT5 #(
-    .LOC ( "SLICE_X10Y2" ),
-    .INIT ( 32'h0F0F0000 ))
+    .LOC ( "SLICE_X18Y9" ),
+    .INIT ( 32'h00FF0000 ))
   Mcount_C_mand_0 (
     .ADR0(1'b1),
     .ADR1(1'b1),
-    .ADR3(1'b1),
+    .ADR2(1'b1),
     .ADR4(C[1]),
-    .ADR2(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .O(Mcount_C_mand1)
   );
   X_SFF #(
-    .LOC ( "SLICE_X10Y2" ),
+    .LOC ( "SLICE_X18Y9" ),
     .INIT ( 1'b0 ))
   C_0 (
     .CE(_n0025_inv),
@@ -256,30 +256,30 @@ module compteur (
     .SSET(GND)
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X10Y2" ),
-    .INIT ( 64'hCC0FCCF0CC0FCCF0 ))
+    .LOC ( "SLICE_X18Y9" ),
+    .INIT ( 64'hAF05FA50AF05FA50 ))
   \Mcount_C_lut<0>  (
-    .ADR0(1'b1),
-    .ADR1(Din_0_IBUF_0),
+    .ADR1(1'b1),
+    .ADR3(Din_0_IBUF_0),
     .ADR2(SENS_IBUF_0),
     .ADR4(C[0]),
-    .ADR3(LOAD_IBUF_0),
+    .ADR0(LOAD_IBUF_0),
     .ADR5(1'b1),
     .O(Mcount_C_lut[0])
   );
   X_LUT5 #(
-    .LOC ( "SLICE_X10Y2" ),
-    .INIT ( 32'h00FF0000 ))
+    .LOC ( "SLICE_X18Y9" ),
+    .INIT ( 32'h55550000 ))
   Mcount_C_mand (
-    .ADR0(1'b1),
+    .ADR3(1'b1),
     .ADR1(1'b1),
     .ADR2(1'b1),
     .ADR4(C[0]),
-    .ADR3(LOAD_IBUF_0),
+    .ADR0(LOAD_IBUF_0),
     .O(Mcount_C_mand_15)
   );
   X_SFF #(
-    .LOC ( "SLICE_X10Y3" ),
+    .LOC ( "SLICE_X18Y10" ),
     .INIT ( 1'b0 ))
   C_7 (
     .CE(_n0025_inv),
@@ -292,19 +292,19 @@ module compteur (
     .SSET(GND)
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X10Y3" ),
-    .INIT ( 64'hF0F0FF00F0F000FF ))
+    .LOC ( "SLICE_X18Y10" ),
+    .INIT ( 64'hF5A0F5A0A0F5A0F5 ))
   \Mcount_C_lut<7>  (
-    .ADR0(1'b1),
+    .ADR4(1'b1),
     .ADR1(1'b1),
     .ADR2(Din_7_IBUF_0),
     .ADR5(C[7]),
     .ADR3(SENS_IBUF_0),
-    .ADR4(LOAD_IBUF_0),
+    .ADR0(LOAD_IBUF_0),
     .O(Mcount_C_lut[7])
   );
   X_SFF #(
-    .LOC ( "SLICE_X10Y3" ),
+    .LOC ( "SLICE_X18Y10" ),
     .INIT ( 1'b0 ))
   C_6 (
     .CE(_n0025_inv),
@@ -317,7 +317,7 @@ module compteur (
     .SSET(GND)
   );
   X_CARRY4 #(
-    .LOC ( "SLICE_X10Y3" ))
+    .LOC ( "SLICE_X18Y10" ))
   \Mcount_C_xor<7>  (
     .CI(Mcount_C_cy[3]),
     .CYINIT(1'b0),
@@ -328,30 +328,30 @@ module compteur (
     .S({Mcount_C_lut[7], Mcount_C_lut[6], Mcount_C_lut[5], Mcount_C_lut[4]})
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X10Y3" ),
-    .INIT ( 64'hE2E2D1D1E2E2D1D1 ))
+    .LOC ( "SLICE_X18Y10" ),
+    .INIT ( 64'hF0AAF055F0AAF055 ))
   \Mcount_C_lut<6>  (
-    .ADR3(1'b1),
+    .ADR1(1'b1),
     .ADR2(Din_6_IBUF_0),
     .ADR0(SENS_IBUF_0),
     .ADR4(C[6]),
-    .ADR1(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .ADR5(1'b1),
     .O(Mcount_C_lut[6])
   );
   X_LUT5 #(
-    .LOC ( "SLICE_X10Y3" ),
-    .INIT ( 32'h33330000 ))
+    .LOC ( "SLICE_X18Y10" ),
+    .INIT ( 32'h00FF0000 ))
   Mcount_C_mand_5 (
     .ADR0(1'b1),
-    .ADR3(1'b1),
+    .ADR1(1'b1),
     .ADR2(1'b1),
     .ADR4(C[6]),
-    .ADR1(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .O(Mcount_C_mand6)
   );
   X_SFF #(
-    .LOC ( "SLICE_X10Y3" ),
+    .LOC ( "SLICE_X18Y10" ),
     .INIT ( 1'b0 ))
   C_5 (
     .CE(_n0025_inv),
@@ -364,30 +364,30 @@ module compteur (
     .SSET(GND)
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X10Y3" ),
-    .INIT ( 64'hCFC0C0CFCFC0C0CF ))
+    .LOC ( "SLICE_X18Y10" ),
+    .INIT ( 64'hF0CCF033F0CCF033 ))
   \Mcount_C_lut<5>  (
     .ADR0(1'b1),
-    .ADR1(Din_5_IBUF_0),
-    .ADR3(SENS_IBUF_0),
+    .ADR2(Din_5_IBUF_0),
+    .ADR1(SENS_IBUF_0),
     .ADR4(C[5]),
-    .ADR2(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .ADR5(1'b1),
     .O(Mcount_C_lut[5])
   );
   X_LUT5 #(
-    .LOC ( "SLICE_X10Y3" ),
-    .INIT ( 32'h0F0F0000 ))
+    .LOC ( "SLICE_X18Y10" ),
+    .INIT ( 32'h00FF0000 ))
   Mcount_C_mand_4 (
     .ADR0(1'b1),
     .ADR1(1'b1),
-    .ADR3(1'b1),
+    .ADR2(1'b1),
     .ADR4(C[5]),
-    .ADR2(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .O(Mcount_C_mand5)
   );
   X_SFF #(
-    .LOC ( "SLICE_X10Y3" ),
+    .LOC ( "SLICE_X18Y10" ),
     .INIT ( 1'b0 ))
   C_4 (
     .CE(_n0025_inv),
@@ -400,366 +400,366 @@ module compteur (
     .SSET(GND)
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X10Y3" ),
-    .INIT ( 64'hCACAC5C5CACAC5C5 ))
+    .LOC ( "SLICE_X18Y10" ),
+    .INIT ( 64'hF0CCF033F0CCF033 ))
   \Mcount_C_lut<4>  (
-    .ADR3(1'b1),
-    .ADR1(Din_4_IBUF_0),
-    .ADR0(SENS_IBUF_0),
+    .ADR0(1'b1),
+    .ADR2(Din_4_IBUF_0),
+    .ADR1(SENS_IBUF_0),
     .ADR4(C[4]),
-    .ADR2(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .ADR5(1'b1),
     .O(Mcount_C_lut[4])
   );
   X_LUT5 #(
-    .LOC ( "SLICE_X10Y3" ),
-    .INIT ( 32'h0F0F0000 ))
+    .LOC ( "SLICE_X18Y10" ),
+    .INIT ( 32'h00FF0000 ))
   Mcount_C_mand_3 (
     .ADR0(1'b1),
     .ADR1(1'b1),
-    .ADR3(1'b1),
+    .ADR2(1'b1),
     .ADR4(C[4]),
-    .ADR2(LOAD_IBUF_0),
+    .ADR3(LOAD_IBUF_0),
     .O(Mcount_C_mand4)
   );
   X_OPAD #(
-    .LOC ( "PAD175" ))
+    .LOC ( "PAD139" ))
   \Dout<4>  (
     .PAD(Dout[4])
   );
   X_OBUF #(
-    .LOC ( "PAD175" ))
+    .LOC ( "PAD139" ))
   Dout_4_OBUF (
     .I(\NlwBufferSignal_Dout_4_OBUF/I ),
     .O(Dout[4])
   );
   X_OPAD #(
-    .LOC ( "PAD176" ))
+    .LOC ( "PAD140" ))
   \Dout<5>  (
     .PAD(Dout[5])
   );
   X_OBUF #(
-    .LOC ( "PAD176" ))
+    .LOC ( "PAD140" ))
   Dout_5_OBUF (
     .I(\NlwBufferSignal_Dout_5_OBUF/I ),
     .O(Dout[5])
   );
   X_OPAD #(
-    .LOC ( "PAD179" ))
+    .LOC ( "PAD141" ))
   \Dout<6>  (
     .PAD(Dout[6])
   );
   X_OBUF #(
-    .LOC ( "PAD179" ))
+    .LOC ( "PAD141" ))
   Dout_6_OBUF (
     .I(\NlwBufferSignal_Dout_6_OBUF/I ),
     .O(Dout[6])
   );
   X_OPAD #(
-    .LOC ( "PAD180" ))
+    .LOC ( "PAD142" ))
   \Dout<7>  (
     .PAD(Dout[7])
   );
   X_OBUF #(
-    .LOC ( "PAD180" ))
+    .LOC ( "PAD142" ))
   Dout_7_OBUF (
     .I(\NlwBufferSignal_Dout_7_OBUF/I ),
     .O(Dout[7])
   );
   X_IPAD #(
-    .LOC ( "PAD216" ))
+    .LOC ( "PAD27" ))
   CK_45 (
     .PAD(CK)
   );
   X_BUF #(
-    .LOC ( "PAD216" ))
+    .LOC ( "PAD27" ))
   \CK_BUFGP/IBUFG  (
     .O(\CK_BUFGP/IBUFG_90 ),
     .I(CK)
   );
   X_BUF #(
-    .LOC ( "PAD216" ))
+    .LOC ( "PAD27" ))
   \ProtoComp6.IMUX  (
     .I(\CK_BUFGP/IBUFG_90 ),
     .O(\CK_BUFGP/IBUFG_0 )
   );
   X_IPAD #(
-    .LOC ( "PAD173" ))
+    .LOC ( "PAD2" ))
   LOAD_49 (
     .PAD(LOAD)
   );
   X_BUF #(
-    .LOC ( "PAD173" ))
+    .LOC ( "PAD2" ))
   LOAD_IBUF (
     .O(LOAD_IBUF_93),
     .I(LOAD)
   );
   X_BUF #(
-    .LOC ( "PAD173" ))
+    .LOC ( "PAD2" ))
   \ProtoComp6.IMUX.1  (
     .I(LOAD_IBUF_93),
     .O(LOAD_IBUF_0)
   );
   X_IPAD #(
-    .LOC ( "PAD157" ))
+    .LOC ( "PAD28" ))
   EN_53 (
     .PAD(EN)
   );
   X_BUF #(
-    .LOC ( "PAD157" ))
+    .LOC ( "PAD28" ))
   EN_IBUF (
     .O(EN_IBUF_96),
     .I(EN)
   );
   X_BUF #(
-    .LOC ( "PAD157" ))
+    .LOC ( "PAD28" ))
   \ProtoComp6.IMUX.2  (
     .I(EN_IBUF_96),
     .O(EN_IBUF_0)
   );
   X_IPAD #(
-    .LOC ( "PAD158" ))
+    .LOC ( "PAD30" ))
   SENS_57 (
     .PAD(SENS)
   );
   X_BUF #(
-    .LOC ( "PAD158" ))
+    .LOC ( "PAD30" ))
   SENS_IBUF (
     .O(SENS_IBUF_99),
     .I(SENS)
   );
   X_BUF #(
-    .LOC ( "PAD158" ))
+    .LOC ( "PAD30" ))
   \ProtoComp6.IMUX.3  (
     .I(SENS_IBUF_99),
     .O(SENS_IBUF_0)
   );
   X_IPAD #(
-    .LOC ( "PAD170" ))
+    .LOC ( "PAD29" ))
   RST_62 (
     .PAD(RST)
   );
   X_BUF #(
-    .LOC ( "PAD170" ))
+    .LOC ( "PAD29" ))
   RST_IBUF (
     .O(RST_inv_non_inverted),
     .I(RST)
   );
   X_BUF #(
-    .LOC ( "PAD170" ))
+    .LOC ( "PAD29" ))
   \ProtoComp7.IMUX  (
     .I(\ProtoComp7.IINV.OUT ),
     .O(RST_inv)
   );
   X_INV #(
-    .LOC ( "PAD170" ))
+    .LOC ( "PAD29" ))
   \ProtoComp7.IINV  (
     .I(RST_inv_non_inverted),
     .O(\ProtoComp7.IINV.OUT )
   );
   X_IPAD #(
-    .LOC ( "PAD159" ))
+    .LOC ( "PAD154" ))
   \Din<0>  (
     .PAD(Din[0])
   );
   X_BUF #(
-    .LOC ( "PAD159" ))
+    .LOC ( "PAD154" ))
   Din_0_IBUF (
     .O(Din_0_IBUF_106),
     .I(Din[0])
   );
   X_BUF #(
-    .LOC ( "PAD159" ))
+    .LOC ( "PAD154" ))
   \ProtoComp6.IMUX.4  (
     .I(Din_0_IBUF_106),
     .O(Din_0_IBUF_0)
   );
   X_IPAD #(
-    .LOC ( "PAD160" ))
+    .LOC ( "PAD159" ))
   \Din<1>  (
     .PAD(Din[1])
   );
   X_BUF #(
-    .LOC ( "PAD160" ))
+    .LOC ( "PAD159" ))
   Din_1_IBUF (
     .O(Din_1_IBUF_109),
     .I(Din[1])
   );
   X_BUF #(
-    .LOC ( "PAD160" ))
+    .LOC ( "PAD159" ))
   \ProtoComp6.IMUX.5  (
     .I(Din_1_IBUF_109),
     .O(Din_1_IBUF_0)
   );
   X_IPAD #(
-    .LOC ( "PAD161" ))
+    .LOC ( "PAD160" ))
   \Din<2>  (
     .PAD(Din[2])
   );
   X_BUF #(
-    .LOC ( "PAD161" ))
+    .LOC ( "PAD160" ))
   Din_2_IBUF (
     .O(Din_2_IBUF_112),
     .I(Din[2])
   );
   X_BUF #(
-    .LOC ( "PAD161" ))
+    .LOC ( "PAD160" ))
   \ProtoComp6.IMUX.6  (
     .I(Din_2_IBUF_112),
     .O(Din_2_IBUF_0)
   );
   X_IPAD #(
-    .LOC ( "PAD162" ))
+    .LOC ( "PAD161" ))
   \Din<3>  (
     .PAD(Din[3])
   );
   X_BUF #(
-    .LOC ( "PAD162" ))
+    .LOC ( "PAD161" ))
   Din_3_IBUF (
     .O(Din_3_IBUF_115),
     .I(Din[3])
   );
   X_BUF #(
-    .LOC ( "PAD162" ))
+    .LOC ( "PAD161" ))
   \ProtoComp6.IMUX.7  (
     .I(Din_3_IBUF_115),
     .O(Din_3_IBUF_0)
   );
   X_IPAD #(
-    .LOC ( "PAD163" ))
+    .LOC ( "PAD162" ))
   \Din<4>  (
     .PAD(Din[4])
   );
   X_BUF #(
-    .LOC ( "PAD163" ))
+    .LOC ( "PAD162" ))
   Din_4_IBUF (
     .O(Din_4_IBUF_118),
     .I(Din[4])
   );
   X_BUF #(
-    .LOC ( "PAD163" ))
+    .LOC ( "PAD162" ))
   \ProtoComp6.IMUX.8  (
     .I(Din_4_IBUF_118),
     .O(Din_4_IBUF_0)
   );
   X_OPAD #(
-    .LOC ( "PAD171" ))
+    .LOC ( "PAD125" ))
   \Dout<0>  (
     .PAD(Dout[0])
   );
   X_OBUF #(
-    .LOC ( "PAD171" ))
+    .LOC ( "PAD125" ))
   Dout_0_OBUF (
     .I(\NlwBufferSignal_Dout_0_OBUF/I ),
     .O(Dout[0])
   );
   X_IPAD #(
-    .LOC ( "PAD164" ))
+    .LOC ( "PAD163" ))
   \Din<5>  (
     .PAD(Din[5])
   );
   X_BUF #(
-    .LOC ( "PAD164" ))
+    .LOC ( "PAD163" ))
   Din_5_IBUF (
     .O(Din_5_IBUF_123),
     .I(Din[5])
   );
   X_BUF #(
-    .LOC ( "PAD164" ))
+    .LOC ( "PAD163" ))
   \ProtoComp6.IMUX.9  (
     .I(Din_5_IBUF_123),
     .O(Din_5_IBUF_0)
   );
   X_OPAD #(
-    .LOC ( "PAD172" ))
+    .LOC ( "PAD126" ))
   \Dout<1>  (
     .PAD(Dout[1])
   );
   X_OBUF #(
-    .LOC ( "PAD172" ))
+    .LOC ( "PAD126" ))
   Dout_1_OBUF (
     .I(\NlwBufferSignal_Dout_1_OBUF/I ),
     .O(Dout[1])
   );
   X_IPAD #(
-    .LOC ( "PAD167" ))
+    .LOC ( "PAD164" ))
   \Din<6>  (
     .PAD(Din[6])
   );
   X_BUF #(
-    .LOC ( "PAD167" ))
+    .LOC ( "PAD164" ))
   Din_6_IBUF (
     .O(Din_6_IBUF_128),
     .I(Din[6])
   );
   X_BUF #(
-    .LOC ( "PAD167" ))
+    .LOC ( "PAD164" ))
   \ProtoComp6.IMUX.10  (
     .I(Din_6_IBUF_128),
     .O(Din_6_IBUF_0)
   );
   X_OPAD #(
-    .LOC ( "PAD169" ))
+    .LOC ( "PAD129" ))
   \Dout<2>  (
     .PAD(Dout[2])
   );
   X_OBUF #(
-    .LOC ( "PAD169" ))
+    .LOC ( "PAD129" ))
   Dout_2_OBUF (
     .I(\NlwBufferSignal_Dout_2_OBUF/I ),
     .O(Dout[2])
   );
   X_IPAD #(
-    .LOC ( "PAD168" ))
+    .LOC ( "PAD178" ))
   \Din<7>  (
     .PAD(Din[7])
   );
   X_BUF #(
-    .LOC ( "PAD168" ))
+    .LOC ( "PAD178" ))
   Din_7_IBUF (
     .O(Din_7_IBUF_133),
     .I(Din[7])
   );
   X_BUF #(
-    .LOC ( "PAD168" ))
+    .LOC ( "PAD178" ))
   \ProtoComp6.IMUX.11  (
     .I(Din_7_IBUF_133),
     .O(Din_7_IBUF_0)
   );
   X_OPAD #(
-    .LOC ( "PAD174" ))
+    .LOC ( "PAD130" ))
   \Dout<3>  (
     .PAD(Dout[3])
   );
   X_OBUF #(
-    .LOC ( "PAD174" ))
+    .LOC ( "PAD130" ))
   Dout_3_OBUF (
     .I(\NlwBufferSignal_Dout_3_OBUF/I ),
     .O(Dout[3])
   );
   X_LUT6 #(
-    .LOC ( "SLICE_X11Y2" ),
-    .INIT ( 64'h00000F0F00000F0F ))
-  Mcount_C1 (
-    .ADR0(1'b1),
-    .ADR1(1'b1),
-    .ADR5(1'b1),
-    .ADR3(1'b1),
-    .ADR2(LOAD_IBUF_0),
-    .ADR4(SENS_IBUF_0),
-    .O(Mcount_C)
-  );
-  X_LUT6 #(
-    .LOC ( "SLICE_X12Y2" ),
-    .INIT ( 64'hFFFFFFFF33333333 ))
+    .LOC ( "SLICE_X17Y41" ),
+    .INIT ( 64'hCCCCCCCCFFFFFFFF ))
   _n0025_inv1 (
     .ADR0(1'b1),
     .ADR4(1'b1),
     .ADR2(1'b1),
     .ADR3(1'b1),
-    .ADR1(EN_IBUF_0),
-    .ADR5(LOAD_IBUF_0),
+    .ADR5(EN_IBUF_0),
+    .ADR1(LOAD_IBUF_0),
     .O(_n0025_inv)
+  );
+  X_LUT6 #(
+    .LOC ( "SLICE_X18Y17" ),
+    .INIT ( 64'h000F000F000F000F ))
+  Mcount_C1 (
+    .ADR0(1'b1),
+    .ADR1(1'b1),
+    .ADR5(1'b1),
+    .ADR4(1'b1),
+    .ADR3(LOAD_IBUF_0),
+    .ADR2(SENS_IBUF_0),
+    .O(Mcount_C)
   );
   X_BUF   \NlwBufferBlock_CK_BUFGP/BUFG/IN  (
     .I(\CK_BUFGP/IBUFG_0 ),

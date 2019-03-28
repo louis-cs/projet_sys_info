@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/home/mhiri/Documents/git_projects/TD_vhdl/TD1/counter_test.vhd";
+static const char *ng0 = "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/counter_test.vhd";
 
 
 
@@ -168,7 +168,7 @@ LAB9:    goto LAB8;
 LAB11:    goto LAB9;
 
 LAB12:    xsi_set_current_line(106, ng0);
-    t2 = (t0 + 6520);
+    t2 = (t0 + 6728);
     t6 = (t0 + 4088);
     t7 = (t6 + 56U);
     t8 = *((char **)t7);

@@ -10,12 +10,12 @@ Target Device  : xc6slx16
 Target Package : csg324
 Target Speed   : -3
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Thu Mar 28 11:16:54 2019
+Mapped Date    : Thu Mar 28 12:00:30 2019
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:    0
+Number of warnings:    1
 Slice Logic Utilization:
   Number of Slice Registers:                     8 out of  18,224    1%
     Number used as Flip Flops:                   8
@@ -49,6 +49,7 @@ Slice Logic Distribution:
 
 IO Utilization:
   Number of bonded IOBs:                        21 out of     232    9%
+    Number of LOCed IOBs:                       21 out of      21  100%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         0 out of      32    0%
@@ -77,9 +78,9 @@ Specific Feature Utilization:
 
 Average Fanout of Non-Clock Nets:                2.62
 
-Peak Memory Usage:  673 MB
-Total REAL time to MAP completion:  7 secs 
-Total CPU time to MAP completion:   6 secs 
+Peak Memory Usage:  672 MB
+Total REAL time to MAP completion:  5 secs 
+Total CPU time to MAP completion:   5 secs 
 
 Table of Contents
 -----------------
@@ -108,6 +109,18 @@ WARNING:Security:44 - Since no license file was found,
 WARNING:Security:42 - Your software subscription period has lapsed. Your current
 version of Xilinx tools will continue to function, but you no longer qualify for
 Xilinx software updates or new releases.
+WARNING:Place:1109 - A clock IOB / BUFGMUX clock component pair have been found
+   that are not placed at an optimal clock IOB / BUFGMUX site pair. The clock
+   IOB component <CK> is placed at site <B8>. The corresponding BUFG component
+   <CK_BUFGP/BUFG> is placed at site <BUFGMUX_X2Y3>. There is only a select set
+   of IOBs that can use the fast path to the Clocker buffer, and they are not
+   being used. You may want to analyze why this problem exists and correct it.
+   This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was
+   applied on COMP.PIN <CK.PAD> allowing your design to continue. This
+   constraint disables all clock placer rules related to the specified COMP.PIN.
+   The use of this override is highly discouraged as it may lead to very poor
+   timing results. It is recommended that this error condition be corrected in
+   the design.
 
 Section 3 - Informational
 -------------------------

@@ -38,3 +38,16 @@ map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -re
 par -w -intstyle ise -ol high -mt off compteur_map.ncd compteur.ncd compteur.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml compteur.twx compteur.ncd -o compteur.twr compteur.pcf -ucf compteur.ucf 
 netgen -intstyle ise -s 3  -pcf compteur.pcf -sdf_anno true -sdf_path "netgen/par" -insert_glbl true -insert_pp_buffers true -w -dir netgen/par -ofmt verilog -sim compteur.ncd compteur_timesim.v 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc compteur.ucf -p xc6slx16-csg324-3 compteur.ngc compteur.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o compteur_map.ncd compteur.ngd compteur.pcf 
+par -w -intstyle ise -ol high -mt off compteur_map.ncd compteur.ncd compteur.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml compteur.twx compteur.ncd -o compteur.twr compteur.pcf -ucf compteur.ucf 
+bitgen -intstyle ise -f compteur.ut compteur.ncd 
+netgen -intstyle ise -s 3  -pcf compteur.pcf -sdf_anno true -sdf_path "netgen/par" -insert_glbl true -insert_pp_buffers true -w -dir netgen/par -ofmt verilog -sim compteur.ncd compteur_timesim.v 

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/home/mhiri/Documents/git_projects/TD_vhdl/TD1/netgen/par/compteur_timesim.v";
+static const char *ng0 = "/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/netgen/par/compteur_timesim.v";
 static const char *ng1 = "netgen/par/compteur_timesim.sdf";
 static const char *ng2 = "";
 static const char *ng3 = "TYPICAL";
