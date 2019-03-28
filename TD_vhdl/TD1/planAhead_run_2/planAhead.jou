@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# PlanAhead v13.4 (64-bit)
+# Build 157570 by hdbuild on Fri Dec 16 12:49:33 MST 2011
+# Start of session at: Thu Mar 28 11:39:32 2019
+# Process ID: 2966
+# Log file: /home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/planAhead_run_2/planAhead.log
+# Journal file: /home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/planAhead_run_2/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source /home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/pa.fromNetlist.tcl

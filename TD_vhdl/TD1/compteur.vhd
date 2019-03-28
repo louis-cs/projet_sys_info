@@ -45,23 +45,25 @@ end compteur;
 
 architecture Behavioral of compteur is
 
+signal C : STD_LOGIC_VECTOR(N-1 downto 0);
+
 begin
-	process
+	process --car synchrone
 	begin
-		if RST = '0' then 
-			Dout <= 0; -- FAUX il faut mettre Dout à 0
-		end if;
-		--on attend un front montant de l'horloge
-		wait until CK' event and CK = '1';
-		if LOAD = '1' then
-			Dout <= Din;
-		end if;
-		if LOAD = '0' and EN = '0' and SENS = '1' then
-			--on incrémente le compteur
-		end if;
-		if LOAD = '0' and EN = '0' and SENS = '0' then
-			--on décrémente le compteur
+		wait until CK' event and CK = '1'; --attend un front montant sur CK
+		
+		if RST = '0' then -- Pour moi, RST quand RST = 1
+			C <= (others => '0');
+		elsif LOAD = '1' then
+			C    <= Din;
+		elsif EN = '0' then 
+			if SENS = '1' then
+				C <= C + 1; --on incrémente le compteur
+			else
+				C <= C - 1; --on décrémente le compteur
+			end if;
 		end if;
 	end process;
+	Dout <= C;
 end Behavioral;
 

@@ -8,14 +8,5 @@
 <msg type="info" file="Xst" num="0" delta="new" >Part-select index evaluated to out of bound value may lead to incorrect synthesis results; it is recommended not to use them in RTL
 </msg>
 
-<msg type="error" file="HDLCompiler" num="839" delta="new" >"/home/mhiri/Arch_Mat/TD1/compteur.vhd" Line 52: Type <arg fmt="%s" index="1">std_logic_vector</arg> does not match with the integer literal
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1369" delta="new" >"/home/mhiri/Arch_Mat/TD1/compteur.vhd" Line 49: Possible infinite loop; process does not have a wait statement
-</msg>
-
-<msg type="error" file="HDLCompiler" num="854" delta="new" >"/home/mhiri/Arch_Mat/TD1/compteur.vhd" Line 46: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
-</msg>
-
 </messages>
 

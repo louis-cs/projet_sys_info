@@ -1,6 +1,7 @@
 %{
     #include <stdio.h>
     #include "./LList.h"
+    #include "./LList_asm.h"
 
     /* Définition de la table des symboles */
     LList * ts;
@@ -53,7 +54,7 @@ InBody                : Declarations Instructions
 Declarations          : Declaration Declarations | Declaration;
 Declaration           : Type ListDecs tPV | Constante;
 ListDecs              : ListDec tVIRGULE ListDecs | ListDec;
-ListDec               : tID {add(ts, $1, currenttype, currentdepth, true, false);} tEQU Exp
+ListDec               : tID tEQU Exp {printf("tid %s = %d",$1,$3); int index = add(ts, $1, currenttype, currentdepth, true, false); ins_add(tins,"AFC",0,$3,0); ins_add(tins,"STORE",get_addr(ts,index),0,0);}
                       | tID {add(ts, $1, currenttype, currentdepth, false, false);};
 
 Constante             : tCONST Type ListConstDecs tPV;
@@ -89,5 +90,6 @@ int main(int argc, char const **argv) {
   currenttype = TypeInt;
   ts = llist_create();
   yyparse();
+  llist_print(ts);
   return 0;
 }

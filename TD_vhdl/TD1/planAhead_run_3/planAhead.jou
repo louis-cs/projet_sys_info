@@ -1,0 +1,118 @@
+#-----------------------------------------------------------
+# PlanAhead v13.4 (64-bit)
+# Build 157570 by hdbuild on Fri Dec 16 12:49:33 MST 2011
+# Start of session at: Thu Mar 28 11:42:35 2019
+# Process ID: 3681
+# Log file: /home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/planAhead_run_3/planAhead.log
+# Journal file: /home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/planAhead_run_3/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source /home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/pa.fromNetlist.tcl
+startgroup
+set_property loc PAD1 [get_ports {Din[0]}]
+endgroup
+startgroup
+set_property loc PAD2 [get_ports {Din[1]}]
+endgroup
+startgroup
+set_property loc PAD3 [get_ports {Din[2]}]
+endgroup
+startgroup
+set_property loc PAD4 [get_ports {Din[3]}]
+endgroup
+set_property loc "" [get_ports [list  {Din[3]}]]
+set_property loc "" [get_ports [list  {Din[2]}]]
+set_property loc "" [get_ports [list  {Din[1]}]]
+set_property loc "" [get_ports [list  {Din[0]}]]
+startgroup
+set_property loc PAD154 [get_ports {Din[0]}]
+endgroup
+startgroup
+set_property loc PAD159 [get_ports {Din[1]}]
+endgroup
+startgroup
+set_property loc PAD158 [get_ports {Din[2]}]
+endgroup
+startgroup
+set_property loc PAD174 [get_ports {Din[3]}]
+endgroup
+startgroup
+set_property loc PAD171 [get_ports {Din[4]}]
+endgroup
+startgroup
+set_property loc PAD178 [get_ports {Din[5]}]
+endgroup
+startgroup
+set_property loc PAD183 [get_ports {Din[6]}]
+endgroup
+startgroup
+set_property loc PAD182 [get_ports {Din[7]}]
+endgroup
+set_property loc "" [get_ports [list  {Din[7]}]]
+set_property loc "" [get_ports [list  {Din[0]} {Din[1]} {Din[2]} {Din[3]} {Din[4]} {Din[5]} {Din[6]}]]
+startgroup
+set_property loc PAD154 [get_ports {Din[0]}]
+endgroup
+startgroup
+set_property loc PAD159 [get_ports {Din[1]}]
+endgroup
+startgroup
+set_property loc PAD160 [get_ports {Din[2]}]
+endgroup
+startgroup
+set_property loc PAD161 [get_ports {Din[3]}]
+endgroup
+startgroup
+set_property loc PAD162 [get_ports {Din[4]}]
+endgroup
+startgroup
+set_property loc PAD163 [get_ports {Din[5]}]
+endgroup
+startgroup
+set_property loc PAD164 [get_ports {Din[6]}]
+endgroup
+startgroup
+set_property loc PAD178 [get_ports {Din[7]}]
+endgroup
+startgroup
+set_property loc PAD125 [get_ports {Dout[0]}]
+endgroup
+startgroup
+set_property loc PAD126 [get_ports {Dout[1]}]
+endgroup
+startgroup
+set_property loc PAD129 [get_ports {Dout[2]}]
+endgroup
+startgroup
+set_property loc PAD130 [get_ports {Dout[3]}]
+endgroup
+startgroup
+set_property loc PAD139 [get_ports {Dout[4]}]
+endgroup
+startgroup
+set_property loc PAD140 [get_ports {Dout[5]}]
+endgroup
+startgroup
+set_property loc PAD141 [get_ports {Dout[6]}]
+endgroup
+startgroup
+set_property loc PAD142 [get_ports {Dout[7]}]
+endgroup
+startgroup
+set_property loc PAD27 [get_ports CK]
+endgroup
+startgroup
+set_property loc PAD28 [get_ports EN]
+endgroup
+startgroup
+set_property loc PAD2 [get_ports LOAD]
+endgroup
+startgroup
+set_property loc PAD29 [get_ports RST]
+endgroup
+startgroup
+set_property loc PAD30 [get_ports SENS]
+endgroup
+save_design
+exit
+stop_gui
