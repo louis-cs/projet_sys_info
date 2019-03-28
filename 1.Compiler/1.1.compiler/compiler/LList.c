@@ -34,7 +34,7 @@ int add(LList* llist, char* name, Types type, int depth, Bool init, Bool cte) {
 }
 
 int add_tmp(LList* llist, Types type, int depth) {
-    return add(llist, "", type, depth, false, false);
+    return add(llist, "tmp", type, depth, false, false);
 }
 
 int get_id_by_name(LList* llist, char* name) {
@@ -111,17 +111,18 @@ int llist_remove(LList* llist, int id) {
             }
         }
     }
-    
-    int llist_print(LList* llist) {
-      if (llist == NULL) {
-        printf("\x1b[1m\x1b[91mERROR : LList vide! \x1b[0m\n");
-        return -1;
-      }
-      printf("Taille de la llist: %d\n",llist->size);
-      Element * aux = llist->first;
-      while (aux != NULL) {
-        printf("Element n° %d: %s type: %s constante: %d adresse: %d profondeur: %d initialisé: %d \n", aux->elemId, aux->name, typestable[aux->type], aux->constante, aux->addr, aux->depth, aux->init );
-        aux = aux->suivant;
-      }
-    }
+}
+
+int llist_print(LList* llist) {
+  if (llist == NULL) {
+    printf("\x1b[1m\x1b[91mERROR : LList vide! \x1b[0m\n");
+    return -1;
+  }
+  printf("Taille de la llist: %d\n",llist->size);
+  Element * aux = llist->first;
+  while (aux != NULL) {
+    printf("Element n° %d: %s type: %s constante: %d adresse: %d profondeur: %d initialisé: %d \n", aux->elemId, aux->name, typestable[aux->type], aux->constante, aux->addr, aux->depth, aux->init );
+    aux = aux->suivant;
+  }
+  return 0;
 }

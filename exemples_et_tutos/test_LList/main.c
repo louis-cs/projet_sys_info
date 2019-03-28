@@ -15,7 +15,7 @@ int main(int argc, char const *argv[]) {
     int id_pp   = add(mylist, "PetitPalmier", TypeInt, 17, true, true);
     printf("[LOG] ID nouvel element : %d\n", id_pp);
 
-    id_erik = get_id_by_name(mylist, "Quelqu'un");
+    id_erik = get_id_by_name(mylist, "Erik");
     printf("[LOG] ID de l'element Erik : %d\n", id_erik);
 
     printf("[LOG] Taille de la LList : %d\n", mylist->size);

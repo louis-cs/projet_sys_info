@@ -8,7 +8,7 @@ OUTDIR=./compiler/
 all: compile
 
 compile: mk_yacc_tab mk_lex_yy
-	gcc ${OUTDIR}y.tab.c ${OUTDIR}LList.c ${OUTDIR}lex.yy.c -o ${OUTDIR}${OUTBINARY} -ly -ll
+	gcc ${OUTDIR}y.tab.c ${OUTDIR}LList.c ${OUTDIR}LList_asm.c ${OUTDIR}lex.yy.c -o ${OUTDIR}${OUTBINARY} -ly -ll
 
 mk_yacc_tab: ${OUTDIR}${YACCFILE}
 	yacc -d ${OUTDIR}${YACCFILE} -o ${OUTDIR}y.tab.c
