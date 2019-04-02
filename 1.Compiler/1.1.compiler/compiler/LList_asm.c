@@ -30,30 +30,52 @@ int ins_add(LList_asm* list, op_codes op, int Rx, int Ry, int Rz) {
   return nouveau->elemId;
 }
 
+void print_element(Element_asm* aux) {
+  if (aux != NULL) {
+    if (aux->suivant != NULL) {
+      print_element(aux->suivant);
+    }
+    switch (aux->op_code) {
+      case COP:
+      case AFC:
+      case LOAD:
+      case STORE:
+      case JMPC:
+      printf("%s %d %d\n",tableIns[aux->op_code],aux->Ri, aux->Rj);
+      break;
+      case JMP:
+      printf("%s %d\n",tableIns[aux->op_code],aux->Ri); break;
+      default:
+      printf("%s %d %d %d\n",tableIns[aux->op_code],aux->Ri, aux->Rj, aux->Rk);
+    }
+  }
+}
+
 int print_asm(LList_asm* list) {
   if (list == NULL) {
     printf("\x1b[1m\x1b[91mERROR : LList_asm vide! \x1b[0m\n");
     return -1;
   }
   printf("Taille de la liste: %d\n",list->size);
-  Element_asm * aux = list->first;
-  while (aux != NULL) {
-    switch (aux->op_code) {
-      case COP: printf("%d %s R%d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
-      break;
-      case AFC:
-      case LOAD:
-      printf("%d %s R%d %d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
-      break;
-      case STORE:
-      case JMPC:
-      printf("%d %s %d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
-      break;
-      case JMP: printf("%d %s %d\n",aux->elemId,tableIns[aux->op_code],aux->Ri); break;
-      default: printf("%d %s R%d R%d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj, aux->Rk);
-    }
-    aux = aux->suivant;
-  }
+  print_element(list->first);
+  // Element_asm * aux = list->first;
+  // while (aux != NULL) {
+  //   switch (aux->op_code) {
+  //     case COP: printf("%d %s R%d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
+  //     break;
+  //     case AFC:
+  //     case LOAD:
+  //     printf("%d %s R%d %d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
+  //     break;
+  //     case STORE:
+  //     case JMPC:
+  //     printf("%d %s %d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
+  //     break;
+  //     case JMP: printf("%d %s %d\n",aux->elemId,tableIns[aux->op_code],aux->Ri); break;
+  //     default: printf("%d %s R%d R%d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj, aux->Rk);
+  //   }
+  //   aux = aux->suivant;
+  // }
   return 0;
 }
 
