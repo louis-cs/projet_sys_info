@@ -8,7 +8,8 @@ OUTDIR=./interpreter/
 all: compile
 
 compile: mk_yacc_tab mk_lex_yy
-	gcc ${OUTDIR}y.tab.c ${OUTDIR}lib/LList.c ${OUTDIR}lib/LList_asm.c ${OUTDIR}lex.yy.c -o ${OUTDIR}${OUTBINARY} -ly -ll
+	gcc ${OUTDIR}y.tab.c ${OUTDIR}lib/LList_asm.c ${OUTDIR}lex.yy.c -o ${OUTDIR}${OUTBINARY} -ly -ll
+	gcc ${OUTDIR}y.tab.c ${OUTDIR}lib/LList_asm.c ${OUTDIR}lex.yy.c ${OUTDIR}executeur.c -o ${OUTDIR}executeur -ly -ll
 
 mk_yacc_tab: ${OUTDIR}${YACCFILE}
 	yacc -d ${OUTDIR}${YACCFILE} -o ${OUTDIR}y.tab.c

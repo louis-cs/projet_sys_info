@@ -18,6 +18,6 @@
 "SUPE"    { return tOP_SUPE;}
 "JMP"     { return tOP_JMP;}
 "JMPE"    { return tOP_JMPE;}
-[ \t\n]+  {/*printf(" ");/*return tSEPARATOR;*/}
+[ \t\n]+  {/*printf(" ");return tSEPARATOR;*/}
 [0-9]+    { /*printf("tNB:%d\n",atoi(yytext));*/ yylval.entier=atoi(yytext); return tNB;}
 .  {printf("something \n");}

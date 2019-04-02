@@ -1,14 +1,9 @@
 %{
     #include <stdio.h>
-    #include "./lib/LList.h"
     #include "./lib/LList_asm.h"
 
-    /* Définition de la table des symboles */
-    LList * ts;
-    LList_asm * tins;
-
-    int currentdepth;
-    Types currenttype;
+    /* Définition de la table des instructions */
+    LList_asm* table_asm;
 
     int yylex(void);
     void yyerror(const char* error);
@@ -19,15 +14,14 @@
 /* Définition des types pour l'association avec LEX */
 %union {
   int entier;
-  char* str;
 }
-%type <entier> tNB Exp
-%type <str> tID
+%type <entier> tNB
 
 /* Operators */
 %token tOP_ADD tOP_MUL tOP_SUB tOP_DIV tOP_COP
 %token tOP_AFC tOP_LOAD tOP_STORE tOP_EQU tOP_INF
 %token tOP_INFE tOP_SUP tOP_SUPE tOP_JMP tOP_JMPE
+%token tNB
 
 %start entry_point;
 
@@ -74,12 +68,8 @@ void yyerror(const char* error) {
 }
 
 int main(int argc, char const **argv) {
-  currentdepth = 0;
-  currenttype = TypeInt;
-  ts = llist_create();
-  tins = llist_asm_create();
+  table_asm = llist_asm_create();
   yyparse();
-  llist_print(ts);
-  print_asm(tins);
+  print_asm(table_asm);
   return 0;
 }
