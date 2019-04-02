@@ -2,6 +2,9 @@
 
 const char* typestable[] = { "int", "float", "char", "bool", NULL };
 
+const int addr_start = 0;
+const int taille_addr = 1;
+
 Bool is_initialised(Element e) {
   return e.init;
 }
@@ -27,7 +30,7 @@ int add(LList* llist, char* name, Types type, int depth, Bool init, Bool cte) {
         return -1;
     }
     nouveau->elemId = llist->next_id;
-    nouveau->addr = 0x4000 + 0x8 * llist->next_id;
+    nouveau->addr = addr_start + taille_addr * llist->next_id;
     nouveau->init = init;
     nouveau->constante = cte;
     nouveau->name = name;
@@ -67,7 +70,7 @@ int get_id_by_name(LList* llist, char* name) {
 }
 
 Element* get_element(LList* llist, int id) {
-  if (llist == NULL || id < 0) {
+  if (llist == NULL || id < 0 || id >= llist->next_id) {
       return NULL;
   }
   Element* aux = llist->first ;
@@ -87,7 +90,7 @@ Element* get_element(LList* llist, int id) {
 }
 
 int get_addr(LList* llist, int id) {
-    if (llist == NULL || id < 0) {
+    if (llist == NULL || id < 0 || id >= llist->next_id) {
         return -1;
     }
     Element* aux = llist->first ;
@@ -107,7 +110,7 @@ int get_addr(LList* llist, int id) {
 }
 
 int llist_remove(LList* llist, int id) {
-    if (llist == NULL || id < 0) {
+    if (llist == NULL || id < 0 || id >= llist->next_id) {
         printf("\x1b[1m\x1b[91mERROR : Ahhh attention, ça a échoué !\x1b[0m\n");
         return -1;
     }

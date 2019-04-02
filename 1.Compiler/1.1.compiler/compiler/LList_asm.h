@@ -32,13 +32,11 @@ struct LList_asm {
   int next_id;
 };
 
-/* Fonctions pour la liste chainée */
+/* Fonctions pour la liste chainée des instructions ASM */
 LList_asm* llist_asm_create();
 int ins_add(LList_asm* list, op_codes op, int Rx, int Ry, int Rz);
+int ins_update_Ri(LList_asm* list, int id, int Rx);
 int print_asm(LList_asm* list);
-// int add_tmp(LList* llist, Types type, int depth);
-// int get_id_by_name(LList* llist, char* name);
-// int get_addr(LList* llist, int id);
-// int llist_remove(LList* llist, int id);
+int ins_get_next_index(LList_asm* list);
 
 #endif

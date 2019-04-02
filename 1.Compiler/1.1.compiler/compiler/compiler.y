@@ -42,8 +42,8 @@
 
 %%
 entry_point           : MainFunction;
-MainFunction          : Type tMAIN tPARO Args tPARF Body
-                      | Type tMAIN tPARO tPARF Body;
+MainFunction          : tMAIN tPARO Args tPARF Body
+                      | tMAIN tPARO tPARF Body;
 
 Body                  : tACCO {currentdepth++;} InBody tACCF {currentdepth--;};
 
@@ -95,7 +95,7 @@ Exp                   : Exp tPLUS Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
                                        ins_add(tins,ADD,2,0,1);
                                        ins_add(tins,STORE,get_addr(ts,$1),2,-1);
                                        printf("elemId %d + elemId %d\n",$1,$3);
-                                       /* llist_remove(ts,$3); */
+                                       llist_remove(ts,$3);
                                        $$=$1;
                                      };
                       | Exp tMINUS Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
@@ -103,7 +103,7 @@ Exp                   : Exp tPLUS Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
                                         ins_add(tins,SOU,2,0,1);
                                         ins_add(tins,STORE,get_addr(ts,$1),2,-1);
                                         printf("elemId %d - elemId %d\n",$1,$3);
-                                        /* llist_remove(ts,$3); */
+                                        llist_remove(ts,$3);
                                         $$=$1;
                                       };
                       | Exp tDIV Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
@@ -111,7 +111,7 @@ Exp                   : Exp tPLUS Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
                                       ins_add(tins,DIV,2,0,1);
                                       ins_add(tins,STORE,get_addr(ts,$1),2,-1);
                                       printf("elemId %d / elemId %d\n",$1,$3);
-                                      /* llist_remove(ts,$3); */
+                                      llist_remove(ts,$3);
                                       $$=$1;
                                     };
                       | Exp tMUL Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
@@ -119,7 +119,7 @@ Exp                   : Exp tPLUS Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
                                       ins_add(tins,MUL,2,0,1);
                                       ins_add(tins,STORE,get_addr(ts,$1),2,-1);
                                       printf("elemId %d * elemId %d\n",$1,$3);
-                                      /* llist_remove(ts,$3); */
+                                      llist_remove(ts,$3);
                                       $$=$1;
                                     };
                       | tNB {int index_var_tmp = add_tmp(ts,TypeInt,currentdepth);
