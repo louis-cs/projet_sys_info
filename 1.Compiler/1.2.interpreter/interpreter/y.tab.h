@@ -59,8 +59,9 @@ extern int yydebug;
     tOP_SUP = 269,
     tOP_SUPE = 270,
     tOP_JMP = 271,
-    tOP_JMPE = 272,
-    tNB = 273
+    tOP_JMPC = 272,
+    tOP_PRI = 273,
+    tNB = 274
   };
 #endif
 /* Tokens.  */
@@ -78,8 +79,9 @@ extern int yydebug;
 #define tOP_SUP 269
 #define tOP_SUPE 270
 #define tOP_JMP 271
-#define tOP_JMPE 272
-#define tNB 273
+#define tOP_JMPC 272
+#define tOP_PRI 273
+#define tNB 274
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -90,7 +92,7 @@ union YYSTYPE
 
   int entier;
 
-#line 94 "./interpreter/y.tab.h" /* yacc.c:1909  */
+#line 96 "./interpreter/y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

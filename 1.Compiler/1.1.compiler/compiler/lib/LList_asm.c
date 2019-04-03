@@ -1,6 +1,6 @@
 #include "./LList_asm.h"
 
-const char* tableIns[] = {"ADD", "MUL", "SOU", "DIV", "COP", "AFC", "LOAD", "STORE", "EQU", "INF", "INFE", "SUP", "SUPE", "JMP", "JMPC", NULL };
+const char* tableIns[] = {"ADD", "MUL", "SUB", "DIV", "COP", "AFC", "LOAD", "STORE", "EQU", "INF", "INFE", "SUP", "SUPE", "JMP", "JMPC", NULL };
 
 LList_asm* llist_asm_create(){
   LList_asm* liste = malloc(sizeof(*liste));

@@ -65,8 +65,8 @@
 #line 1 "./compiler/compiler.y" /* yacc.c:339  */
 
     #include <stdio.h>
-    #include "./LList.h"
-    #include "./LList_asm.h"
+    #include "./lib/LList.h"
+    #include "./lib/LList_asm.h"
 
     /* Définition de la table des symboles */
     LList * ts;

@@ -20,7 +20,8 @@
 /* Operators */
 %token tOP_ADD tOP_MUL tOP_SUB tOP_DIV tOP_COP
 %token tOP_AFC tOP_LOAD tOP_STORE tOP_EQU tOP_INF
-%token tOP_INFE tOP_SUP tOP_SUPE tOP_JMP tOP_JMPE
+%token tOP_INFE tOP_SUP tOP_SUPE tOP_JMP tOP_JMPC
+%token tOP_PRI
 %token tNB
 
 %start entry_point;
@@ -43,24 +44,26 @@ OP             : tADD
                | tSUP
                | tSUPE
                | tJMP
-               | tJMPE
+               | tJMPC
+               | tPRI
                ;
 
-tADD           : tOP_ADD   tNB tNB tNB {};
-tMUL           : tOP_MUL   tNB tNB tNB {};
-tSUB           : tOP_SUB   tNB tNB tNB {};
-tDIV           : tOP_DIV   tNB tNB tNB {};
-tCOP           : tOP_COP   tNB tNB     {};
-tAFC           : tOP_AFC   tNB tNB     {};
-tLOAD          : tOP_LOAD  tNB tNB     {};
-tSTORE         : tOP_STORE tNB tNB     {};
-tEQU           : tOP_EQU   tNB tNB tNB {};
-tINF           : tOP_INF   tNB tNB tNB {};
-tINFE          : tOP_INFE  tNB tNB tNB {};
-tSUP           : tOP_SUP   tNB tNB tNB {};
-tSUPE          : tOP_SUPE  tNB tNB tNB {};
-tJMP           : tOP_JMP   tNB         {};
-tJMPE          : tOP_JMPE  tNB tNB     {};
+tADD           : tOP_ADD   tNB tNB tNB {ins_add(table_asm, ADD,   $2, $3, $4);    };
+tMUL           : tOP_MUL   tNB tNB tNB {ins_add(table_asm, MUL,   $2, $3, $4);    };
+tSUB           : tOP_SUB   tNB tNB tNB {ins_add(table_asm, SUB,   $2, $3, $4);    };
+tDIV           : tOP_DIV   tNB tNB tNB {ins_add(table_asm, DIV,   $2, $3, $4);    };
+tCOP           : tOP_COP   tNB tNB     {ins_add(table_asm, COP,   $2, $3, -1);  };
+tAFC           : tOP_AFC   tNB tNB     {ins_add(table_asm, AFC,   $2, $3, -1);  };
+tLOAD          : tOP_LOAD  tNB tNB     {ins_add(table_asm, LOAD,  $2, $3, -1);  };
+tSTORE         : tOP_STORE tNB tNB     {ins_add(table_asm, STORE, $2, $3, -1);  };
+tEQU           : tOP_EQU   tNB tNB tNB {ins_add(table_asm, EQU,   $2, $3, $4);    };
+tINF           : tOP_INF   tNB tNB tNB {ins_add(table_asm, INF,   $2, $3, $4);    };
+tINFE          : tOP_INFE  tNB tNB tNB {ins_add(table_asm, INFE,  $2, $3, $4);    };
+tSUP           : tOP_SUP   tNB tNB tNB {ins_add(table_asm, SUP,   $2, $3, $4);    };
+tSUPE          : tOP_SUPE  tNB tNB tNB {ins_add(table_asm, SUPE,  $2, $3, $4);    };
+tJMP           : tOP_JMP   tNB         {ins_add(table_asm, JMP,   $2, -1, -1);};
+tJMPC          : tOP_JMPC  tNB tNB     {ins_add(table_asm, JMPC,  $2, $3, -1);  };
+tPRI           : tOP_PRI   tNB         {ins_add(table_asm, PRI,   $2, -1, -1);};
 %%
 
 void yyerror(const char* error) {
