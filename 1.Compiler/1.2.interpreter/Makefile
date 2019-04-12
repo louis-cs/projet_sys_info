@@ -18,7 +18,7 @@ mk_lex_yy: ${OUTDIR}${LEXFILE}
 	flex -o ${OUTDIR}lex.yy.c ${OUTDIR}${LEXFILE}
 
 asm2bin:
-	gcc -Wall ${OUTDIR}asm2bin.c -o ${OUTDIR}asm2bin
+	# gcc -Wall ${OUTDIR}asm2bin.c -o ${OUTDIR}asm2bin
 
 clean:
 	@if [ -f ${OUTDIR}asm2bin ] ;		then rm ${OUTDIR}asm2bin ; 	fi;
