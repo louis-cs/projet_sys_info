@@ -19,6 +19,7 @@
 "SUPE"    { if(LOG){ECHO;}return tOP_SUPE;}
 "JMP"     { if(LOG){ECHO;}return tOP_JMP;}
 "JMPC"    { if(LOG){ECHO;}return tOP_JMPC;}
+"PRI"     { if(LOG){ECHO;}return tOP_PRI;}
 [ \t\n]+  { if(LOG){printf("%s", yytext);}}
 [0-9]+    { if(LOG){ECHO;}/*printf("tNB:%d\n",atoi(yytext));*/ yylval.entier=atoi(yytext); return tNB;}
 .  {printf("something \"%s\"\n", yytext);}

@@ -1,9 +1,10 @@
 main (int args) {
     int a = 10;
     int d = 17;
-    printf(d);
-    printf(d);
-    printf(d);
-    printf(d);
+    while (a) {
+        a = a - 1;
+        printf(a);
+    }
     d = 18;
+    printf(d);
 }

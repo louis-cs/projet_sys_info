@@ -1,6 +1,6 @@
 #include "./LList_asm.h"
 
-const char* tableIns[] = {"ADD", "MUL", "SUB", "DIV", "COP", "AFC", "LOAD", "STORE", "EQU", "INF", "INFE", "SUP", "SUPE", "JMP", "JMPC", NULL };
+const char* tableIns[] = {"ADD", "MUL", "SUB", "DIV", "COP", "AFC", "LOAD", "STORE", "EQU", "INF", "INFE", "SUP", "SUPE", "JMP", "JMPC", "PRI", NULL };
 
 LList_asm* llist_asm_create(){
   LList_asm* liste = malloc(sizeof(*liste));
@@ -30,35 +30,39 @@ int ins_add(LList_asm* list, op_codes op, int Rx, int Ry, int Rz) {
   return nouveau->elemId;
 }
 
-int print_asm(LList_asm* list) {
-  if (list == NULL || list->size == 0) {
-    printf("\x1b[1m[\x1b[91mwarn\x1b[0m\x1b[1m] Empty ASM table !\x1b[0m\n");
-    return -1;
-  }
-  printf("Taille de la liste: %d\n",list->size);
-  Element_asm * aux = list->first;
-  while (aux != NULL) {
+void print_element(Element_asm* aux) {
+  if (aux != NULL) {
+    if (aux->suivant != NULL) {
+      print_element(aux->suivant);
+    }
     switch (aux->op_code) {
       case COP: printf("%d %s R%d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
           break;
       case AFC:
-          break;
       case LOAD:
           printf("%d %s R%d %d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
           break;
       case STORE:
-          break;
       case JMPC:
           printf("%d %s %d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj);
           break;
+      case PRI:
       case JMP:
           printf("%d %s %d\n",aux->elemId,tableIns[aux->op_code],aux->Ri);
           break;
       default:
           printf("%d %s R%d R%d R%d\n",aux->elemId,tableIns[aux->op_code],aux->Ri, aux->Rj, aux->Rk);
     }
-    aux = aux->suivant;
   }
+}
+
+int print_asm(LList_asm* list) {
+  if (list == NULL) {
+    printf("\x1b[1m\x1b[91mERROR : LList_asm vide! \x1b[0m\n");
+    return -1;
+  }
+  printf("Taille de la liste: %d\n",list->size);
+  print_element(list->first);
   return 0;
 }
 

@@ -1,6 +1,7 @@
 %{
     #include <stdio.h>
     #include "./lib/LList_asm.h"
+    #include "./executeur.h"
 
     /* Définition de la table des instructions */
     LList_asm* table_asm;
@@ -73,6 +74,7 @@ void yyerror(const char* error) {
 int main(int argc, char const **argv) {
   table_asm = llist_asm_create();
   yyparse();
-  print_asm(table_asm);
+  //print_asm(table_asm);
+  simulate_execution();
   return 0;
 }

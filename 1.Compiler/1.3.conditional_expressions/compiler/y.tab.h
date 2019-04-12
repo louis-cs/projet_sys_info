@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_INTERPRETER_Y_TAB_H_INCLUDED
-# define YY_YY_INTERPRETER_Y_TAB_H_INCLUDED
+#ifndef YY_YY_COMPILER_Y_TAB_H_INCLUDED
+# define YY_YY_COMPILER_Y_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -45,54 +45,61 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    tOP_ADD = 258,
-    tOP_MUL = 259,
-    tOP_SUB = 260,
-    tOP_DIV = 261,
-    tOP_COP = 262,
-    tOP_AFC = 263,
-    tOP_LOAD = 264,
-    tOP_STORE = 265,
-    tOP_EQU = 266,
-    tOP_INF = 267,
-    tOP_INFE = 268,
-    tOP_SUP = 269,
-    tOP_SUPE = 270,
-    tOP_JMP = 271,
-    tOP_JMPC = 272,
-    tOP_PRI = 273,
-    tNB = 274
+    tCONST = 258,
+    tINT = 259,
+    tMAIN = 260,
+    tPRINTF = 261,
+    tIF = 262,
+    tWHILE = 263,
+    tMUL = 264,
+    tPLUS = 265,
+    tMINUS = 266,
+    tDIV = 267,
+    tEQU = 268,
+    tPARO = 269,
+    tPARF = 270,
+    tACCO = 271,
+    tACCF = 272,
+    tVIRGULE = 273,
+    tPV = 274,
+    tNB = 275,
+    tID = 276,
+    tCOMMENT = 277
   };
 #endif
 /* Tokens.  */
-#define tOP_ADD 258
-#define tOP_MUL 259
-#define tOP_SUB 260
-#define tOP_DIV 261
-#define tOP_COP 262
-#define tOP_AFC 263
-#define tOP_LOAD 264
-#define tOP_STORE 265
-#define tOP_EQU 266
-#define tOP_INF 267
-#define tOP_INFE 268
-#define tOP_SUP 269
-#define tOP_SUPE 270
-#define tOP_JMP 271
-#define tOP_JMPC 272
-#define tOP_PRI 273
-#define tNB 274
+#define tCONST 258
+#define tINT 259
+#define tMAIN 260
+#define tPRINTF 261
+#define tIF 262
+#define tWHILE 263
+#define tMUL 264
+#define tPLUS 265
+#define tMINUS 266
+#define tDIV 267
+#define tEQU 268
+#define tPARO 269
+#define tPARF 270
+#define tACCO 271
+#define tACCF 272
+#define tVIRGULE 273
+#define tPV 274
+#define tNB 275
+#define tID 276
+#define tCOMMENT 277
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 15 "./interpreter/interpreter.y" /* yacc.c:1909  */
+#line 20 "./compiler/compiler.y" /* yacc.c:1909  */
 
   int entier;
+  char* str;
 
-#line 96 "./interpreter/y.tab.h" /* yacc.c:1909  */
+#line 103 "./compiler/y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -105,4 +112,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_INTERPRETER_Y_TAB_H_INCLUDED  */
+#endif /* !YY_YY_COMPILER_Y_TAB_H_INCLUDED  */
