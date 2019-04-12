@@ -1285,97 +1285,97 @@ yyreduce:
     {
         case 21:
 #line 51 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, ADD,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, ADD,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1290 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
 #line 52 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, MUL,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, MUL,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1296 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
 #line 53 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, SUB,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, SUB,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1302 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
 #line 54 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, DIV,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, DIV,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1308 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
 #line 55 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, COP,   (yyvsp[-1].entier), (yyvsp[0].entier), -1);  }
+    {ins_add(table_asm, COP,   (yyvsp[-1].entier), (yyvsp[0].entier), -1); }
 #line 1314 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
 #line 56 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, AFC,   (yyvsp[-1].entier), (yyvsp[0].entier), -1);  }
+    {ins_add(table_asm, AFC,   (yyvsp[-1].entier), (yyvsp[0].entier), -1); }
 #line 1320 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
 #line 57 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, LOAD,  (yyvsp[-1].entier), (yyvsp[0].entier), -1);  }
+    {ins_add(table_asm, LOAD,  (yyvsp[-1].entier), (yyvsp[0].entier), -1); }
 #line 1326 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
 #line 58 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, STORE, (yyvsp[-1].entier), (yyvsp[0].entier), -1);  }
+    {ins_add(table_asm, STORE, (yyvsp[-1].entier), (yyvsp[0].entier), -1); }
 #line 1332 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
 #line 59 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, EQU,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, EQU,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1338 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
 #line 60 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, INF,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, INF,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1344 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
 #line 61 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, INFE,  (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, INFE,  (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1350 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
 #line 62 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, SUP,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, SUP,   (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1356 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
 #line 63 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, SUPE,  (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier));    }
+    {ins_add(table_asm, SUPE,  (yyvsp[-2].entier), (yyvsp[-1].entier), (yyvsp[0].entier)); }
 #line 1362 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
 #line 64 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, JMP,   (yyvsp[0].entier), -1, -1);}
+    {ins_add(table_asm, JMP,   (yyvsp[0].entier), -1, -1); }
 #line 1368 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
 #line 65 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, JMPC,  (yyvsp[-1].entier), (yyvsp[0].entier), -1);  }
+    {ins_add(table_asm, JMPC,  (yyvsp[-1].entier), (yyvsp[0].entier), -1); }
 #line 1374 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
 #line 66 "./interpreter/interpreter.y" /* yacc.c:1646  */
-    {ins_add(table_asm, PRI,   (yyvsp[0].entier), -1, -1);}
+    {ins_add(table_asm, PRI,   (yyvsp[0].entier), -1, -1); }
 #line 1380 "./interpreter/y.tab.c" /* yacc.c:1646  */
     break;
 
