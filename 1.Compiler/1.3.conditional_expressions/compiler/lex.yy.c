@@ -500,7 +500,7 @@ char *yytext;
 #line 2 "./compiler/lexicograph.l"
     #include <stdio.h>
     #include "y.tab.h"
-    #define  LOG 1  // Set log to 1 to print matched tokens
+    #define  LOG 0  // Set log to 1 to print matched tokens
 #line 505 "./compiler/lex.yy.c"
 
 #define INITIAL 0
