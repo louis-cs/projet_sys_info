@@ -28,6 +28,7 @@ struct Element_asm {
 
 struct LList_asm {
   Element_asm* first;
+  Element_asm* last;
   int size;
   int next_id;
 };

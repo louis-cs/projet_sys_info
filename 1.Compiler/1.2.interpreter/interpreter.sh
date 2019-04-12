@@ -6,5 +6,5 @@ else
         ./interpreter/interpreter < $1
     else
         echo "Try make"
-    fi    
+    fi
 fi

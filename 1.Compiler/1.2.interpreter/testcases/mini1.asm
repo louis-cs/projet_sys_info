@@ -1,0 +1,23 @@
+AFC   0   0 
+STORE 0   0
+LOAD  0   0
+STORE 1   0
+AFC   0   17
+STORE 2   0
+LOAD  0   2
+STORE 3   0
+PRI   3
+LOAD  0   1
+STORE 4   0
+LOAD  0   4
+JMPC  17  0
+AFC   0   20
+STORE 5   0
+LOAD  0   5
+STORE 3   0
+PRI   3
+AFC   0   18
+STORE 6   0
+LOAD  0   6
+STORE 3   0
+PRI   3
