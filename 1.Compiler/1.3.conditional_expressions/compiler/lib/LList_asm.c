@@ -1,6 +1,6 @@
 #include "./LList_asm.h"
 
-const char* tableIns[] = {"ADD", "MUL", "SUB", "DIV", "COP", "AFC", "LOAD", "STORE", "EQU", "INF", "INFE", "SUP", "SUPE", "JMP", "JMPC", NULL };
+const char* tableIns[] = {"ADD", "MUL", "SUB", "DIV", "COP", "AFC", "LOAD", "STORE", "EQU", "INF", "INFE", "SUP", "SUPE", "JMP", "JMPC", "PRI", NULL };
 
 LList_asm* llist_asm_create(){
   LList_asm* liste = malloc(sizeof(*liste));
@@ -41,12 +41,14 @@ void print_element(Element_asm* aux) {
       case LOAD:
       case STORE:
       case JMPC:
-      printf("%-5s %-3d %-3d\n",tableIns[aux->op_code],aux->Ri, aux->Rj);
-      break;
+          printf("%-5s %-3d %-3d\n",tableIns[aux->op_code],aux->Ri, aux->Rj);
+          break;
       case JMP:
-      printf("%-5s %-3d\n",tableIns[aux->op_code],aux->Ri); break;
+      case PRI:
+          printf("%-5s %-3d\n",tableIns[aux->op_code],aux->Ri);
+          break;
       default:
-      printf("%-5s %-3d %-3d %-3d\n",tableIns[aux->op_code],aux->Ri, aux->Rj, aux->Rk);
+          printf("%-5s %-3d %-3d %-3d\n",tableIns[aux->op_code],aux->Ri, aux->Rj, aux->Rk);
     }
   }
 }

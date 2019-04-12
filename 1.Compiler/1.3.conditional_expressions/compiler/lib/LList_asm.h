@@ -14,7 +14,7 @@ typedef enum op_codes {
     ADD, MUL, SOU, DIV, COP,
     AFC, LOAD, STORE, EQU,
     INF, INFE, SUP, SUPE,
-    JMP, JMPC
+    JMP, JMPC, PRI
 } op_codes;
 
 struct Element_asm {

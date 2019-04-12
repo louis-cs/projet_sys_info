@@ -43,7 +43,7 @@
 %%
 entry_point           : MainFunction;
 MainFunction          : tMAIN tPARO Args tPARF BodyFunction
-                      | tMAIN tPARO tPARF Body;
+                      | tMAIN tPARO tPARF BodyFunction;
 
 BodyFunction          : tACCO {currentdepth++;} InBody tACCF {currentdepth--;};
 
@@ -84,7 +84,18 @@ Affectation           : tID tEQU Exp tPV {int index = get_id_by_name(ts,$1);
 
 Instructions          : Instruction Instructions | Instruction;
 Instruction           : Affectation | Print | If | While;
-Print                 : tPRINTF tPARO tID tPARF tPV;
+Print                 : tPRINTF tPARO tID {
+                            int index = get_id_by_name(ts, $3);
+                            if (index == -1) {
+                                yyerror("Variable non déclarée");
+                            } else {
+                                if (!is_initialised(*get_element(ts,index))) {
+                                    printf("WARNING: Variable non initialisée\n");
+                                }
+                                ins_add(tins, PRI, get_addr(ts,index), -1, -1);
+                            };
+                        } tPARF tPV;
+
 
 ListIDs               : tID tVIRGULE ListIDs | tID;
 Args                  : Arg tVIRGULE Args | Arg;
