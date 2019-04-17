@@ -74,6 +74,7 @@ Affectation           : tID tEQU Exp tPV {int index = get_id_by_name(ts,$1);
                                           } else {
                                             printf("adresse de %s : %d \n",$1,get_addr(ts,index));
                                             printf("tid %s = elemId %d\n",$1,$3);
+                                            /* printf("current depth = %d \n",currentdepth); */
                                             ins_add(tins,LOAD,0,get_addr(ts,$3),-1);
                                             ins_add(tins,STORE,get_addr(ts,index),0,-1);
                                             if (!is_initialised(*get_element(ts,index))) {
@@ -152,6 +153,7 @@ Exp                   : Exp tPLUS Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
                           ins_add(tins,STORE,get_addr(ts,index_var_tmp),0,-1);
                           $$ = index_var_tmp;};
                         }
+                      | tPARO Exp tPARF {$$=$2;}
 
 If                    : tIF tPARO Exp tPARF {
                          ins_add(tins, LOAD, 0, get_addr(ts,$3), -1);
@@ -160,18 +162,14 @@ If                    : tIF tPARO Exp tPARF {
                          $1 = index;
                         } Body {ins_update_Ri(tins, $1, ins_get_next_index(tins));};
 
-While                 : tWHILE {$1 = ins_get_next_index(tins);
-                                printf("index dans while: %d \n",$1);} tPARO Exp tPARF {
+While                 : tWHILE {$1 = ins_get_next_index(tins);} tPARO Exp tPARF {
                          ins_add(tins, LOAD, 0, get_addr(ts,$4), -1);
                          int index = ins_add(tins, JMPC, 0xFFFF, 0, -1);
                          llist_remove(ts, $4);
                          $3 = index;
-                         printf("index dans tPARO: %d \n",index);
                         } Body {
-                          printf("index dans JMPC du while pour revenir au debut du while: %d \n",$1);
                           ins_add(tins, JMP, $1, 0, -1);
                           ins_update_Ri(tins, $3, ins_get_next_index(tins));
-                          printf("index de %d mis a jour avec %d pour sortir du while \n",$3, ins_get_next_index(tins));
                         };
 %%
 

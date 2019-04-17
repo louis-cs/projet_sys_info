@@ -1,0 +1,76 @@
+AFC   0   10 
+STORE 1   0
+LOAD  0   1
+STORE 2   0
+AFC   0   17
+STORE 3   0
+LOAD  0   3
+STORE 4   0
+AFC   0   1
+STORE 5   0
+LOAD  0   5
+STORE 6   0
+LOAD  0   2
+STORE 7   0
+LOAD  0   4
+STORE 8   0
+LOAD  0   7
+LOAD  1   8
+ADD   2   0   1
+STORE 7   2
+LOAD  0   7
+STORE 6   0
+AFC   0   4
+STORE 9   0
+LOAD  0   9
+STORE 0   0
+PRI   6
+PRI   2
+LOAD  0   2
+STORE 10  0
+LOAD  0   10
+JMPC  69  0
+LOAD  0   4
+STORE 11  0
+AFC   0   1
+STORE 12  0
+LOAD  0   11
+LOAD  1   12
+ADD   2   0   1
+STORE 11  2
+LOAD  0   11
+STORE 4   0
+LOAD  0   2
+STORE 13  0
+AFC   0   1
+STORE 14  0
+LOAD  0   13
+LOAD  1   14
+SUB   2   0   1
+STORE 13  2
+LOAD  0   13
+STORE 2   0
+PRI   2
+LOAD  0   0
+STORE 15  0
+LOAD  0   15
+JMPC  58  0
+PRI   0
+LOAD  0   0
+STORE 16  0
+AFC   0   2
+STORE 17  0
+LOAD  0   16
+LOAD  1   17
+SUB   2   0   1
+STORE 16  2
+LOAD  0   16
+STORE 0   0
+JMP   28
+PRI   2
+PRI   4
+AFC   0   24
+STORE 18  0
+LOAD  0   18
+STORE 4   0
+PRI   4
