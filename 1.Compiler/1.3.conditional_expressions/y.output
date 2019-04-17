@@ -1,13 +1,9 @@
 Terminaux inutilisés dans la grammaire
 
-   tIF
-   tWHILE
    tCOMMENT
 
 
 État 15 conflits: 1 décalage/réduction
-État 25 conflits: 1 décalage/réduction
-État 41 conflits: 1 décalage/réduction
 
 
 Grammaire
@@ -16,91 +12,105 @@ Grammaire
 
     1 entry_point: MainFunction
 
-    2 MainFunction: tMAIN tPARO Args tPARF Body
-    3             | tMAIN tPARO tPARF Body
+    2 MainFunction: tMAIN tPARO Args tPARF BodyFunction
+    3             | tMAIN tPARO tPARF BodyFunction
 
     4 $@1: %empty
 
-    5 Body: tACCO $@1 InBody tACCF
+    5 BodyFunction: tACCO $@1 InBody tACCF
 
-    6 InBody: Declarations Instructions
-    7       | Declarations
-    8       | Instructions
+    6 $@2: %empty
 
-    9 Declarations: Declaration Declarations
-   10             | Declaration
+    7 Body: tACCO $@2 Instructions tACCF
 
-   11 Declaration: Type ListDecs tPV
-   12            | Constante
+    8 InBody: Declarations Instructions
+    9       | Declarations
+   10       | Instructions
 
-   13 ListDecs: ListDec tVIRGULE ListDecs
-   14         | ListDec
+   11 Declarations: Declaration Declarations
+   12             | Declaration
 
-   15 $@2: %empty
+   13 Declaration: Type ListDecs tPV
+   14            | Constante
 
-   16 ListDec: tID $@2 tEQU Exp
-   17        | tID
+   15 ListDecs: ListDec tVIRGULE ListDecs
+   16         | ListDec
 
-   18 Constante: tCONST Type ListConstDecs tPV
+   17 ListDec: tID tEQU Exp
+   18        | tID
 
-   19 ListConstDecs: ListConstDec tVIRGULE ListConstDecs
-   20              | ListConstDec
+   19 Constante: tCONST Type ListConstDecs tPV
 
-   21 $@3: %empty
+   20 ListConstDecs: ListConstDec tVIRGULE ListConstDecs
+   21              | ListConstDec
 
-   22 ListConstDec: tID $@3 tEQU Exp
+   22 ListConstDec: tID tEQU Exp
 
-   23 Affectation: Type tID tEQU Exp tPV
+   23 Affectation: tID tEQU Exp tPV
 
    24 Instructions: Instruction Instructions
    25             | Instruction
 
    26 Instruction: Affectation
    27            | Print
+   28            | If
+   29            | While
 
-   28 Print: tPRINTF tPARO tID tPARF tPV
+   30 $@3: %empty
 
-   29 ListIDs: tID tVIRGULE ListIDs
-   30        | tID
+   31 Print: tPRINTF tPARO tID $@3 tPARF tPV
 
-   31 Args: Arg tVIRGULE Args
-   32     | Arg
+   32 ListIDs: tID tVIRGULE ListIDs
+   33        | tID
 
-   33 Arg: Type ListIDs
+   34 Args: Arg tVIRGULE Args
+   35     | Arg
 
-   34 Type: tINT
+   36 Arg: Type ListIDs
 
-   35 Exp: Exp tPLUS Exp
-   36    | Exp tMINUS Exp
-   37    | Exp tDIV Exp
-   38    | Exp tMUL Exp
-   39    | tNB
-   40    | tID
+   37 Type: tINT
+
+   38 Exp: Exp tPLUS Exp
+   39    | Exp tMINUS Exp
+   40    | Exp tDIV Exp
+   41    | Exp tMUL Exp
+   42    | tNB
+   43    | tID
+
+   44 $@4: %empty
+
+   45 If: tIF tPARO Exp tPARF $@4 Body
+
+   46 $@5: %empty
+
+   47 $@6: %empty
+
+   48 While: tWHILE $@5 tPARO Exp tPARF $@6 Body
 
 
 Terminaux, suivis des règles où ils apparaissent
 
 $end (0) 0
 error (256)
-tCONST (258) 18
-tINT (259) 34
+tCONST (258) 19
+tINT (259) 37
 tMAIN (260) 2 3
-tPRINTF (261) 28
-tIF (262)
-tWHILE (263)
-tMUL (264) 38
-tPLUS (265) 35
-tMINUS (266) 36
-tDIV (267) 37
-tEQU (268) 16 22 23
-tPARO (269) 2 3 28
-tPARF (270) 2 3 28
-tACCO (271) 5
-tACCF (272) 5
-tVIRGULE (273) 13 19 29 31
-tPV (274) 11 18 23 28
-tNB (275) 39
-tID (276) 16 17 22 23 28 29 30 40
+tPRINTF (261) 31
+tIF (262) 45
+tWHILE (263) 48
+tMUL (264) 41
+tPLUS (265) 38
+tMINUS (266) 39
+tDIV (267) 40
+tEQU (268) 17 22 23
+tPARO (269) 2 3 31 45 48
+tPARF (270) 2 3 31 45 48
+tACCO (271) 5 7
+tACCF (272) 5 7
+tVIRGULE (273) 15 20 32 34
+tPV (274) 13 19 23 31
+tNB (275) 42
+tID (276) 17 18 22 23 31 32 33 43
 tCOMMENT (277)
 
 
@@ -112,48 +122,61 @@ entry_point (24)
     à gauche: 1, à droite: 0
 MainFunction (25)
     à gauche: 2 3, à droite: 1
-Body (26)
+BodyFunction (26)
     à gauche: 5, à droite: 2 3
 $@1 (27)
     à gauche: 4, à droite: 5
-InBody (28)
-    à gauche: 6 7 8, à droite: 5
-Declarations (29)
-    à gauche: 9 10, à droite: 6 7 9
-Declaration (30)
-    à gauche: 11 12, à droite: 9 10
-ListDecs (31)
-    à gauche: 13 14, à droite: 11 13
-ListDec (32)
-    à gauche: 16 17, à droite: 13 14
-$@2 (33)
-    à gauche: 15, à droite: 16
-Constante (34)
-    à gauche: 18, à droite: 12
-ListConstDecs (35)
-    à gauche: 19 20, à droite: 18 19
-ListConstDec (36)
-    à gauche: 22, à droite: 19 20
-$@3 (37)
-    à gauche: 21, à droite: 22
+Body (28)
+    à gauche: 7, à droite: 45 48
+$@2 (29)
+    à gauche: 6, à droite: 7
+InBody (30)
+    à gauche: 8 9 10, à droite: 5
+Declarations (31)
+    à gauche: 11 12, à droite: 8 9 11
+Declaration (32)
+    à gauche: 13 14, à droite: 11 12
+ListDecs (33)
+    à gauche: 15 16, à droite: 13 15
+ListDec (34)
+    à gauche: 17 18, à droite: 15 16
+Constante (35)
+    à gauche: 19, à droite: 14
+ListConstDecs (36)
+    à gauche: 20 21, à droite: 19 20
+ListConstDec (37)
+    à gauche: 22, à droite: 20 21
 Affectation (38)
     à gauche: 23, à droite: 26
 Instructions (39)
-    à gauche: 24 25, à droite: 6 8 24
+    à gauche: 24 25, à droite: 7 8 10 24
 Instruction (40)
-    à gauche: 26 27, à droite: 24 25
+    à gauche: 26 27 28 29, à droite: 24 25
 Print (41)
-    à gauche: 28, à droite: 27
-ListIDs (42)
-    à gauche: 29 30, à droite: 29 33
-Args (43)
-    à gauche: 31 32, à droite: 2 31
-Arg (44)
-    à gauche: 33, à droite: 31 32
-Type (45)
-    à gauche: 34, à droite: 11 18 23 33
-Exp (46)
-    à gauche: 35 36 37 38 39 40, à droite: 16 22 23 35 36 37 38
+    à gauche: 31, à droite: 27
+$@3 (42)
+    à gauche: 30, à droite: 31
+ListIDs (43)
+    à gauche: 32 33, à droite: 32 36
+Args (44)
+    à gauche: 34 35, à droite: 2 34
+Arg (45)
+    à gauche: 36, à droite: 34 35
+Type (46)
+    à gauche: 37, à droite: 13 19 36
+Exp (47)
+    à gauche: 38 39 40 41 42 43, à droite: 17 22 23 38 39 40 41 45
+    48
+If (48)
+    à gauche: 45, à droite: 28
+$@4 (49)
+    à gauche: 44, à droite: 45
+While (50)
+    à gauche: 48, à droite: 29
+$@5 (51)
+    à gauche: 46, à droite: 48
+$@6 (52)
+    à gauche: 47, à droite: 48
 
 
 État 0
@@ -168,8 +191,8 @@ Exp (46)
 
 État 1
 
-    2 MainFunction: tMAIN . tPARO Args tPARF Body
-    3             | tMAIN . tPARO tPARF Body
+    2 MainFunction: tMAIN . tPARO Args tPARF BodyFunction
+    3             | tMAIN . tPARO tPARF BodyFunction
 
     tPARO  décalage et aller à l'état 4
 
@@ -190,8 +213,8 @@ Exp (46)
 
 État 4
 
-    2 MainFunction: tMAIN tPARO . Args tPARF Body
-    3             | tMAIN tPARO . tPARF Body
+    2 MainFunction: tMAIN tPARO . Args tPARF BodyFunction
+    3             | tMAIN tPARO . tPARF BodyFunction
 
     tINT   décalage et aller à l'état 6
     tPARF  décalage et aller à l'état 7
@@ -210,40 +233,40 @@ Exp (46)
 
 État 6
 
-   34 Type: tINT .
+   37 Type: tINT .
 
-    $défaut  réduction par utilisation de la règle 34 (Type)
+    $défaut  réduction par utilisation de la règle 37 (Type)
 
 
 État 7
 
-    3 MainFunction: tMAIN tPARO tPARF . Body
+    3 MainFunction: tMAIN tPARO tPARF . BodyFunction
 
     tACCO  décalage et aller à l'état 11
 
-    Body  aller à l'état 12
+    BodyFunction  aller à l'état 12
 
 
 État 8
 
-    2 MainFunction: tMAIN tPARO Args . tPARF Body
+    2 MainFunction: tMAIN tPARO Args . tPARF BodyFunction
 
     tPARF  décalage et aller à l'état 13
 
 
 État 9
 
-   31 Args: Arg . tVIRGULE Args
-   32     | Arg .
+   34 Args: Arg . tVIRGULE Args
+   35     | Arg .
 
     tVIRGULE  décalage et aller à l'état 14
 
-    $défaut  réduction par utilisation de la règle 32 (Args)
+    $défaut  réduction par utilisation de la règle 35 (Args)
 
 
 État 10
 
-   33 Arg: Type . ListIDs
+   36 Arg: Type . ListIDs
 
     tID  décalage et aller à l'état 15
 
@@ -252,7 +275,7 @@ Exp (46)
 
 État 11
 
-    5 Body: tACCO . $@1 InBody tACCF
+    5 BodyFunction: tACCO . $@1 InBody tACCF
 
     $défaut  réduction par utilisation de la règle 4 ($@1)
 
@@ -261,23 +284,23 @@ Exp (46)
 
 État 12
 
-    3 MainFunction: tMAIN tPARO tPARF Body .
+    3 MainFunction: tMAIN tPARO tPARF BodyFunction .
 
     $défaut  réduction par utilisation de la règle 3 (MainFunction)
 
 
 État 13
 
-    2 MainFunction: tMAIN tPARO Args tPARF . Body
+    2 MainFunction: tMAIN tPARO Args tPARF . BodyFunction
 
     tACCO  décalage et aller à l'état 11
 
-    Body  aller à l'état 18
+    BodyFunction  aller à l'état 18
 
 
 État 14
 
-   31 Args: Arg tVIRGULE . Args
+   34 Args: Arg tVIRGULE . Args
 
     tINT  décalage et aller à l'état 6
 
@@ -288,533 +311,578 @@ Exp (46)
 
 État 15
 
-   29 ListIDs: tID . tVIRGULE ListIDs
-   30        | tID .
+   32 ListIDs: tID . tVIRGULE ListIDs
+   33        | tID .
 
     tVIRGULE  décalage et aller à l'état 20
 
-    tVIRGULE  [réduction par utilisation de la règle 30 (ListIDs)]
-    $défaut  réduction par utilisation de la règle 30 (ListIDs)
+    tVIRGULE  [réduction par utilisation de la règle 33 (ListIDs)]
+    $défaut  réduction par utilisation de la règle 33 (ListIDs)
 
 
 État 16
 
-   33 Arg: Type ListIDs .
+   36 Arg: Type ListIDs .
 
-    $défaut  réduction par utilisation de la règle 33 (Arg)
+    $défaut  réduction par utilisation de la règle 36 (Arg)
 
 
 État 17
 
-    5 Body: tACCO $@1 . InBody tACCF
+    5 BodyFunction: tACCO $@1 . InBody tACCF
 
     tCONST   décalage et aller à l'état 21
     tINT     décalage et aller à l'état 6
     tPRINTF  décalage et aller à l'état 22
+    tIF      décalage et aller à l'état 23
+    tWHILE   décalage et aller à l'état 24
+    tID      décalage et aller à l'état 25
 
-    InBody        aller à l'état 23
-    Declarations  aller à l'état 24
-    Declaration   aller à l'état 25
-    Constante     aller à l'état 26
-    Affectation   aller à l'état 27
-    Instructions  aller à l'état 28
-    Instruction   aller à l'état 29
-    Print         aller à l'état 30
-    Type          aller à l'état 31
+    InBody        aller à l'état 26
+    Declarations  aller à l'état 27
+    Declaration   aller à l'état 28
+    Constante     aller à l'état 29
+    Affectation   aller à l'état 30
+    Instructions  aller à l'état 31
+    Instruction   aller à l'état 32
+    Print         aller à l'état 33
+    Type          aller à l'état 34
+    If            aller à l'état 35
+    While         aller à l'état 36
 
 
 État 18
 
-    2 MainFunction: tMAIN tPARO Args tPARF Body .
+    2 MainFunction: tMAIN tPARO Args tPARF BodyFunction .
 
     $défaut  réduction par utilisation de la règle 2 (MainFunction)
 
 
 État 19
 
-   31 Args: Arg tVIRGULE Args .
+   34 Args: Arg tVIRGULE Args .
 
-    $défaut  réduction par utilisation de la règle 31 (Args)
+    $défaut  réduction par utilisation de la règle 34 (Args)
 
 
 État 20
 
-   29 ListIDs: tID tVIRGULE . ListIDs
+   32 ListIDs: tID tVIRGULE . ListIDs
 
     tID  décalage et aller à l'état 15
 
-    ListIDs  aller à l'état 32
+    ListIDs  aller à l'état 37
 
 
 État 21
 
-   18 Constante: tCONST . Type ListConstDecs tPV
+   19 Constante: tCONST . Type ListConstDecs tPV
 
     tINT  décalage et aller à l'état 6
 
-    Type  aller à l'état 33
+    Type  aller à l'état 38
 
 
 État 22
 
-   28 Print: tPRINTF . tPARO tID tPARF tPV
+   31 Print: tPRINTF . tPARO tID $@3 tPARF tPV
 
-    tPARO  décalage et aller à l'état 34
+    tPARO  décalage et aller à l'état 39
 
 
 État 23
 
-    5 Body: tACCO $@1 InBody . tACCF
+   45 If: tIF . tPARO Exp tPARF $@4 Body
 
-    tACCF  décalage et aller à l'état 35
+    tPARO  décalage et aller à l'état 40
 
 
 État 24
 
-    6 InBody: Declarations . Instructions
-    7       | Declarations .
+   48 While: tWHILE . $@5 tPARO Exp tPARF $@6 Body
 
-    tINT     décalage et aller à l'état 6
-    tPRINTF  décalage et aller à l'état 22
+    $défaut  réduction par utilisation de la règle 46 ($@5)
 
-    $défaut  réduction par utilisation de la règle 7 (InBody)
-
-    Affectation   aller à l'état 27
-    Instructions  aller à l'état 36
-    Instruction   aller à l'état 29
-    Print         aller à l'état 30
-    Type          aller à l'état 37
+    $@5  aller à l'état 41
 
 
 État 25
 
-    9 Declarations: Declaration . Declarations
-   10             | Declaration .
+   23 Affectation: tID . tEQU Exp tPV
 
-    tCONST  décalage et aller à l'état 21
-    tINT    décalage et aller à l'état 6
-
-    tINT      [réduction par utilisation de la règle 10 (Declarations)]
-    $défaut  réduction par utilisation de la règle 10 (Declarations)
-
-    Declarations  aller à l'état 38
-    Declaration   aller à l'état 25
-    Constante     aller à l'état 26
-    Type          aller à l'état 39
+    tEQU  décalage et aller à l'état 42
 
 
 État 26
 
-   12 Declaration: Constante .
+    5 BodyFunction: tACCO $@1 InBody . tACCF
 
-    $défaut  réduction par utilisation de la règle 12 (Declaration)
+    tACCF  décalage et aller à l'état 43
 
 
 État 27
+
+    8 InBody: Declarations . Instructions
+    9       | Declarations .
+
+    tPRINTF  décalage et aller à l'état 22
+    tIF      décalage et aller à l'état 23
+    tWHILE   décalage et aller à l'état 24
+    tID      décalage et aller à l'état 25
+
+    $défaut  réduction par utilisation de la règle 9 (InBody)
+
+    Affectation   aller à l'état 30
+    Instructions  aller à l'état 44
+    Instruction   aller à l'état 32
+    Print         aller à l'état 33
+    If            aller à l'état 35
+    While         aller à l'état 36
+
+
+État 28
+
+   11 Declarations: Declaration . Declarations
+   12             | Declaration .
+
+    tCONST  décalage et aller à l'état 21
+    tINT    décalage et aller à l'état 6
+
+    $défaut  réduction par utilisation de la règle 12 (Declarations)
+
+    Declarations  aller à l'état 45
+    Declaration   aller à l'état 28
+    Constante     aller à l'état 29
+    Type          aller à l'état 34
+
+
+État 29
+
+   14 Declaration: Constante .
+
+    $défaut  réduction par utilisation de la règle 14 (Declaration)
+
+
+État 30
 
    26 Instruction: Affectation .
 
     $défaut  réduction par utilisation de la règle 26 (Instruction)
 
 
-État 28
+État 31
 
-    8 InBody: Instructions .
+   10 InBody: Instructions .
 
-    $défaut  réduction par utilisation de la règle 8 (InBody)
+    $défaut  réduction par utilisation de la règle 10 (InBody)
 
 
-État 29
+État 32
 
    24 Instructions: Instruction . Instructions
    25             | Instruction .
 
-    tINT     décalage et aller à l'état 6
     tPRINTF  décalage et aller à l'état 22
+    tIF      décalage et aller à l'état 23
+    tWHILE   décalage et aller à l'état 24
+    tID      décalage et aller à l'état 25
 
     $défaut  réduction par utilisation de la règle 25 (Instructions)
 
-    Affectation   aller à l'état 27
-    Instructions  aller à l'état 40
-    Instruction   aller à l'état 29
-    Print         aller à l'état 30
-    Type          aller à l'état 37
+    Affectation   aller à l'état 30
+    Instructions  aller à l'état 46
+    Instruction   aller à l'état 32
+    Print         aller à l'état 33
+    If            aller à l'état 35
+    While         aller à l'état 36
 
 
-État 30
+État 33
 
    27 Instruction: Print .
 
     $défaut  réduction par utilisation de la règle 27 (Instruction)
 
 
-État 31
-
-   11 Declaration: Type . ListDecs tPV
-   23 Affectation: Type . tID tEQU Exp tPV
-
-    tID  décalage et aller à l'état 41
-
-    ListDecs  aller à l'état 42
-    ListDec   aller à l'état 43
-
-
-État 32
-
-   29 ListIDs: tID tVIRGULE ListIDs .
-
-    $défaut  réduction par utilisation de la règle 29 (ListIDs)
-
-
-État 33
-
-   18 Constante: tCONST Type . ListConstDecs tPV
-
-    tID  décalage et aller à l'état 44
-
-    ListConstDecs  aller à l'état 45
-    ListConstDec   aller à l'état 46
-
-
 État 34
 
-   28 Print: tPRINTF tPARO . tID tPARF tPV
+   13 Declaration: Type . ListDecs tPV
 
     tID  décalage et aller à l'état 47
+
+    ListDecs  aller à l'état 48
+    ListDec   aller à l'état 49
 
 
 État 35
 
-    5 Body: tACCO $@1 InBody tACCF .
+   28 Instruction: If .
 
-    $défaut  réduction par utilisation de la règle 5 (Body)
+    $défaut  réduction par utilisation de la règle 28 (Instruction)
 
 
 État 36
 
-    6 InBody: Declarations Instructions .
+   29 Instruction: While .
 
-    $défaut  réduction par utilisation de la règle 6 (InBody)
+    $défaut  réduction par utilisation de la règle 29 (Instruction)
 
 
 État 37
 
-   23 Affectation: Type . tID tEQU Exp tPV
+   32 ListIDs: tID tVIRGULE ListIDs .
 
-    tID  décalage et aller à l'état 48
+    $défaut  réduction par utilisation de la règle 32 (ListIDs)
 
 
 État 38
 
-    9 Declarations: Declaration Declarations .
+   19 Constante: tCONST Type . ListConstDecs tPV
 
-    $défaut  réduction par utilisation de la règle 9 (Declarations)
+    tID  décalage et aller à l'état 50
+
+    ListConstDecs  aller à l'état 51
+    ListConstDec   aller à l'état 52
 
 
 État 39
 
-   11 Declaration: Type . ListDecs tPV
+   31 Print: tPRINTF tPARO . tID $@3 tPARF tPV
 
-    tID  décalage et aller à l'état 49
-
-    ListDecs  aller à l'état 42
-    ListDec   aller à l'état 43
+    tID  décalage et aller à l'état 53
 
 
 État 40
+
+   45 If: tIF tPARO . Exp tPARF $@4 Body
+
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
+
+    Exp  aller à l'état 56
+
+
+État 41
+
+   48 While: tWHILE $@5 . tPARO Exp tPARF $@6 Body
+
+    tPARO  décalage et aller à l'état 57
+
+
+État 42
+
+   23 Affectation: tID tEQU . Exp tPV
+
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
+
+    Exp  aller à l'état 58
+
+
+État 43
+
+    5 BodyFunction: tACCO $@1 InBody tACCF .
+
+    $défaut  réduction par utilisation de la règle 5 (BodyFunction)
+
+
+État 44
+
+    8 InBody: Declarations Instructions .
+
+    $défaut  réduction par utilisation de la règle 8 (InBody)
+
+
+État 45
+
+   11 Declarations: Declaration Declarations .
+
+    $défaut  réduction par utilisation de la règle 11 (Declarations)
+
+
+État 46
 
    24 Instructions: Instruction Instructions .
 
     $défaut  réduction par utilisation de la règle 24 (Instructions)
 
 
-État 41
-
-   16 ListDec: tID . $@2 tEQU Exp
-   17        | tID .
-   23 Affectation: Type tID . tEQU Exp tPV
-
-    tEQU  décalage et aller à l'état 50
-
-    tEQU      [réduction par utilisation de la règle 15 ($@2)]
-    $défaut  réduction par utilisation de la règle 17 (ListDec)
-
-    $@2  aller à l'état 51
-
-
-État 42
-
-   11 Declaration: Type ListDecs . tPV
-
-    tPV  décalage et aller à l'état 52
-
-
-État 43
-
-   13 ListDecs: ListDec . tVIRGULE ListDecs
-   14         | ListDec .
-
-    tVIRGULE  décalage et aller à l'état 53
-
-    $défaut  réduction par utilisation de la règle 14 (ListDecs)
-
-
-État 44
-
-   22 ListConstDec: tID . $@3 tEQU Exp
-
-    $défaut  réduction par utilisation de la règle 21 ($@3)
-
-    $@3  aller à l'état 54
-
-
-État 45
-
-   18 Constante: tCONST Type ListConstDecs . tPV
-
-    tPV  décalage et aller à l'état 55
-
-
-État 46
-
-   19 ListConstDecs: ListConstDec . tVIRGULE ListConstDecs
-   20              | ListConstDec .
-
-    tVIRGULE  décalage et aller à l'état 56
-
-    $défaut  réduction par utilisation de la règle 20 (ListConstDecs)
-
-
 État 47
 
-   28 Print: tPRINTF tPARO tID . tPARF tPV
+   17 ListDec: tID . tEQU Exp
+   18        | tID .
 
-    tPARF  décalage et aller à l'état 57
+    tEQU  décalage et aller à l'état 59
+
+    $défaut  réduction par utilisation de la règle 18 (ListDec)
 
 
 État 48
 
-   23 Affectation: Type tID . tEQU Exp tPV
+   13 Declaration: Type ListDecs . tPV
 
-    tEQU  décalage et aller à l'état 50
+    tPV  décalage et aller à l'état 60
 
 
 État 49
 
-   16 ListDec: tID . $@2 tEQU Exp
-   17        | tID .
+   15 ListDecs: ListDec . tVIRGULE ListDecs
+   16         | ListDec .
 
-    tEQU      réduction par utilisation de la règle 15 ($@2)
-    $défaut  réduction par utilisation de la règle 17 (ListDec)
+    tVIRGULE  décalage et aller à l'état 61
 
-    $@2  aller à l'état 51
+    $défaut  réduction par utilisation de la règle 16 (ListDecs)
 
 
 État 50
 
-   23 Affectation: Type tID tEQU . Exp tPV
+   22 ListConstDec: tID . tEQU Exp
 
-    tNB  décalage et aller à l'état 58
-    tID  décalage et aller à l'état 59
-
-    Exp  aller à l'état 60
+    tEQU  décalage et aller à l'état 62
 
 
 État 51
 
-   16 ListDec: tID $@2 . tEQU Exp
+   19 Constante: tCONST Type ListConstDecs . tPV
 
-    tEQU  décalage et aller à l'état 61
+    tPV  décalage et aller à l'état 63
 
 
 État 52
 
-   11 Declaration: Type ListDecs tPV .
+   20 ListConstDecs: ListConstDec . tVIRGULE ListConstDecs
+   21              | ListConstDec .
 
-    $défaut  réduction par utilisation de la règle 11 (Declaration)
+    tVIRGULE  décalage et aller à l'état 64
+
+    $défaut  réduction par utilisation de la règle 21 (ListConstDecs)
 
 
 État 53
 
-   13 ListDecs: ListDec tVIRGULE . ListDecs
+   31 Print: tPRINTF tPARO tID . $@3 tPARF tPV
 
-    tID  décalage et aller à l'état 49
+    $défaut  réduction par utilisation de la règle 30 ($@3)
 
-    ListDecs  aller à l'état 62
-    ListDec   aller à l'état 43
+    $@3  aller à l'état 65
 
 
 État 54
 
-   22 ListConstDec: tID $@3 . tEQU Exp
+   42 Exp: tNB .
 
-    tEQU  décalage et aller à l'état 63
+    $défaut  réduction par utilisation de la règle 42 (Exp)
 
 
 État 55
 
-   18 Constante: tCONST Type ListConstDecs tPV .
+   43 Exp: tID .
 
-    $défaut  réduction par utilisation de la règle 18 (Constante)
+    $défaut  réduction par utilisation de la règle 43 (Exp)
 
 
 État 56
 
-   19 ListConstDecs: ListConstDec tVIRGULE . ListConstDecs
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tMINUS Exp
+   40    | Exp . tDIV Exp
+   41    | Exp . tMUL Exp
+   45 If: tIF tPARO Exp . tPARF $@4 Body
 
-    tID  décalage et aller à l'état 44
-
-    ListConstDecs  aller à l'état 64
-    ListConstDec   aller à l'état 46
+    tMUL    décalage et aller à l'état 66
+    tPLUS   décalage et aller à l'état 67
+    tMINUS  décalage et aller à l'état 68
+    tDIV    décalage et aller à l'état 69
+    tPARF   décalage et aller à l'état 70
 
 
 État 57
 
-   28 Print: tPRINTF tPARO tID tPARF . tPV
+   48 While: tWHILE $@5 tPARO . Exp tPARF $@6 Body
 
-    tPV  décalage et aller à l'état 65
-
-
-État 58
-
-   39 Exp: tNB .
-
-    $défaut  réduction par utilisation de la règle 39 (Exp)
-
-
-État 59
-
-   40 Exp: tID .
-
-    $défaut  réduction par utilisation de la règle 40 (Exp)
-
-
-État 60
-
-   23 Affectation: Type tID tEQU Exp . tPV
-   35 Exp: Exp . tPLUS Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tDIV Exp
-   38    | Exp . tMUL Exp
-
-    tMUL    décalage et aller à l'état 66
-    tPLUS   décalage et aller à l'état 67
-    tMINUS  décalage et aller à l'état 68
-    tDIV    décalage et aller à l'état 69
-    tPV     décalage et aller à l'état 70
-
-
-État 61
-
-   16 ListDec: tID $@2 tEQU . Exp
-
-    tNB  décalage et aller à l'état 58
-    tID  décalage et aller à l'état 59
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
 
     Exp  aller à l'état 71
 
 
-État 62
+État 58
 
-   13 ListDecs: ListDec tVIRGULE ListDecs .
+   23 Affectation: tID tEQU Exp . tPV
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tMINUS Exp
+   40    | Exp . tDIV Exp
+   41    | Exp . tMUL Exp
 
-    $défaut  réduction par utilisation de la règle 13 (ListDecs)
-
-
-État 63
-
-   22 ListConstDec: tID $@3 tEQU . Exp
-
-    tNB  décalage et aller à l'état 58
-    tID  décalage et aller à l'état 59
-
-    Exp  aller à l'état 72
+    tMUL    décalage et aller à l'état 66
+    tPLUS   décalage et aller à l'état 67
+    tMINUS  décalage et aller à l'état 68
+    tDIV    décalage et aller à l'état 69
+    tPV     décalage et aller à l'état 72
 
 
-État 64
+État 59
 
-   19 ListConstDecs: ListConstDec tVIRGULE ListConstDecs .
+   17 ListDec: tID tEQU . Exp
 
-    $défaut  réduction par utilisation de la règle 19 (ListConstDecs)
-
-
-État 65
-
-   28 Print: tPRINTF tPARO tID tPARF tPV .
-
-    $défaut  réduction par utilisation de la règle 28 (Print)
-
-
-État 66
-
-   38 Exp: Exp tMUL . Exp
-
-    tNB  décalage et aller à l'état 58
-    tID  décalage et aller à l'état 59
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
 
     Exp  aller à l'état 73
 
 
-État 67
+État 60
 
-   35 Exp: Exp tPLUS . Exp
+   13 Declaration: Type ListDecs tPV .
 
-    tNB  décalage et aller à l'état 58
-    tID  décalage et aller à l'état 59
-
-    Exp  aller à l'état 74
+    $défaut  réduction par utilisation de la règle 13 (Declaration)
 
 
-État 68
+État 61
 
-   36 Exp: Exp tMINUS . Exp
+   15 ListDecs: ListDec tVIRGULE . ListDecs
 
-    tNB  décalage et aller à l'état 58
-    tID  décalage et aller à l'état 59
+    tID  décalage et aller à l'état 47
+
+    ListDecs  aller à l'état 74
+    ListDec   aller à l'état 49
+
+
+État 62
+
+   22 ListConstDec: tID tEQU . Exp
+
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
 
     Exp  aller à l'état 75
 
 
+État 63
+
+   19 Constante: tCONST Type ListConstDecs tPV .
+
+    $défaut  réduction par utilisation de la règle 19 (Constante)
+
+
+État 64
+
+   20 ListConstDecs: ListConstDec tVIRGULE . ListConstDecs
+
+    tID  décalage et aller à l'état 50
+
+    ListConstDecs  aller à l'état 76
+    ListConstDec   aller à l'état 52
+
+
+État 65
+
+   31 Print: tPRINTF tPARO tID $@3 . tPARF tPV
+
+    tPARF  décalage et aller à l'état 77
+
+
+État 66
+
+   41 Exp: Exp tMUL . Exp
+
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
+
+    Exp  aller à l'état 78
+
+
+État 67
+
+   38 Exp: Exp tPLUS . Exp
+
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
+
+    Exp  aller à l'état 79
+
+
+État 68
+
+   39 Exp: Exp tMINUS . Exp
+
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
+
+    Exp  aller à l'état 80
+
+
 État 69
 
-   37 Exp: Exp tDIV . Exp
+   40 Exp: Exp tDIV . Exp
 
-    tNB  décalage et aller à l'état 58
-    tID  décalage et aller à l'état 59
+    tNB  décalage et aller à l'état 54
+    tID  décalage et aller à l'état 55
 
-    Exp  aller à l'état 76
+    Exp  aller à l'état 81
 
 
 État 70
 
-   23 Affectation: Type tID tEQU Exp tPV .
+   45 If: tIF tPARO Exp tPARF . $@4 Body
 
-    $défaut  réduction par utilisation de la règle 23 (Affectation)
+    $défaut  réduction par utilisation de la règle 44 ($@4)
+
+    $@4  aller à l'état 82
 
 
 État 71
 
-   16 ListDec: tID $@2 tEQU Exp .
-   35 Exp: Exp . tPLUS Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tDIV Exp
-   38    | Exp . tMUL Exp
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tMINUS Exp
+   40    | Exp . tDIV Exp
+   41    | Exp . tMUL Exp
+   48 While: tWHILE $@5 tPARO Exp . tPARF $@6 Body
+
+    tMUL    décalage et aller à l'état 66
+    tPLUS   décalage et aller à l'état 67
+    tMINUS  décalage et aller à l'état 68
+    tDIV    décalage et aller à l'état 69
+    tPARF   décalage et aller à l'état 83
+
+
+État 72
+
+   23 Affectation: tID tEQU Exp tPV .
+
+    $défaut  réduction par utilisation de la règle 23 (Affectation)
+
+
+État 73
+
+   17 ListDec: tID tEQU Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tMINUS Exp
+   40    | Exp . tDIV Exp
+   41    | Exp . tMUL Exp
 
     tMUL    décalage et aller à l'état 66
     tPLUS   décalage et aller à l'état 67
     tMINUS  décalage et aller à l'état 68
     tDIV    décalage et aller à l'état 69
 
-    $défaut  réduction par utilisation de la règle 16 (ListDec)
+    $défaut  réduction par utilisation de la règle 17 (ListDec)
 
 
-État 72
+État 74
 
-   22 ListConstDec: tID $@3 tEQU Exp .
-   35 Exp: Exp . tPLUS Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tDIV Exp
-   38    | Exp . tMUL Exp
+   15 ListDecs: ListDec tVIRGULE ListDecs .
+
+    $défaut  réduction par utilisation de la règle 15 (ListDecs)
+
+
+État 75
+
+   22 ListConstDec: tID tEQU Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tMINUS Exp
+   40    | Exp . tDIV Exp
+   41    | Exp . tMUL Exp
 
     tMUL    décalage et aller à l'état 66
     tPLUS   décalage et aller à l'état 67
@@ -824,51 +892,153 @@ Exp (46)
     $défaut  réduction par utilisation de la règle 22 (ListConstDec)
 
 
-État 73
+État 76
 
-   35 Exp: Exp . tPLUS Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tDIV Exp
-   38    | Exp . tMUL Exp
-   38    | Exp tMUL Exp .
+   20 ListConstDecs: ListConstDec tVIRGULE ListConstDecs .
+
+    $défaut  réduction par utilisation de la règle 20 (ListConstDecs)
+
+
+État 77
+
+   31 Print: tPRINTF tPARO tID $@3 tPARF . tPV
+
+    tPV  décalage et aller à l'état 84
+
+
+État 78
+
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tMINUS Exp
+   40    | Exp . tDIV Exp
+   41    | Exp . tMUL Exp
+   41    | Exp tMUL Exp .
+
+    $défaut  réduction par utilisation de la règle 41 (Exp)
+
+
+État 79
+
+   38 Exp: Exp . tPLUS Exp
+   38    | Exp tPLUS Exp .
+   39    | Exp . tMINUS Exp
+   40    | Exp . tDIV Exp
+   41    | Exp . tMUL Exp
+
+    tMUL  décalage et aller à l'état 66
+    tDIV  décalage et aller à l'état 69
 
     $défaut  réduction par utilisation de la règle 38 (Exp)
 
 
-État 74
+État 80
 
-   35 Exp: Exp . tPLUS Exp
-   35    | Exp tPLUS Exp .
-   36    | Exp . tMINUS Exp
-   37    | Exp . tDIV Exp
-   38    | Exp . tMUL Exp
-
-    tMUL  décalage et aller à l'état 66
-    tDIV  décalage et aller à l'état 69
-
-    $défaut  réduction par utilisation de la règle 35 (Exp)
-
-
-État 75
-
-   35 Exp: Exp . tPLUS Exp
-   36    | Exp . tMINUS Exp
-   36    | Exp tMINUS Exp .
-   37    | Exp . tDIV Exp
-   38    | Exp . tMUL Exp
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tMINUS Exp
+   39    | Exp tMINUS Exp .
+   40    | Exp . tDIV Exp
+   41    | Exp . tMUL Exp
 
     tMUL  décalage et aller à l'état 66
     tDIV  décalage et aller à l'état 69
 
-    $défaut  réduction par utilisation de la règle 36 (Exp)
+    $défaut  réduction par utilisation de la règle 39 (Exp)
 
 
-État 76
+État 81
 
-   35 Exp: Exp . tPLUS Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tDIV Exp
-   37    | Exp tDIV Exp .
-   38    | Exp . tMUL Exp
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tMINUS Exp
+   40    | Exp . tDIV Exp
+   40    | Exp tDIV Exp .
+   41    | Exp . tMUL Exp
 
-    $défaut  réduction par utilisation de la règle 37 (Exp)
+    $défaut  réduction par utilisation de la règle 40 (Exp)
+
+
+État 82
+
+   45 If: tIF tPARO Exp tPARF $@4 . Body
+
+    tACCO  décalage et aller à l'état 85
+
+    Body  aller à l'état 86
+
+
+État 83
+
+   48 While: tWHILE $@5 tPARO Exp tPARF . $@6 Body
+
+    $défaut  réduction par utilisation de la règle 47 ($@6)
+
+    $@6  aller à l'état 87
+
+
+État 84
+
+   31 Print: tPRINTF tPARO tID $@3 tPARF tPV .
+
+    $défaut  réduction par utilisation de la règle 31 (Print)
+
+
+État 85
+
+    7 Body: tACCO . $@2 Instructions tACCF
+
+    $défaut  réduction par utilisation de la règle 6 ($@2)
+
+    $@2  aller à l'état 88
+
+
+État 86
+
+   45 If: tIF tPARO Exp tPARF $@4 Body .
+
+    $défaut  réduction par utilisation de la règle 45 (If)
+
+
+État 87
+
+   48 While: tWHILE $@5 tPARO Exp tPARF $@6 . Body
+
+    tACCO  décalage et aller à l'état 85
+
+    Body  aller à l'état 89
+
+
+État 88
+
+    7 Body: tACCO $@2 . Instructions tACCF
+
+    tPRINTF  décalage et aller à l'état 22
+    tIF      décalage et aller à l'état 23
+    tWHILE   décalage et aller à l'état 24
+    tID      décalage et aller à l'état 25
+
+    Affectation   aller à l'état 30
+    Instructions  aller à l'état 90
+    Instruction   aller à l'état 32
+    Print         aller à l'état 33
+    If            aller à l'état 35
+    While         aller à l'état 36
+
+
+État 89
+
+   48 While: tWHILE $@5 tPARO Exp tPARF $@6 Body .
+
+    $défaut  réduction par utilisation de la règle 48 (While)
+
+
+État 90
+
+    7 Body: tACCO $@2 Instructions . tACCF
+
+    tACCF  décalage et aller à l'état 91
+
+
+État 91
+
+    7 Body: tACCO $@2 Instructions tACCF .
+
+    $défaut  réduction par utilisation de la règle 7 (Body)

@@ -487,7 +487,7 @@ static const yytype_uint8 yyrline[] =
       53,    54,    56,    56,    57,    57,    58,    58,    59,    63,
       65,    66,    66,    67,    71,    85,    85,    86,    86,    86,
       86,    87,    87,    99,    99,   100,   100,   101,   103,   105,
-     113,   121,   129,   137,   142,   156,   156,   164,   166,   164
+     113,   121,   129,   137,   142,   156,   156,   163,   164,   163
 };
 #endif
 
@@ -1496,39 +1496,43 @@ yyreduce:
     break;
 
   case 46:
-#line 162 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 161 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_update_Ri(tins, (yyvsp[-5].entier), ins_get_next_index(tins));}
 #line 1502 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 164 "./compiler/compiler.y" /* yacc.c:1646  */
-    {(yyvsp[0].entier) = ins_get_next_index(tins);}
-#line 1508 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 163 "./compiler/compiler.y" /* yacc.c:1646  */
+    {(yyvsp[0].entier) = ins_get_next_index(tins);
+                                printf("index dans while: %d \n",(yyvsp[0].entier));}
+#line 1509 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 166 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 164 "./compiler/compiler.y" /* yacc.c:1646  */
     {
                          ins_add(tins, LOAD, 0, get_addr(ts,(yyvsp[-1].entier)), -1);
                          int index = ins_add(tins, JMPC, 0xFFFF, 0, -1);
                          llist_remove(ts, (yyvsp[-1].entier));
                          (yyvsp[-2].entier) = index;
+                         printf("index dans tPARO: %d \n",index);
                         }
-#line 1519 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1521 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 172 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 170 "./compiler/compiler.y" /* yacc.c:1646  */
     {
-                            ins_add(tins, JMPC, (yyvsp[-6].entier), 0, -1);
-                            ins_update_Ri(tins, (yyvsp[-4].entier), ins_get_next_index(tins));
+                          printf("index dans JMPC du while pour revenir au debut du while: %d \n",(yyvsp[-6].entier));
+                          ins_add(tins, JMP, (yyvsp[-6].entier), 0, -1);
+                          ins_update_Ri(tins, (yyvsp[-4].entier), ins_get_next_index(tins));
+                          printf("index de %d mis a jour avec %d pour sortir du while \n",(yyvsp[-4].entier), ins_get_next_index(tins));
                         }
-#line 1528 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1532 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1532 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1536 "./compiler/y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

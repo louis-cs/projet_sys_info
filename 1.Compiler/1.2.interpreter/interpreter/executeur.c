@@ -43,6 +43,7 @@ int simulate_execution() {
   Element_asm* aux = table_asm->first;
   Element_asm* bis;
   int go_next;
+  int next_ins;
   while (aux != NULL) {
     go_next = 1;
     switch (aux->op_code) {
@@ -97,9 +98,22 @@ int simulate_execution() {
         registers[aux->Ri] = 0;
       }
       break;
+      case JMP:
+      next_ins = aux->Ri;
+      bis = table_asm->first;
+      while ((bis != NULL) && (bis->elemId != next_ins)) {
+        bis = bis->suivant;
+      }
+      if (bis == NULL) {
+        printf("\x1b[1m[\x1b[91mwarn\x1b[0m\x1b[1m] JMP : address not found !\x1b[0m\n");
+        return -1;
+      }
+      aux = bis;
+      go_next = 0;
+      break;
       case JMPC:
       if (registers[aux->Rj] == 0) {
-        int next_ins = aux->Ri;
+        next_ins = aux->Ri;
         bis = table_asm->first;
         while ((bis != NULL) && (bis->elemId != next_ins)) {
           bis = bis->suivant;
@@ -121,6 +135,6 @@ int simulate_execution() {
     if (go_next != 0) {
       aux = aux->suivant;
     }
-    registers_states(aux->elemId);
+    // registers_states(aux->elemId);
   }
 }

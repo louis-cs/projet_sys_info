@@ -158,20 +158,20 @@ If                    : tIF tPARO Exp tPARF {
                          int index = ins_add(tins, JMPC, 0xFFFF, 0, -1);
                          llist_remove(ts, $3);
                          $1 = index;
-                        }
-                        Body {ins_update_Ri(tins, $1, ins_get_next_index(tins));};
+                        } Body {ins_update_Ri(tins, $1, ins_get_next_index(tins));};
 
-While                 : tWHILE {$1 = ins_get_next_index(tins);}
-                        tPARO Exp tPARF
-                        {
+While                 : tWHILE {$1 = ins_get_next_index(tins);
+                                printf("index dans while: %d \n",$1);} tPARO Exp tPARF {
                          ins_add(tins, LOAD, 0, get_addr(ts,$4), -1);
                          int index = ins_add(tins, JMPC, 0xFFFF, 0, -1);
                          llist_remove(ts, $4);
                          $3 = index;
-                        }
-                        Body {
-                            ins_add(tins, JMPC, $1, 0, -1);
-                            ins_update_Ri(tins, $3, ins_get_next_index(tins));
+                         printf("index dans tPARO: %d \n",index);
+                        } Body {
+                          printf("index dans JMPC du while pour revenir au debut du while: %d \n",$1);
+                          ins_add(tins, JMP, $1, 0, -1);
+                          ins_update_Ri(tins, $3, ins_get_next_index(tins));
+                          printf("index de %d mis a jour avec %d pour sortir du while \n",$3, ins_get_next_index(tins));
                         };
 %%
 

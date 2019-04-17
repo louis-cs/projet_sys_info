@@ -1,5 +1,5 @@
 something 
-tmp_var n° 0 = 0
+tmp_var n° 0 = 10
 tid a = elemId 0
 something 
 tmp_var n° 2 = 17
@@ -15,7 +15,10 @@ adresse de b : 5
 tid b = elemId 6
 something 
 something 
+something 
+index dans while: 24 
 tmp_var n° 8 <-> elemId 1
+index dans tPARO: 27 
 something 
 tmp_var n° 9 <-> elemId 3
 tmp_var n° 10 = 1
@@ -29,6 +32,9 @@ elemId 11 - elemId 12
 adresse de a : 1 
 tid a = elemId 11
 something 
+something 
+index dans JMPC du while pour revenir au debut du while: 24 
+index de 27 mis a jour avec 50 pour sortir du while 
 something 
 something 
 something 
@@ -49,8 +55,8 @@ Element n° 3: d type: int constante: 0 adresse: 3 profondeur: 1 initialisé: 1
 Element n° 2: tmp type: int constante: 0 adresse: 2 profondeur: 1 initialisé: 0 
 Element n° 1: a type: int constante: 0 adresse: 1 profondeur: 1 initialisé: 1 
 Element n° 0: tmp type: int constante: 0 adresse: 0 profondeur: 1 initialisé: 0 
-Taille de la liste: 54
-AFC   0   0  
+Taille de la liste: 57
+AFC   0   10 
 STORE 0   0  
 LOAD  0   0  
 STORE 1   0  
@@ -73,10 +79,11 @@ STORE 6   2
 LOAD  0   6  
 STORE 5   0  
 PRI   5  
+PRI   1  
 LOAD  0   1  
 STORE 8   0  
 LOAD  0   8  
-JMPC  48  0  
+JMPC  50  0  
 LOAD  0   3  
 STORE 9   0  
 AFC   0   1  
@@ -97,6 +104,8 @@ SUB   2   0   1
 STORE 11  2  
 LOAD  0   11 
 STORE 1   0  
+PRI   1  
+JMP   24 
 PRI   1  
 PRI   3  
 AFC   0   24 

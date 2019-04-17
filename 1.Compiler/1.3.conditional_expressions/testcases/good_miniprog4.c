@@ -4,7 +4,14 @@ main (int args) {
   int b = 1;
   b = a + d;
   printf(b);
+  printf(a);
+  while (a) {
+    d = d + 1;
+    a = a - 1;
+    printf(a);
+  }
+  printf(a);
   printf(d);
-  d = 18;
+  d = 24;
   printf(d);
 }
