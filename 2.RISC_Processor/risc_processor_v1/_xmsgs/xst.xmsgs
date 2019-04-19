@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="info" file="Xst" num="0" delta="new" >Part-select index evaluated to out of bound value may lead to incorrect synthesis results; it is recommended not to use them in RTL
+</msg>
+
+<msg type="error" file="HDLCompiler" num="806" delta="new" >"/home/gascou/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/MemoryInstructions.vhd" Line 51: Syntax error near &quot;<arg fmt="%s" index="1">08</arg>&quot;.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="806" delta="old" >"/home/gascou/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/MemoryInstructions.vhd" Line 54: Syntax error near &quot;<arg fmt="%s" index="1">&apos;</arg>&quot;.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="806" delta="old" >"/home/gascou/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/MemoryInstructions.vhd" Line 56: Syntax error near &quot;<arg fmt="%s" index="1">&apos;</arg>&quot;.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="854" delta="old" >"/home/gascou/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/MemoryInstructions.vhd" Line 43: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
+</msg>
+
+</messages>
+
