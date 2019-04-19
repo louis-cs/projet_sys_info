@@ -10,6 +10,7 @@
 "while"   { if(LOG){ECHO;}return tWHILE;}
 "main"    { if(LOG){ECHO;}return tMAIN;}
 "printf"  { if(LOG){ECHO;}return tPRINTF;}
+"return"  { if(LOG){ECHO;}return tRETURN;}
 "("       { if(LOG){ECHO;}return tPARO;}
 ")"       { if(LOG){ECHO;}return tPARF;}
 "{"       { if(LOG){ECHO;}return tACCO;}

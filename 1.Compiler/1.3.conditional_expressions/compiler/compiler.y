@@ -153,7 +153,7 @@ Exp                   : Exp tPLUS Exp {ins_add(tins,LOAD,0,get_addr(ts,$1),-1);
                           ins_add(tins,STORE,get_addr(ts,index_var_tmp),0,-1);
                           $$ = index_var_tmp;};
                         }
-                      | tPARO Exp tPARF {$$=$2;}
+                      | tPARO Exp tPARF {$$=$2;};
 
 If                    : tIF tPARO Exp tPARF {
                          ins_add(tins, LOAD, 0, get_addr(ts,$3), -1);
