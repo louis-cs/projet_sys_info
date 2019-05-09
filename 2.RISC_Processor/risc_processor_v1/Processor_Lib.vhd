@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------
--- Company:
+-- Company downto
 -- Engineer:
 --
--- Create Date:    14:59:25 04/19/2019
+-- Create Date:    13:46:17 04/19/2019
 -- Design Name:
--- Module Name:    ALU - Behavioral
+-- Module Name:    Processor_Lib
 -- Project Name:
 -- Target Devices:
 -- Tool versions:
@@ -29,16 +29,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ALU is
-    port ( Ctrl_ALU : in  STD_LOGIC_VECTOR (2 downto 0);
-           A        : in  STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
-           B        : in  STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
-           S        : out  STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
-           FLAGS    : out  STD_LOGIC_VECTOR (4 downto 0));
-end ALU;
-
-architecture Behavioral of ALU is
-
-begin
-
-end Behavioral;
+package Processor_Constants is
+  constant NB_REGISTRES       : NATURAL := 16;
+  constant TAILLE_REGISTRES   : NATURAL := 8;
+  constant NBIT_NUM_REGISTRES : NATURAL := 4;
+  constant FORMAT_INST        : NATURAL := 8;
+end Processor_Constants;

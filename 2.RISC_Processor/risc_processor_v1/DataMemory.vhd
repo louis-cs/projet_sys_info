@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------
--- Company:
+-- Company downto
 -- Engineer:
 --
--- Create Date:    14:59:25 04/19/2019
+-- Create Date:    13:46:17 04/19/2019
 -- Design Name:
--- Module Name:    ALU - Behavioral
+-- Module Name:    DataMemory - Behavioral
 -- Project Name:
 -- Target Devices:
 -- Tool versions:
@@ -29,16 +29,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ALU is
-    port ( Ctrl_ALU : in  STD_LOGIC_VECTOR (2 downto 0);
-           A        : in  STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
-           B        : in  STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
-           S        : out  STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
-           FLAGS    : out  STD_LOGIC_VECTOR (4 downto 0));
-end ALU;
+entity DataMemory is
+  generic(TAILLE_ADDR: NATURAL := 8;
+          TAILLE_DATA: NATURAL := 8);
+  port ( addresse : in STD_LOGIC_VECTOR (TAILLE_ADDR-1 downto 0);
+         INDATA   : in STD_LOGIC_VECTOR (TAILLE_DATA-1 downto 0);
+         RW       : in STD_LOGIC;
+         RST      : in STD_LOGIC;
+         CK       : in STD_LOGIC;
+         OUTDATA  : in STD_LOGIC_VECTOR (TAILLE_DATA-1 downto 0));
+end DataMemory;
 
-architecture Behavioral of ALU is
+architecture Behavioral of DataMemory is
 
-begin
+  begin
 
 end Behavioral;
