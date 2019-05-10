@@ -18,7 +18,7 @@ package common is
 	-- store an instruction
 	-- maybe some of you have instruction with two operands: OP_CODE A B, you will need 24 bits to
 	-- store an instruction, so you will have to adjust LEN_INSTR
-change the size of the bus according to the size of your instruction
+	-- change the size of the bus according to the size of your instruction
 	constant LEN_SEL: natural := 16;
 	constant LEN_INSTR: natural := 32;
 

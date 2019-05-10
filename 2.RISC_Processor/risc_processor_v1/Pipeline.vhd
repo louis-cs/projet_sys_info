@@ -37,7 +37,7 @@ entity Pipeline is
   -- generic( FORMAT_INST:NATURAL := 8);
   Port ( CK		  : in   STD_LOGIC;
          OP_in  : in   STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-		     A_in   : in   STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+		   A_in   : in   STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
          B_in   : in   STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
          C_in   : in   STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
          OP_out : out  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);

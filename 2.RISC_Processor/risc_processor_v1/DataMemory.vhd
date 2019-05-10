@@ -32,12 +32,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity DataMemory is
   generic(TAILLE_ADDR: NATURAL := 8;
           TAILLE_DATA: NATURAL := 8);
-  port ( addresse : in STD_LOGIC_VECTOR (TAILLE_ADDR-1 downto 0);
+  port ( CK       : in STD_LOGIC;
+			RST      : in STD_LOGIC;
+			RW       : in STD_LOGIC;
+			addresse : in STD_LOGIC_VECTOR (TAILLE_ADDR-1 downto 0);
          INDATA   : in STD_LOGIC_VECTOR (TAILLE_DATA-1 downto 0);
-         RW       : in STD_LOGIC;
-         RST      : in STD_LOGIC;
-         CK       : in STD_LOGIC;
-         OUTDATA  : in STD_LOGIC_VECTOR (TAILLE_DATA-1 downto 0));
+         OUTDATA  : out STD_LOGIC_VECTOR (TAILLE_DATA-1 downto 0));
 end DataMemory;
 
 architecture Behavioral of DataMemory is

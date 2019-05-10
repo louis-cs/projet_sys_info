@@ -40,5 +40,10 @@ end ALU;
 architecture Behavioral of ALU is
 
 begin
+--	with Ctrl_ALU select
+--					 when ('0','0','0','1'), --ADD
+--					 when ('0','0','1','0'), --MUL
+--					 when ('0','0','1','1'), --SUB
+--					 when ('0','1','1','1'), --DIV
 
 end Behavioral;
