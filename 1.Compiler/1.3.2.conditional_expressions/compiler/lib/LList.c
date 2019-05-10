@@ -6,11 +6,11 @@ const int addr_start = 0;
 const int taille_addr = 1;
 
 Bool is_initialised(Element e) {
-  return e.init;
+    return e.init;
 }
 
 void initialise(Element* e) {
-  e->init = true;
+    e->init = true;
 }
 
 LList* llist_create() {
@@ -27,7 +27,7 @@ LList* llist_create() {
 int add(LList* llist, char* name, Types type, int depth, Bool init, Bool cte) {
     Element* nouveau = malloc(sizeof(*nouveau));
     if (llist == NULL || nouveau == NULL) {
-      printf("\x1b[1m\x1b[91mERROR add: LList vide ou erreur malloc! \x1b[0m\n");
+        printf("\x1b[1m\x1b[91mERROR add: LList vide ou erreur malloc! \x1b[0m\n");
         return -1;
     }
     nouveau->elemId = llist->next_id;
@@ -51,7 +51,7 @@ int add_tmp(LList* llist, Types type, int depth) {
 
 int get_id_by_name(LList* llist, char* name) {
     if (llist == NULL || name == NULL) {
-      printf("\x1b[1m\x1b[91mERROR get_id_by_name: LList vide ou nom vide! \x1b[0m\n");
+        printf("\x1b[1m\x1b[91mERROR get_id_by_name: LList vide ou nom vide! \x1b[0m\n");
         return -1;
     }
     Element * aux = llist->first;
@@ -72,30 +72,30 @@ int get_id_by_name(LList* llist, char* name) {
 }
 
 Element* get_element(LList* llist, int id) {
-  if (llist == NULL || id < 0 || id >= llist->next_id) {
-    printf("\x1b[1m\x1b[91mERROR get_element: LList vide ou mauvais id! \x1b[0m\n");
-      return NULL;
-  }
-  Element* aux = llist->first ;
-  Bool found = false;
-  while (!found && (aux != NULL) ) {
-      if (aux->elemId == id) {
-          found = true;
-      } else {
-          aux = aux->suivant;
-      }
-  }
-  if (found) {
-      return aux;
-  } else {
-      return NULL;
-  }
+    if (llist == NULL || id < 0 || id >= llist->next_id) {
+        printf("\x1b[1m\x1b[91mERROR get_element: LList vide ou mauvais id! \x1b[0m\n");
+        return NULL;
+    }
+    Element* aux = llist->first ;
+    Bool found = false;
+    while (!found && (aux != NULL) ) {
+        if (aux->elemId == id) {
+            found = true;
+        } else {
+            aux = aux->suivant;
+        }
+    }
+    if (found) {
+        return aux;
+    } else {
+        return NULL;
+    }
 }
 
 int get_addr(LList* llist, int id) {
     if (llist == NULL || id < 0 || id >= llist->next_id) {
-      printf("\x1b[1m\x1b[91mERROR get_addr: LList vide ou mauvais id! \x1b[0m\n");
-      return -1;
+        printf("\x1b[1m\x1b[91mERROR get_addr: LList vide ou mauvais id! \x1b[0m\n");
+        return -1;
     }
     Element* aux = llist->first ;
     Bool found = false;
@@ -149,15 +149,15 @@ int llist_remove(LList* llist, int id) {
 }
 
 int llist_print(LList* llist) {
-  if (llist == NULL) {
-    printf("\x1b[1m\x1b[91mERROR llist_print: LList vide! \x1b[0m\n");
-    return -1;
-  }
-  printf("Taille de la llist: %d\n",llist->size);
-  Element * aux = llist->first;
-  while (aux != NULL) {
-    printf("Element n° %d: %s type: %s constante: %d adresse: %d profondeur: %d initialisé: %d \n", aux->elemId, aux->name, typestable[aux->type], aux->constante, aux->addr, aux->depth, aux->init );
-    aux = aux->suivant;
-  }
-  return 0;
+    if (llist == NULL) {
+        printf("\x1b[1m\x1b[91mERROR llist_print: LList vide! \x1b[0m\n");
+        return -1;
+    }
+    printf("Taille de la llist: %d\n",llist->size);
+    Element * aux = llist->first;
+    while (aux != NULL) {
+        printf("Element n° %d: %s type: %s constante: %d adresse: %d profondeur: %d initialisé: %d \n", aux->elemId, aux->name, typestable[aux->type], aux->constante, aux->addr, aux->depth, aux->init );
+        aux = aux->suivant;
+    }
+    return 0;
 }

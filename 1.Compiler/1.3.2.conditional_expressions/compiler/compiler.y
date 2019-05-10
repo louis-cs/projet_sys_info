@@ -236,6 +236,11 @@ int main(int argc, char const **argv) {
   tins = llist_asm_create();
   yyparse();
   llist_print(ts);
+
+  file_hex_write("out.hex",tins);
+  file_asm_write("out.asm",tins);
+  file_bin_write("out.bin",tins);
+
   print_asm(tins);
   return 0;
 }

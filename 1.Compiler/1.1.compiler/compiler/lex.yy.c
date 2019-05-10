@@ -477,8 +477,9 @@ char *yytext;
 #line 2 "./compiler/lexicograph.l"
     #include <stdio.h>
     #include "y.tab.h"
-#line 481 "./compiler/lex.yy.c"
+    #define  LOG 0  // Set log to 1 to print matched tokens
 #line 482 "./compiler/lex.yy.c"
+#line 483 "./compiler/lex.yy.c"
 
 #define INITIAL 0
 
@@ -695,9 +696,9 @@ YY_DECL
 		}
 
 	{
-#line 5 "./compiler/lexicograph.l"
+#line 6 "./compiler/lexicograph.l"
 
-#line 701 "./compiler/lex.yy.c"
+#line 702 "./compiler/lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -756,122 +757,122 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 6 "./compiler/lexicograph.l"
-{ return tCONST;}
+#line 7 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tCONST;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 7 "./compiler/lexicograph.l"
-{ return tINT;}
+#line 8 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tINT;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 8 "./compiler/lexicograph.l"
-{ return tIF;}
+#line 9 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tIF;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 9 "./compiler/lexicograph.l"
-{ return tWHILE;}
+#line 10 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tWHILE;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 10 "./compiler/lexicograph.l"
-{ return tMAIN;}
+#line 11 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tMAIN;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 11 "./compiler/lexicograph.l"
-{ return tPRINTF;}
+#line 12 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tPRINTF;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 12 "./compiler/lexicograph.l"
-{ return tPARO;}
+#line 13 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tPARO;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 13 "./compiler/lexicograph.l"
-{ return tPARF;}
+#line 14 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tPARF;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 14 "./compiler/lexicograph.l"
-{ return tACCO;}
+#line 15 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tACCO;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 15 "./compiler/lexicograph.l"
-{ return tACCF;}
+#line 16 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tACCF;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 16 "./compiler/lexicograph.l"
-{ return tMUL;}
+#line 17 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tMUL;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 17 "./compiler/lexicograph.l"
-{ return tPLUS;}
+#line 18 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tPLUS;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 18 "./compiler/lexicograph.l"
-{ return tMINUS;}
+#line 19 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tMINUS;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 19 "./compiler/lexicograph.l"
-{ return tDIV;}
+#line 20 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tDIV;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 20 "./compiler/lexicograph.l"
-{ return tEQU;}
+#line 21 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tEQU;}
 	YY_BREAK
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
-#line 21 "./compiler/lexicograph.l"
-{printf(" ");/*return tSEPARATOR;*/}
+#line 22 "./compiler/lexicograph.l"
+{ if(LOG){printf(" ");}}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 22 "./compiler/lexicograph.l"
-{ return tVIRGULE;}
+#line 23 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tVIRGULE;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 23 "./compiler/lexicograph.l"
-{ return tPV;}
+#line 24 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}return tPV;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 24 "./compiler/lexicograph.l"
-{ /*printf("tNB:%d\n",atoi(yytext));*/ yylval.entier=atoi(yytext); return tNB;}
+#line 25 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}/*printf("tNB:%d\n",atoi(yytext));*/ yylval.entier=atoi(yytext); return tNB;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 25 "./compiler/lexicograph.l"
-{ yylval.str=strdup(yytext); /*printf("tID:%s\n",yytext);*/ return tID;}
+#line 26 "./compiler/lexicograph.l"
+{ if(LOG){ECHO;}yylval.str=strdup(yytext); /*printf("tID:%s\n",yytext);*/ return tID;}
 	YY_BREAK
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
-#line 26 "./compiler/lexicograph.l"
-{ printf("tCOMMENT : %s",yytext);}
+#line 27 "./compiler/lexicograph.l"
+{ if(LOG){printf("tCOMMENT : %s",yytext);}}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 27 "./compiler/lexicograph.l"
+#line 28 "./compiler/lexicograph.l"
 {printf("something \n");}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 28 "./compiler/lexicograph.l"
+#line 29 "./compiler/lexicograph.l"
 ECHO;
 	YY_BREAK
-#line 875 "./compiler/lex.yy.c"
+#line 876 "./compiler/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1876,4 +1877,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 28 "./compiler/lexicograph.l"
+#line 29 "./compiler/lexicograph.l"
