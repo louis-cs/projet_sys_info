@@ -27,8 +27,8 @@ TESTCASES_DIR=testcases/
 EXEC_COMPILER_PATH=./compiler/compiler
 
 
-bad_test_files="`find -type f -name "bad*.c"`"
-good_test_files="`find -type f -name "good*.c"`"
+bad_test_files="`find -type f -name "bad*.c" | sort -n`"
+good_test_files="`find -type f -name "good*.c" | sort -n`"
 set -- $bad_test_files
 set -- $good_test_files
 

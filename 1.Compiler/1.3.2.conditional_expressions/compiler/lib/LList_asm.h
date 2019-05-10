@@ -39,4 +39,8 @@ int ins_update_Ri(LList_asm* list, int id, int Rx);
 int print_asm(LList_asm* list);
 int ins_get_next_index(LList_asm* list);
 
+int file_asm_write(char * fname, LList_asm * llist_asm);
+int file_hex_write(char * fname, LList_asm * llist_asm);
+int file_bin_write(char * fname, LList_asm * llist_asm);
+
 #endif
