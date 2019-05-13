@@ -30,8 +30,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 -- Utilisation de notre librairie
-library Processor_Lib;
-use Processor_Lib.Processor_Constants;
+library work;
+use work.Processor_Constants.all;
 
 entity Multiplexeur is
     Port ( OP     : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);

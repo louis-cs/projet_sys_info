@@ -29,6 +29,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+-- Use our library 
+library work;
+use work.Processor_Constants.all;
+
 entity ALU is
     port ( Ctrl_ALU : in  STD_LOGIC_VECTOR (2 downto 0);
            A        : in  STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);

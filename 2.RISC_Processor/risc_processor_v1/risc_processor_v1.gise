@@ -25,10 +25,89 @@
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="MemoryInstructions.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="MemoryInstructions.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="MemoryInstructions.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="MemoryInstructions_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Processor_Test_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Processor_Test_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Processor_Test_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Processor_Test_stx_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Processor_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Processor_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="RegistersBank_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
-  <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1557728423" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1557728423">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1557734369" xil_pn:in_ck="7984262872657881124" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1557734369">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ALU.vhd"/>
+      <outfile xil_pn:name="ControlUnit.vhd"/>
+      <outfile xil_pn:name="DataMemory.vhd"/>
+      <outfile xil_pn:name="MemoryInstructions.vhd"/>
+      <outfile xil_pn:name="Multiplexeur.vhd"/>
+      <outfile xil_pn:name="Pipeline.vhd"/>
+      <outfile xil_pn:name="Processor.vhd"/>
+      <outfile xil_pn:name="Processor_Lib.vhd"/>
+      <outfile xil_pn:name="Processor_Test.vhd"/>
+      <outfile xil_pn:name="RegistersBank.vhd"/>
+      <outfile xil_pn:name="common.vhd"/>
+      <outfile xil_pn:name="instr_memory.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1557733516" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-2056529380155967489" xil_pn:start_ts="1557733516">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1557733516" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-8758229603291842403" xil_pn:start_ts="1557733516">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1557728423" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="6326265678616594990" xil_pn:start_ts="1557728423">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1557734373" xil_pn:in_ck="7984262872657881124" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1557734373">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ALU.vhd"/>
+      <outfile xil_pn:name="ControlUnit.vhd"/>
+      <outfile xil_pn:name="DataMemory.vhd"/>
+      <outfile xil_pn:name="MemoryInstructions.vhd"/>
+      <outfile xil_pn:name="Multiplexeur.vhd"/>
+      <outfile xil_pn:name="Pipeline.vhd"/>
+      <outfile xil_pn:name="Processor.vhd"/>
+      <outfile xil_pn:name="Processor_Lib.vhd"/>
+      <outfile xil_pn:name="Processor_Test.vhd"/>
+      <outfile xil_pn:name="RegistersBank.vhd"/>
+      <outfile xil_pn:name="common.vhd"/>
+      <outfile xil_pn:name="instr_memory.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1557734375" xil_pn:in_ck="7984262872657881124" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="5290176893046684132" xil_pn:start_ts="1557734373">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Processor_Test_beh.prj"/>
+      <outfile xil_pn:name="Processor_Test_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim"/>
+      <outfile xil_pn:name="isim.log"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1557734376" xil_pn:in_ck="2844793268311249757" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-8807132150020628857" xil_pn:start_ts="1557734375">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Processor_Test_isim_beh.wdb"/>
+      <outfile xil_pn:name="isim.cmd"/>
+      <outfile xil_pn:name="isim.log"/>
+    </transform>
+  </transforms>
 
 </generated_project>

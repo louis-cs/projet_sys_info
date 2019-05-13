@@ -1,0 +1,43 @@
+Running: /usr/local/insa/Xilinx.ISE/13.4/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Test_isim_beh.exe -prj /home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Test_beh.prj work.Processor_Test 
+ISim O.87xd (signature 0x8ddf5b5d)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Lib.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/common.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/RegistersBank.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Pipeline.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Multiplexeur.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/instr_memory.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/DataMemory.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/ControlUnit.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/ALU.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" into library work
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Test.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 98664 KB
+Fuse CPU Usage: 880 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package processor_constants
+Compiling package numeric_std
+Compiling package textio
+Compiling package std_logic_textio
+Compiling package common
+Compiling architecture beh of entity instr_memory [\instr_memory(16,32)\]
+Compiling architecture behavioral of entity Pipeline [pipeline_default]
+Compiling architecture behavioral of entity RegistersBank [registersbank_default]
+Compiling architecture behavioral of entity Multiplexeur [multiplexeur_default]
+Compiling architecture behavioral of entity ControlUnit [controlunit_default]
+Compiling architecture behavioral of entity ALU [alu_default]
+Compiling architecture behavioral of entity DataMemory [\DataMemory(8,8)\]
+Compiling architecture struct of entity Processor [processor_default]
+Compiling architecture behavior of entity processor_test
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 24 VHDL Units
+Built simulation executable /home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Test_isim_beh.exe
+Fuse Memory Usage: 678480 KB
+Fuse CPU Usage: 1240 ms
+GCC CPU Usage: 310 ms

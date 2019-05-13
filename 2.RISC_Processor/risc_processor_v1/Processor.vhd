@@ -30,10 +30,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 -- Utilisation de notre librairie
-library Processor_Lib;
-use Processor_Lib.Processor_Constants;
+library work;
+use work.Processor_Constants.all;
 
 entity Processor is
+	port( CLK : in STD_LOGIC;
+			RST : in STD_LOGIC);
 end Processor;
 
 architecture struct of Processor is
@@ -58,7 +60,7 @@ architecture struct of Processor is
   
   component ControlUnit is
     port ( OP     : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
-           output : out STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0));
+           output : out STD_LOGIC_VECTOR(3 downto 0));
 	end component;
 
   component RegistersBank
@@ -82,6 +84,8 @@ architecture struct of Processor is
   end component;
 
   component DataMemory
+    generic(TAILLE_ADDR: NATURAL := 8;
+          TAILLE_DATA: NATURAL := 8);
     port ( CK       : in STD_LOGIC;
 			  RST      : in STD_LOGIC;
 			  RW       : in STD_LOGIC;
@@ -91,15 +95,20 @@ architecture struct of Processor is
   end component;
   
   component instr_memory
+  	generic(
+		LEN_SEL: natural := 16;
+		LEN_INSTR: natural := 32
+	);
 	port(
 		sel : in STD_LOGIC_VECTOR(LEN_SEL-1 downto 0);
 		q   : out STD_LOGIC_VECTOR(LEN_INSTR-1 downto 0));
   end component;
   
   -- Déclaration des signaux
-  signal CLK : STD_LOGIC;
   
-  signal num_inst : STD_LOGIC_VECTOR(15 downto 0);
+--  signal CLK : STD_LOGIC;
+  
+  signal num_inst : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
   signal instruction : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
   
   signal LI_DI_out : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
@@ -109,8 +118,8 @@ architecture struct of Processor is
   
 --  signal num_W : STD_LOGIC_VECTOR (NBIT_NUM_REGISTRES-1 downto 0);
 --  signal W : STD_LOGIC;
---  signal RST_BR : STD_LOGIC;
 --  signal DATA : STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
+  signal RST_BR : STD_LOGIC := '0';
   signal BR_out_A : STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
   signal BR_out_B : STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
 
@@ -127,9 +136,11 @@ architecture struct of Processor is
   signal NOZC : STD_LOGIC_VECTOR (4 downto 0);
   signal ALU_out : STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
 	
---  signal RST_DM : STD_LOGIC;
+  signal RST_DM : STD_LOGIC;
 --  signal RW : STD_LOGIC;
   signal DM_out : STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+  
+  signal zero_signal : STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
   
   begin
   Memoire_Inst: instr_memory port map(num_inst, instruction);
@@ -143,12 +154,12 @@ architecture struct of Processor is
 									LI_DI_out(2*FORMAT_INST-1 downto FORMAT_INST),
 									LI_DI_out(FORMAT_INST-1 downto 0));
   Banc_Registres: RegistersBank port map( CLK,
-														LC_ER_out(0), --RST
-														LC_ER_out(1), --W
-														LI_DI_out(2*FORMAT_INST-FORMAT_INST/2-1 downto FORMAT_INST),
-													   LI_DI_out(FORMAT_INST/2-1 downto 0),
-														MEM_ER_out(2*FORMAT_INST-FORMAT_INST/2-1 downto FORMAT_INST),
-														MEM_ER_out,
+														RST_BR, --RST
+														LC_ER_out(0), --W
+														LI_DI_out(2*FORMAT_INST-FORMAT_INST/2-1 downto FORMAT_INST), --@A
+													   LI_DI_out(FORMAT_INST/2-1 downto 0),								 --@B
+														MEM_ER_out(2*FORMAT_INST-FORMAT_INST/2-1 downto FORMAT_INST),--@W
+														MEM_ER_out(FORMAT_INST-1 downto 0),									 --DATA
 														BR_out_A,
 														BR_out_B);
   Mux_DI: Multiplexeur port map(LI_DI_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
@@ -166,20 +177,20 @@ architecture struct of Processor is
 									DI_EX_out(FORMAT_INST-1 downto 0));
   LC_EX: ControlUnit port map(DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
 										 LC_EX_out);
-  ALU: ALU port map(LC_EX_out(2 downto 0),
+  UAL: ALU port map(LC_EX_out(2 downto 0),
 							DI_EX_out(2*FORMAT_INST-1 downto FORMAT_INST),
 							DI_EX_out(FORMAT_INST-1 downto 0),
 							ALU_out,
 							NOZC);
-  Mux_EX: Multiplexeur port map(DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
-										  DI_EX_out(2*FORMAT_INST-1 downto FORMAT_INST),
-										  ALU_out,
+  Mux_EX: Multiplexeur port map(DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST), --op
+										  DI_EX_out(2*FORMAT_INST-1 downto FORMAT_INST), --B
+										  ALU_out, --sortie ALU
 										  Mux_EX_out);
   EX_MEM: Pipeline port map(CLK,
 									 DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
 									 DI_EX_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
-									 ALU_out,
-									 open,
+									 Mux_EX_out,
+									 zero_signal, --port pas utilisé
 									 EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 									 EX_MEM_out(2*FORMAT_INST-1 downto FORMAT_INST),
 									 EX_MEM_out(FORMAT_INST-1 downto 0),
@@ -191,8 +202,8 @@ architecture struct of Processor is
 										  EX_MEM_out(FORMAT_INST-1 downto 0), --B
 										  Mux_MEM1_out);
   Memoire_Donnees: DataMemory port map(CLK,
-													LC_MEM_out(0), --RST
-													LC_MEM_out(1), --RW
+													RST_DM, --RST
+													LC_MEM_out(0), --RW
 													Mux_MEM1_out, --addr
 													EX_MEM_out(FORMAT_INST-1 downto 0), --in
 													DM_out);
@@ -204,11 +215,30 @@ architecture struct of Processor is
 									 EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 									 EX_MEM_out(2*FORMAT_INST-1 downto FORMAT_INST),
 									 Mux_MEM2_out,
-									 open,
+									 zero_signal, --port pas utilisé
 									 MEM_ER_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 									 MEM_ER_out(2*FORMAT_INST-1 downto FORMAT_INST),
 									 MEM_ER_out(FORMAT_INST-1 downto 0),
 									 open);
 	LC_ER: ControlUnit port map(MEM_ER_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 										 LC_ER_out);
+	process
+	begin
+		--attend un front montant sur CLK
+		wait until CLK' event and CLK = '1'; 
+		--initialisation du banc de registres
+		--initialisation de la mémoire de données
+		--initialisation du signal zero
+		--initialisation du compteur d'instruction
+		if RST = '0' then
+			zero_signal <= (others => '0');
+			RST_BR <= '0';
+			RST_DM <= '0';
+			num_inst <= (others => '0');
+		else
+			RST_BR <= '1';
+--			num_inst <= num_inst + 1;
+		end if;
+	end process;
+	
 end struct;

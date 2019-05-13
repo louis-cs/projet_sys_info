@@ -30,8 +30,8 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 -- Utilisation de notre librairie
-library Processor_Lib;
-use Processor_Lib.Processor_Constants;
+library work;
+use work.Processor_Constants.all;
 
 entity RegistersBank is
 	 -- generic( NB_REGISTRES:natural := 16;

@@ -30,8 +30,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 -- Utilisation de notre librairie
-library Processor_Lib;
-use Processor_Lib.Processor_Constants;
+library work;
+use work.Processor_Constants.all;
 
 entity ControlUnit is
     Port ( OP     : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
@@ -42,12 +42,12 @@ architecture Behavioral of ControlUnit is
 
 begin
 	with OP select
-		output <= ('0','0','1','1') when X"06", --AFC -> W=1 RST=1
+		output <= ('0','0','0','1') when X"06", --AFC -> W=1
 					 ('0','0','0','1') when X"01", --ADD -> Ctrl_ALU=001
 					 ('0','0','1','0') when X"02", --MUL -> Ctrl_ALU=010
 					 ('0','0','1','1') when X"03", --SUB -> Ctrl_ALU=011
 					 ('0','1','1','1') when X"04", --DIV -> Ctrl_ALU=111
-				    (others=>'0') when others;	 --AFC -> RST=0
+				    (others=>'0') when others;	 
 
 end Behavioral;
 
