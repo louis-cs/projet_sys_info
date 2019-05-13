@@ -52,8 +52,8 @@ begin
 	process --car synchrone
 	begin
 		wait until CK' event and CK = '1'; --attend un front montant sur CK
-    OP_out <= OP_in;
-    A_out  <= A_in;
+		OP_out <= OP_in;
+		A_out  <= A_in;
 		B_out  <= B_in;
 		C_out  <= C_in;
 	end process;

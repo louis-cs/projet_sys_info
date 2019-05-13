@@ -57,14 +57,18 @@ begin
 		wait until CK' event and CK = '1'; --attend un front montant sur CK
     --initialisation du banc de registres
 		if RST = '0' then
-      br <= (others => X"00");
-    --lecture de 2 registres at_A et at_B
-    elsif W = '0' then
-      QA <= br(to_integer(unsigned(at_A)));
-      QB <= br(to_integer(unsigned(at_B)));
-    --ecriture de DATA dans le registre at_W
-    else
-      br(to_integer(unsigned(at_W))) <= DATA;
-    end if;
+			br <= (others => X"00");
+    --lecture des 2 registres at_A et at_B
+		elsif W = '0' then
+			QA <= br(to_integer(unsigned(at_A)));
+			QB <= br(to_integer(unsigned(at_B)));
+	 --ecriture de DATA dans le registre at_W
+	 --lecture des registres at_A et at_B
+	 --priorité ecriture > lecture
+		else
+			br(to_integer(unsigned(at_W))) <= DATA;
+			QA <= br(to_integer(unsigned(at_A)));
+			QB <= br(to_integer(unsigned(at_B)));
+		end if;
 	end process;
 end Behavioral;

@@ -44,8 +44,8 @@ architecture Behavioral of Multiplexeur is
 
 begin
 	with OP select
-		output <= val_B when X"05", 	--COP
-					 B when X"06", 		--AFC
+		output <= val_B when X"05", --COP
+					 B 	 when X"06", --AFC
 					 val_B when X"01", --ADD
 					 val_B when X"02", --MUL
 					 val_B when X"03", --SUB
