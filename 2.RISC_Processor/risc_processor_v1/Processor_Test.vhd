@@ -30,7 +30,9 @@ USE ieee.std_logic_1164.ALL;
  
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
+USE ieee.numeric_std.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
  
 ENTITY Processor_Test IS
 END Processor_Test;
@@ -42,7 +44,8 @@ ARCHITECTURE behavior OF Processor_Test IS
     COMPONENT Processor
     PORT(
          CLK : IN  std_logic;
-         RST : IN  std_logic
+         RST : IN  std_logic;
+			NUM_INST : STD_LOGIC_VECTOR(15 downto 0)
         );
     END COMPONENT;
     
@@ -50,6 +53,7 @@ ARCHITECTURE behavior OF Processor_Test IS
    --Inputs
    signal CLK : std_logic := '0';
    signal RST : std_logic := '0';
+	signal NUM_INST : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
 
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
@@ -59,7 +63,8 @@ BEGIN
 	-- Instantiate the Unit Under Test (UUT)
    uut: Processor PORT MAP (
           CLK => CLK,
-          RST => RST
+          RST => RST,
+			 num_inst => NUM_INST
         );
 
    -- Clock process definitions
@@ -82,9 +87,17 @@ BEGIN
 
       -- insert stimulus here
 		
---		On exécute la premiere instruction
+--		On exécute la premiere instruction n°0
 		RST <='1';
-
+		
+-- On exécute l'instruction n°1
+		wait for CLK_period*10;
+		NUM_INST <= NUM_INST + 1;
+		
+-- On exécute l'instruction n°2
+		wait for CLK_period*10;
+		NUM_INST <= NUM_INST + 1;
+		
       wait;
 		
    end process;

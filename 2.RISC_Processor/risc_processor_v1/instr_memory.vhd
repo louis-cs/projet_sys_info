@@ -21,9 +21,9 @@ architecture beh of instr_memory is
 --	signal instr_memory: instrArray := init_rom(filename => "<path_to_your_code>");
 
 	signal instr_memory: instrArray := (
-		0 => x"060188FD",
-		1 => x"06020002", 
-		2 => x"00020102", 
+		0 => x"060102FD", --AFC R1 <- 2
+		1 => x"06020502", --AFC R2 <- 5
+		2 => x"01030102", --ADD R3 <- R1 + R2
 		3 => x"08000102",
 		4 => x"06020001", 
 		5 => x"07010001",

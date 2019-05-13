@@ -8,17 +8,5 @@
 <msg type="info" file="Xst" num="0" delta="new" >Part-select index evaluated to out of bound value may lead to incorrect synthesis results; it is recommended not to use them in RTL
 </msg>
 
-<msg type="error" file="HDLCompiler" num="1731" delta="old" >"/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/ALU.vhd" Line 67: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;+&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;+&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="old" >"/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/ALU.vhd" Line 68: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;-&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;-&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="old" >"/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/ALU.vhd" Line 69: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;*&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;*&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="854" delta="old" >"/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/ALU.vhd" Line 47: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
-</msg>
-
 </messages>
 

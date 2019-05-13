@@ -19,8 +19,8 @@ Time resolution is 1 ps
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
+at 0 ps, Instance /processor_test/uut/UAL/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
 Finished circuit initialization process.
-# restart
 # restart
 # run 1.00us
 Simulator is doing circuit initialization process.

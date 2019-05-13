@@ -35,7 +35,8 @@ use work.Processor_Constants.all;
 
 entity Processor is
 	port( CLK : in STD_LOGIC;
-			RST : in STD_LOGIC);
+			RST : in STD_LOGIC;
+			num_inst : STD_LOGIC_VECTOR(15 downto 0));
 end Processor;
 
 architecture struct of Processor is
@@ -108,7 +109,7 @@ architecture struct of Processor is
   
 --  signal CLK : STD_LOGIC;
   
-  signal num_inst : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+--  signal num_inst : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
   signal instruction : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
   
   signal LI_DI_out : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
@@ -234,7 +235,7 @@ architecture struct of Processor is
 			zero_signal <= (others => '0');
 			RST_BR <= '0';
 			RST_DM <= '0';
-			num_inst <= (others => '0');
+--			num_inst <= (others => '0');
 		else
 			RST_BR <= '1';
 --			num_inst <= num_inst + 1;

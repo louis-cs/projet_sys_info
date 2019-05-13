@@ -43,5 +43,7 @@ end DataMemory;
 architecture Behavioral of DataMemory is
 
   begin
+  
+  OUTDATA <= INDATA;
 
 end Behavioral;

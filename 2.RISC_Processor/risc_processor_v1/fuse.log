@@ -16,15 +16,18 @@ Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Pro
 Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Test.vhd" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 98664 KB
-Fuse CPU Usage: 880 ms
+Fuse Memory Usage: 113712 KB
+Fuse CPU Usage: 930 ms
 Compiling package standard
 Compiling package std_logic_1164
-Compiling package processor_constants
 Compiling package numeric_std
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling package processor_constants
 Compiling package textio
 Compiling package std_logic_textio
 Compiling package common
+Compiling package vcomponents
 Compiling architecture beh of entity instr_memory [\instr_memory(16,32)\]
 Compiling architecture behavioral of entity Pipeline [pipeline_default]
 Compiling architecture behavioral of entity RegistersBank [registersbank_default]
@@ -36,8 +39,8 @@ Compiling architecture struct of entity Processor [processor_default]
 Compiling architecture behavior of entity processor_test
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-Compiled 24 VHDL Units
+Compiled 27 VHDL Units
 Built simulation executable /home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Test_isim_beh.exe
-Fuse Memory Usage: 678480 KB
-Fuse CPU Usage: 1240 ms
-GCC CPU Usage: 310 ms
+Fuse Memory Usage: 702532 KB
+Fuse CPU Usage: 1320 ms
+GCC CPU Usage: 380 ms
