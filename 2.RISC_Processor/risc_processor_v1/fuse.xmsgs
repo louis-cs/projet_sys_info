@@ -5,5 +5,14 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="error" file="HDLCompiler" num="1728" delta="unknown" >"/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/DataMemory.vhd" Line 58: Type error near <arg fmt="%s" index="1">addresse</arg> ; current type <arg fmt="%s" index="2">std_logic_vector</arg>; expected type <arg fmt="%s" index="3">natural</arg>
+</msg>
+
+<msg type="error" file="HDLCompiler" num="1728" delta="unknown" >"/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/DataMemory.vhd" Line 60: Type error near <arg fmt="%s" index="1">addresse</arg> ; current type <arg fmt="%s" index="2">std_logic_vector</arg>; expected type <arg fmt="%s" index="3">natural</arg>
+</msg>
+
+<msg type="error" file="HDLCompiler" num="854" delta="unknown" >"/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/DataMemory.vhd" Line 43: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
+</msg>
+
 </messages>
 
