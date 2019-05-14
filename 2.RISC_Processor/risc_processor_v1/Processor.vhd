@@ -51,7 +51,7 @@ architecture struct of Processor is
            B_out  : out  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
            C_out  : out  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0));
   end component;
-  
+
   component Multiplexeur
 	 generic ( etage : Natural := 0);
     port ( OP     : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
@@ -59,7 +59,7 @@ architecture struct of Processor is
 			  val_B  : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
            output : out STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0));
   end component;
-  
+
   component ControlUnit is
     port ( OP     : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
            output : out STD_LOGIC_VECTOR(3 downto 0));
@@ -88,14 +88,14 @@ architecture struct of Processor is
   component DataMemory
     generic(TAILLE_ADDR: NATURAL := 8;
           TAILLE_DATA: NATURAL := 8);
-    port ( CK       : in STD_LOGIC;
+    port (    CK       : in STD_LOGIC;
 			  RST      : in STD_LOGIC;
 			  RW       : in STD_LOGIC;
 			  addresse : in STD_LOGIC_VECTOR (TAILLE_ADDR-1 downto 0);
            INDATA   : in STD_LOGIC_VECTOR (TAILLE_DATA-1 downto 0);
            OUTDATA  : out STD_LOGIC_VECTOR (TAILLE_DATA-1 downto 0));
   end component;
-  
+
   component instr_memory
   	generic(
 		LEN_SEL: natural := 16;
@@ -105,19 +105,19 @@ architecture struct of Processor is
 		sel : in STD_LOGIC_VECTOR(LEN_SEL-1 downto 0);
 		q   : out STD_LOGIC_VECTOR(LEN_INSTR-1 downto 0));
   end component;
-  
+
   -- Déclaration des signaux
-  
+
 --  signal CLK : STD_LOGIC;
-  
+
 --  signal num_inst : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
   signal instruction : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
-  
+
   signal LI_DI_out : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
   signal DI_EX_out : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
   signal EX_MEM_out : STD_LOGIC_VECTOR(3*FORMAT_INST-1 downto 0);
   signal MEM_ER_out : STD_LOGIC_VECTOR(3*FORMAT_INST-1 downto 0);
-  
+
 --  signal num_W : STD_LOGIC_VECTOR (NBIT_NUM_REGISTRES-1 downto 0);
 --  signal W : STD_LOGIC;
 --  signal DATA : STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
@@ -129,7 +129,7 @@ architecture struct of Processor is
   signal Mux_EX_out : STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
   signal Mux_MEM1_out: STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
   signal Mux_MEM2_out: STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
-  
+
   signal LC_ER_out : STD_LOGIC_VECTOR (3 downto 0);
   signal LC_EX_out : STD_LOGIC_VECTOR (3 downto 0);
   signal LC_MEM_out : STD_LOGIC_VECTOR (3 downto 0);
@@ -137,13 +137,13 @@ architecture struct of Processor is
 --  signal Ctrl_ALU : STD_LOGIC_VECTOR (2 downto 0);
   signal NOZC : STD_LOGIC_VECTOR (4 downto 0);
   signal ALU_out : STD_LOGIC_VECTOR (TAILLE_REGISTRES-1 downto 0);
-	
+
   signal RST_DM : STD_LOGIC;
 --  signal RW : STD_LOGIC;
   signal DM_out : STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-  
+
   signal zero_signal : STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-  
+
   begin
   Memoire_Inst: instr_memory port map(num_inst, instruction);
   LI_DI: Pipeline port map(CLK,
@@ -231,7 +231,7 @@ architecture struct of Processor is
 	process
 	begin
 		--attend un front montant sur CLK
-		wait until CLK' event and CLK = '1'; 
+		wait until CLK' event and CLK = '1';
 		--initialisation du banc de registres
 		--initialisation de la mémoire de données
 		--initialisation du signal zero
@@ -246,5 +246,5 @@ architecture struct of Processor is
 --			num_inst <= num_inst + 1;
 		end if;
 	end process;
-	
+
 end struct;
