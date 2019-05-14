@@ -87,19 +87,26 @@ BEGIN
 
       -- insert stimulus here
 		
---		On exécute la premiere instruction n°0
+-- On exécute l'instruction n°0
 		RST <='1';
-		
+--		wait;
+-- FIN test AFC
+
 -- On exécute l'instruction n°1
 		wait for CLK_period*10;
 		NUM_INST <= NUM_INST + 1;
-		
 -- On exécute l'instruction n°2
 		wait for CLK_period*10;
 		NUM_INST <= NUM_INST + 1;
-		
-      wait;
-		
+		wait;
+--		FIN test UAL
+
+---- On exécute l'instruction n°3
+--		wait for CLK_period*10;
+--		NUM_INST <= NUM_INST + 1;
+--      wait;
+----		FIN test COP
+
    end process;
 
 END;

@@ -43,6 +43,7 @@ architecture Behavioral of ControlUnit is
 begin
 	with OP select
 		output <= ('0','0','0','1') when X"06", --AFC -> W=1
+					 ('0','0','0','1') when X"05", --COP -> W=1
 					 ('0','0','0','1') when X"01", --ADD -> Ctrl_ALU=001 W=1
 					 ('0','1','0','1') when X"02", --MUL -> Ctrl_ALU=101 W=1
 					 ('0','0','1','1') when X"03", --SUB -> Ctrl_ALU=011 W=1

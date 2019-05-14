@@ -91,14 +91,17 @@
       <wvobject fp_name="/processor_test/uut/Banc_Registres/data" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">data[7:0]</obj_property>
          <obj_property name="ObjectShortName">data[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/processor_test/uut/Banc_Registres/qa" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">qa[7:0]</obj_property>
          <obj_property name="ObjectShortName">qa[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/processor_test/uut/Banc_Registres/qb" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">qb[7:0]</obj_property>
          <obj_property name="ObjectShortName">qb[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/processor_test/uut/Banc_Registres/br" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">br[15:0]</obj_property>
