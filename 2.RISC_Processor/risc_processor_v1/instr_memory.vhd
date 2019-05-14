@@ -20,16 +20,51 @@ architecture beh of instr_memory is
 
 --	signal instr_memory: instrArray := init_rom(filename => "<path_to_your_code>");
 
-	signal instr_memory: instrArray := (
-		0 => x"060102FD", --AFC R1 <- 2
-		1 => x"06020502", --AFC R2 <- 5
-		2 => x"01030102", --ADD R3 <- R1 + R2
+-- ***** Test COP *****
+--		signal instr_memory: instrArray := (
+--		0 => x"060108FD", --AFC R1 <- 8
+--		1 => x"06020302", --AFC R2 <- 3
+--		2 => x"050301ff", --COP R3 <- R1
+--		3 => x"050402ee", --COP R4 <- R2
+--		4 => x"06020001", 
+--		5 => x"07010001",
+--		6 => x"00010102",
+--		others => x"FFFFFFFF"
+--	);
+-- ***** Test ADD *****
+--	signal instr_memory: instrArray := (
+--		0 => x"060102FD", --AFC R1 <- 2
+--		1 => x"06020502", --AFC R2 <- 5
+--		2 => x"01030102", --ADD R3 <- R1 + R2
+--		3 => x"08000102",
+--		4 => x"06020001", 
+--		5 => x"07010001",
+--		6 => x"00010102",
+--		others => x"FFFFFFFF"
+--	);
+-- ***** Test SUB *****
+--		signal instr_memory: instrArray := (
+--		0 => x"060108FD", --AFC R1 <- 8
+--		1 => x"06020302", --AFC R2 <- 3
+--		2 => x"03030102", --SUB R3 <- R1 - R2
+--		3 => x"08000102",
+--		4 => x"06020001", 
+--		5 => x"07010001",
+--		6 => x"00010102",
+--		others => x"FFFFFFFF"
+--	);
+-- ***** Test MUL *****
+		signal instr_memory: instrArray := (
+		0 => x"060108FD", --AFC R1 <- 8
+		1 => x"06020302", --AFC R2 <- 3
+		2 => x"02030102", --MUL R3 <- R1 - R2
 		3 => x"08000102",
 		4 => x"06020001", 
 		5 => x"07010001",
 		6 => x"00010102",
 		others => x"FFFFFFFF"
 	);
+
 
 begin
 	

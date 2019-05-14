@@ -34,7 +34,8 @@ library work;
 use work.Processor_Constants.all;
 
 entity Multiplexeur is
-    Port ( OP     : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
+	generic ( etage : Natural := 0);
+   port ( OP     : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
            B      : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
 			  val_B  : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
            output : out STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0));
@@ -43,13 +44,17 @@ end Multiplexeur;
 architecture Behavioral of Multiplexeur is
 
 begin
-	with OP select
-		output <= val_B when X"05", --COP
-					 B 	 when X"06", --AFC
-					 val_B when X"01", --ADD
-					 val_B when X"02", --MUL
-					 val_B when X"03", --SUB
-					 val_B when X"04", --DIV
-				    B when others;
+		output <= val_B when etage = 1 and OP = X"05" else --COP
+					 B 	 when etage = 1 and OP = X"06" else --AFC
+					 val_B when etage = 1 else 
+					 val_B when etage = 2 and OP = X"01" else --ADD
+					 val_B when etage = 2 and OP = X"02" else --MUL
+					 val_B when etage = 2 and OP = X"03" else --SUB
+					 val_B when etage = 2 and OP = X"04" else --DIV
+--					 val_B when (etage = 1 or etage = 2) and OP = X"01" else --ADD
+--					 val_B when (etage = 1 or etage = 2) and OP = X"02" else --MUL
+--					 val_B when (etage = 1 or etage = 2) and OP = X"03" else --SUB
+--					 val_B when (etage = 1 or etage = 2) and OP = X"04" else --DIV
+				    B;
 end Behavioral;
 

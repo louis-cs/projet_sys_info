@@ -53,6 +53,7 @@ architecture struct of Processor is
   end component;
   
   component Multiplexeur
+	 generic ( etage : Natural := 0);
     port ( OP     : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
            B      : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
 			  val_B  : in  STD_LOGIC_VECTOR(FORMAT_INST-1 downto 0);
@@ -163,9 +164,10 @@ architecture struct of Processor is
 														MEM_ER_out(FORMAT_INST-1 downto 0),									 --DATA
 														BR_out_A,
 														BR_out_B);
-  Mux_DI: Multiplexeur port map(LI_DI_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
-										  LI_DI_out(2*FORMAT_INST-1 downto FORMAT_INST),
-										  BR_out_A,
+  Mux_DI: Multiplexeur generic map(1)
+							  port map(LI_DI_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
+										  LI_DI_out(2*FORMAT_INST-1 downto FORMAT_INST), --B
+										  BR_out_A, --[RB]
 										  Mux_DI_out);
   DI_EX: Pipeline port map(CLK,
 									LI_DI_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
@@ -183,7 +185,8 @@ architecture struct of Processor is
 							DI_EX_out(FORMAT_INST-1 downto 0),
 							ALU_out,
 							NOZC);
-  Mux_EX: Multiplexeur port map(DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST), --op
+  Mux_EX: Multiplexeur generic map(2)
+							  port map(DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST), --op
 										  DI_EX_out(2*FORMAT_INST-1 downto FORMAT_INST), --B
 										  ALU_out, --sortie ALU
 										  Mux_EX_out);
@@ -198,7 +201,8 @@ architecture struct of Processor is
 									 open);
   LC_MEM: ControlUnit port map(EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 										 LC_MEM_out);
-  Mux_MEM1: Multiplexeur port map(EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),--op
+  Mux_MEM1: Multiplexeur generic map(3)
+								 port map(EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),--op
 										  EX_MEM_out(2*FORMAT_INST-1 downto FORMAT_INST),--A
 										  EX_MEM_out(FORMAT_INST-1 downto 0), --B
 										  Mux_MEM1_out);
@@ -208,7 +212,8 @@ architecture struct of Processor is
 													Mux_MEM1_out, --addr
 													EX_MEM_out(FORMAT_INST-1 downto 0), --in
 													DM_out);
-  Mux_MEM2: Multiplexeur port map(EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),--op
+  Mux_MEM2: Multiplexeur generic map(4)
+								 port map(EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),--op
 										  EX_MEM_out(FORMAT_INST-1 downto 0), --B
 										  DM_out, --Data out
 										  Mux_MEM2_out);

@@ -1,0 +1,2 @@
+vhdl isim_temp "Processor_Lib.vhd"
+vhdl isim_temp "Multiplexeur.vhd"

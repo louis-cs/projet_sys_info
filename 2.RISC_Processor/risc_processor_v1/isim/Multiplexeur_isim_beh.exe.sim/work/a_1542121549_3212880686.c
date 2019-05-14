@@ -25,7 +25,7 @@ static const char *ng0 = "/home/mhiri/Documents/git_projects/projet_sys_info/2.R
 
 
 
-static void work_a_4125276718_3212880686_p_0(char *t0)
+static void work_a_1542121549_3212880686_p_0(char *t0)
 {
     char *t1;
     char *t2;
@@ -134,7 +134,7 @@ LAB6:    xsi_set_current_line(47, ng0);
     goto LAB4;
 
 LAB7:    xsi_set_current_line(47, ng0);
-    t2 = (t0 + 1352U);
+    t2 = (t0 + 1192U);
     t3 = *((char **)t2);
     t2 = (t0 + 3064);
     t4 = (t2 + 56U);
@@ -146,7 +146,7 @@ LAB7:    xsi_set_current_line(47, ng0);
     goto LAB4;
 
 LAB8:    xsi_set_current_line(47, ng0);
-    t2 = (t0 + 1352U);
+    t2 = (t0 + 1192U);
     t3 = *((char **)t2);
     t2 = (t0 + 3064);
     t4 = (t2 + 56U);
@@ -158,7 +158,7 @@ LAB8:    xsi_set_current_line(47, ng0);
     goto LAB4;
 
 LAB9:    xsi_set_current_line(47, ng0);
-    t2 = (t0 + 1352U);
+    t2 = (t0 + 1192U);
     t3 = *((char **)t2);
     t2 = (t0 + 3064);
     t4 = (t2 + 56U);
@@ -170,7 +170,7 @@ LAB9:    xsi_set_current_line(47, ng0);
     goto LAB4;
 
 LAB10:    xsi_set_current_line(47, ng0);
-    t2 = (t0 + 1352U);
+    t2 = (t0 + 1192U);
     t3 = *((char **)t2);
     t2 = (t0 + 3064);
     t4 = (t2 + 56U);
@@ -193,9 +193,9 @@ LAB22:    goto LAB20;
 }
 
 
-extern void work_a_4125276718_3212880686_init()
+extern void work_a_1542121549_3212880686_init()
 {
-	static char *pe[] = {(void *)work_a_4125276718_3212880686_p_0};
-	xsi_register_didat("work_a_4125276718_3212880686", "isim/Processor_Test_isim_beh.exe.sim/work/a_4125276718_3212880686.didat");
+	static char *pe[] = {(void *)work_a_1542121549_3212880686_p_0};
+	xsi_register_didat("work_a_1542121549_3212880686", "isim/Multiplexeur_isim_beh.exe.sim/work/a_1542121549_3212880686.didat");
 	xsi_register_executes(pe);
 }
