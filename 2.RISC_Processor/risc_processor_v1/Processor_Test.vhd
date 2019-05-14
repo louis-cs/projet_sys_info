@@ -95,17 +95,30 @@ BEGIN
 -- On exécute l'instruction n°1
 		wait for CLK_period*10;
 		NUM_INST <= NUM_INST + 1;
+--		wait;
+--	FIN test LOAD
+
 -- On exécute l'instruction n°2
 		wait for CLK_period*10;
 		NUM_INST <= NUM_INST + 1;
-		wait;
---		FIN test UAL
+--		wait;
+--	FIN test UAL et STORE
 
----- On exécute l'instruction n°3
---		wait for CLK_period*10;
---		NUM_INST <= NUM_INST + 1;
+-- On exécute l'instruction n°3
+		wait for CLK_period*10;
+		NUM_INST <= NUM_INST + 1;
 --      wait;
-----		FIN test COP
+--	FIN test COP
+
+-- On exécute l'instruction n°4
+		wait for CLK_period*10;
+		NUM_INST <= NUM_INST + 1;
+		
+-- On exécute l'instruction n°5
+		wait for CLK_period*10;
+		NUM_INST <= NUM_INST + 1;
+		wait;
+--	FIN test n°0
 
    end process;
 

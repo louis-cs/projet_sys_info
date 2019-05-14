@@ -208,7 +208,7 @@ architecture struct of Processor is
 										  Mux_MEM1_out);
   Memoire_Donnees: DataMemory port map(CLK,
 													RST_DM, --RST
-													LC_MEM_out(0), --RW
+													LC_MEM_out(1), --RW
 													Mux_MEM1_out, --addr
 													EX_MEM_out(FORMAT_INST-1 downto 0), --in
 													DM_out);
@@ -241,8 +241,9 @@ architecture struct of Processor is
 			RST_BR <= '0';
 			RST_DM <= '0';
 --			num_inst <= (others => '0');
-		else
+		elsif RST = '1' then
 			RST_BR <= '1';
+			RST_DM <= '1';
 --			num_inst <= num_inst + 1;
 		end if;
 	end process;

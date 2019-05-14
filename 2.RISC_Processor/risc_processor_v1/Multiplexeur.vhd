@@ -46,15 +46,18 @@ architecture Behavioral of Multiplexeur is
 begin
 		output <= val_B when etage = 1 and OP = X"05" else --COP
 					 B 	 when etage = 1 and OP = X"06" else --AFC
+					 B		 when etage = 1 and OP = X"07" else --LOAD
+					 val_B when etage = 1 and OP = X"08" else --STORE
 					 val_B when etage = 1 else 
 					 val_B when etage = 2 and OP = X"01" else --ADD
 					 val_B when etage = 2 and OP = X"02" else --MUL
 					 val_B when etage = 2 and OP = X"03" else --SUB
 					 val_B when etage = 2 and OP = X"04" else --DIV
---					 val_B when (etage = 1 or etage = 2) and OP = X"01" else --ADD
---					 val_B when (etage = 1 or etage = 2) and OP = X"02" else --MUL
---					 val_B when (etage = 1 or etage = 2) and OP = X"03" else --SUB
---					 val_B when (etage = 1 or etage = 2) and OP = X"04" else --DIV
+					 B 	 when etage = 2 else
+					 B 	 when etage = 3 and OP = X"08" else --STORE
+					 val_B when etage = 3 else
+					 val_B when etage = 4 and OP = X"07" else --LOAD
+					 B 	 when etage = 4 else
 				    B;
 end Behavioral;
 

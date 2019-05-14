@@ -59,13 +59,13 @@ begin
 		if RST = '0' then
 			br <= (others => X"00");
     --lecture des 2 registres at_A et at_B
-		elsif W = '0' then
+		elsif RST = '1' and W = '0' then
 			QA <= br(to_integer(unsigned(at_A)));
 			QB <= br(to_integer(unsigned(at_B)));
 	 --ecriture de DATA dans le registre at_W
 	 --lecture des registres at_A et at_B
 	 --priorité ecriture > lecture
-		else
+		elsif RST = '1' and W = '1' then
 			br(to_integer(unsigned(at_W))) <= DATA;
 			QA <= br(to_integer(unsigned(at_A)));
 			QB <= br(to_integer(unsigned(at_B)));
