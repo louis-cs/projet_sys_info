@@ -1,5 +1,6 @@
 vhdl work "Processor_Lib.vhd"
 vhdl work "common.vhd"
+vhdl work "Superviseur.vhd"
 vhdl work "RegistersBank.vhd"
 vhdl work "Pipeline.vhd"
 vhdl work "Multiplexeur.vhd"

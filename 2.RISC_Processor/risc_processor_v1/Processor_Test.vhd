@@ -44,8 +44,8 @@ ARCHITECTURE behavior OF Processor_Test IS
     COMPONENT Processor
     PORT(
          CLK : IN  std_logic;
-         RST : IN  std_logic;
-			NUM_INST : STD_LOGIC_VECTOR(15 downto 0)
+         RST : IN  std_logic
+--			NUM_INST : STD_LOGIC_VECTOR(15 downto 0)
         );
     END COMPONENT;
     
@@ -53,7 +53,7 @@ ARCHITECTURE behavior OF Processor_Test IS
    --Inputs
    signal CLK : std_logic := '0';
    signal RST : std_logic := '0';
-	signal NUM_INST : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+--	signal NUM_INST : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
 
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
@@ -63,8 +63,8 @@ BEGIN
 	-- Instantiate the Unit Under Test (UUT)
    uut: Processor PORT MAP (
           CLK => CLK,
-          RST => RST,
-			 num_inst => NUM_INST
+          RST => RST
+--			 num_inst => NUM_INST
         );
 
    -- Clock process definitions
@@ -86,39 +86,50 @@ BEGIN
       wait for CLK_period*10;
 
       -- insert stimulus here
-		
--- On exécute l'instruction n°0
 		RST <='1';
---		wait;
--- FIN test AFC
-
--- On exécute l'instruction n°1
 		wait for CLK_period*10;
-		NUM_INST <= NUM_INST + 1;
---		wait;
---	FIN test LOAD
-
--- On exécute l'instruction n°2
-		wait for CLK_period*10;
-		NUM_INST <= NUM_INST + 1;
---		wait;
---	FIN test UAL et STORE
-
--- On exécute l'instruction n°3
-		wait for CLK_period*10;
-		NUM_INST <= NUM_INST + 1;
---      wait;
---	FIN test COP
-
--- On exécute l'instruction n°4
-		wait for CLK_period*10;
-		NUM_INST <= NUM_INST + 1;
-		
--- On exécute l'instruction n°5
-		wait for CLK_period*10;
-		NUM_INST <= NUM_INST + 1;
+--		Remise a zero
+		RST <= '0';
+		wait for CLK_period*7;
 		wait;
---	FIN test n°0
+---- On exécute l'instruction n°0
+--		RST <='1';
+----		wait;
+---- FIN test AFC
+--
+---- On exécute l'instruction n°1
+--		wait for CLK_period*5;
+--		NUM_INST <= NUM_INST + 1;
+----		wait;
+----	FIN test LOAD
+--
+---- On exécute l'instruction n°2
+--		wait for CLK_period*5;
+--		NUM_INST <= NUM_INST + 1;
+----		wait;
+----	FIN test UAL et STORE
+--
+---- On exécute l'instruction n°3
+--		wait for CLK_period*5;
+--		NUM_INST <= NUM_INST + 1;
+----      wait;
+----	FIN test COP
+--
+---- On exécute l'instruction n°4
+--		wait for CLK_period*5;
+--		NUM_INST <= NUM_INST + 1;
+--		
+---- On exécute l'instruction n°5
+--		wait for CLK_period*5;
+--		NUM_INST <= NUM_INST + 1;
+----		wait;
+----	FIN test n°0
+--
+---- On exécute l'instruction n°6
+--		wait for CLK_period*5;
+--		NUM_INST <= NUM_INST + 1;
+--		wait;
+----	FIN test n°1
 
    end process;
 

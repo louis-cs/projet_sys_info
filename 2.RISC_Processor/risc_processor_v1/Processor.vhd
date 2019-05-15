@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -35,11 +37,31 @@ use work.Processor_Constants.all;
 
 entity Processor is
 	port( CLK : in STD_LOGIC;
-			RST : in STD_LOGIC;
-			num_inst : STD_LOGIC_VECTOR(15 downto 0));
+			RST : in STD_LOGIC);
+--			num_inst : STD_LOGIC_VECTOR(15 downto 0));
 end Processor;
 
 architecture struct of Processor is
+
+	component Superviseur is
+    port ( CK : in STD_LOGIC;
+			  P1_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P1_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P1_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P1_C : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P2_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P2_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P2_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P2_C : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P3_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P3_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P3_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P4_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P4_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P4_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  ALEA : out STD_LOGIC);
+	end component;
+
   component Pipeline
     port ( CK		  : in   STD_LOGIC;
            OP_in  : in   STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
@@ -109,8 +131,8 @@ architecture struct of Processor is
   -- Déclaration des signaux
 
 --  signal CLK : STD_LOGIC;
-
---  signal num_inst : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+  signal aleas : STD_LOGIC;
+  signal num_inst : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
   signal instruction : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
 
   signal LI_DI_out : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
@@ -146,6 +168,22 @@ architecture struct of Processor is
 
   begin
   Memoire_Inst: instr_memory port map(num_inst, instruction);
+  Gestion_Aleas: Superviseur port map(CLK,
+												  LI_DI_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
+												  LI_DI_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
+												  LI_DI_out(2*FORMAT_INST-1 downto FORMAT_INST),
+												  LI_DI_out(FORMAT_INST-1 downto 0),
+												  DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
+									           DI_EX_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
+												  DI_EX_out(2*FORMAT_INST-1 downto FORMAT_INST),
+												  DI_EX_out(FORMAT_INST-1 downto 0),
+												  EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
+												  EX_MEM_out(2*FORMAT_INST-1 downto FORMAT_INST),
+												  EX_MEM_out(FORMAT_INST-1 downto 0),
+												  MEM_ER_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
+												  MEM_ER_out(2*FORMAT_INST-1 downto FORMAT_INST),
+												  MEM_ER_out(FORMAT_INST-1 downto 0),
+												  aleas);		 
   LI_DI: Pipeline port map(CLK,
 									instruction(4*FORMAT_INST-1 downto 3*FORMAT_INST),
 									instruction(3*FORMAT_INST-1 downto 2*FORMAT_INST),
@@ -240,11 +278,16 @@ architecture struct of Processor is
 			zero_signal <= (others => '0');
 			RST_BR <= '0';
 			RST_DM <= '0';
---			num_inst <= (others => '0');
+			aleas <= '0';
+			num_inst <= (others => '0');
 		elsif RST = '1' then
 			RST_BR <= '1';
 			RST_DM <= '1';
---			num_inst <= num_inst + 1;
+			if aleas = '1' then
+				instruction <= (others => '0'); --NOP
+			else
+				num_inst <= num_inst + 1;
+			end if;
 		end if;
 	end process;
 
