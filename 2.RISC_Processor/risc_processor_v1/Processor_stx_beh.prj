@@ -1,5 +1,6 @@
 vhdl isim_temp "Processor_Lib.vhd"
 vhdl isim_temp "common.vhd"
+vhdl isim_temp "Superviseur.vhd"
 vhdl isim_temp "RegistersBank.vhd"
 vhdl isim_temp "Pipeline.vhd"
 vhdl isim_temp "Multiplexeur.vhd"

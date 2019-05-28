@@ -87,10 +87,10 @@ BEGIN
 
       -- insert stimulus here
 		RST <='1';
-		wait for CLK_period*10;
---		Remise a zero
-		RST <= '0';
-		wait for CLK_period*7;
+--		wait for CLK_period*10;
+----		Remise a zero
+--		RST <= '0';
+--		wait for CLK_period*7;
 		wait;
 ---- On exécute l'instruction n°0
 --		RST <='1';

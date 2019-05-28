@@ -98,16 +98,25 @@ architecture beh of instr_memory is
 --		others => x"FFFFFFFF"
 --	);
 -- ***** Test n°1 *****
-		signal instr_memory: instrArray := (
+--		signal instr_memory: instrArray := (
+--		0 => x"060109FD", --AFC R1 <- 9
+--		1 => x"060204EE", --AFC R2 <- 4
+--		2 => x"02030102", --MUL R3 <- R1 * R2
+--		3 => x"080203EE", --STORE [@2] <- R3
+--		4 => x"070202EE", --LOAD R2 <- [@2]
+--		5 => x"03060201", --SUB R6 <- R2 - R1
+--		6 => x"080106EE", --STORE [@1] <- R6
+--		others => x"FFFFFFFF"
+--	);
+-- ***** Test n°2 *****
+ 		signal instr_memory: instrArray := (
 		0 => x"060109FD", --AFC R1 <- 9
 		1 => x"060204EE", --AFC R2 <- 4
 		2 => x"02030102", --MUL R3 <- R1 * R2
-		3 => x"080203EE", --STORE [@2] <- R3
-		4 => x"070202EE", --LOAD R2 <- [@2]
-		5 => x"03060201", --SUB R6 <- R2 - R1
-		6 => x"080106EE", --STORE [@1] <- R6
 		others => x"FFFFFFFF"
 	);
+
+
 
 begin
 	

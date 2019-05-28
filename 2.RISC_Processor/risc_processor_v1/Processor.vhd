@@ -45,20 +45,28 @@ architecture struct of Processor is
 
 	component Superviseur is
     port ( CK : in STD_LOGIC;
-			  P1_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P1_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P1_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-			  P1_C : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P2_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P2_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P2_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-			  P2_C : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P3_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P3_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P3_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P4_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P4_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
-           P4_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P1_in_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P1_in_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P1_in_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P1_in_C : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P1_out_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P1_out_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P1_out_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P1_out_C : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P2_in_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P2_in_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P2_in_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P2_in_C : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P2_out_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P2_out_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P2_out_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P2_out_C : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P3_in_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P3_in_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P3_in_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+			  P3_out_OP : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P3_out_A : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
+           P3_out_B : in  STD_LOGIC_VECTOR (FORMAT_INST-1 downto 0);
 			  ALEA : out STD_LOGIC);
 	end component;
 
@@ -134,6 +142,7 @@ architecture struct of Processor is
   signal aleas : STD_LOGIC;
   signal num_inst : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
   signal instruction : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
+  signal instruction_sans_aleas : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
 
   signal LI_DI_out : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
   signal DI_EX_out : STD_LOGIC_VECTOR(4*FORMAT_INST-1 downto 0);
@@ -169,26 +178,35 @@ architecture struct of Processor is
   begin
   Memoire_Inst: instr_memory port map(num_inst, instruction);
   Gestion_Aleas: Superviseur port map(CLK,
+												  instruction(4*FORMAT_INST-1 downto 3*FORMAT_INST),
+												  instruction(3*FORMAT_INST-1 downto 2*FORMAT_INST),
+												  instruction(2*FORMAT_INST-1 downto FORMAT_INST),
+												  instruction(FORMAT_INST-1 downto 0),
 												  LI_DI_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
 												  LI_DI_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 												  LI_DI_out(2*FORMAT_INST-1 downto FORMAT_INST),
 												  LI_DI_out(FORMAT_INST-1 downto 0),
+												  LI_DI_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
+												  LI_DI_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
+												  Mux_DI_out,
+												  BR_out_B,
 												  DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
 									           DI_EX_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 												  DI_EX_out(2*FORMAT_INST-1 downto FORMAT_INST),
 												  DI_EX_out(FORMAT_INST-1 downto 0),
+												  DI_EX_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
+									           DI_EX_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
+									           Mux_EX_out,
 												  EX_MEM_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 												  EX_MEM_out(2*FORMAT_INST-1 downto FORMAT_INST),
 												  EX_MEM_out(FORMAT_INST-1 downto 0),
-												  MEM_ER_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
-												  MEM_ER_out(2*FORMAT_INST-1 downto FORMAT_INST),
-												  MEM_ER_out(FORMAT_INST-1 downto 0),
-												  aleas);		 
+												  aleas);
+		 
   LI_DI: Pipeline port map(CLK,
-									instruction(4*FORMAT_INST-1 downto 3*FORMAT_INST),
-									instruction(3*FORMAT_INST-1 downto 2*FORMAT_INST),
-									instruction(2*FORMAT_INST-1 downto FORMAT_INST),
-									instruction(FORMAT_INST-1 downto 0),
+									instruction_sans_aleas(4*FORMAT_INST-1 downto 3*FORMAT_INST),
+									instruction_sans_aleas(3*FORMAT_INST-1 downto 2*FORMAT_INST),
+									instruction_sans_aleas(2*FORMAT_INST-1 downto FORMAT_INST),
+									instruction_sans_aleas(FORMAT_INST-1 downto 0),
 									LI_DI_out(4*FORMAT_INST-1 downto 3*FORMAT_INST),
 									LI_DI_out(3*FORMAT_INST-1 downto 2*FORMAT_INST),
 									LI_DI_out(2*FORMAT_INST-1 downto FORMAT_INST),
@@ -278,14 +296,15 @@ architecture struct of Processor is
 			zero_signal <= (others => '0');
 			RST_BR <= '0';
 			RST_DM <= '0';
-			aleas <= '0';
 			num_inst <= (others => '0');
 		elsif RST = '1' then
 			RST_BR <= '1';
 			RST_DM <= '1';
 			if aleas = '1' then
-				instruction <= (others => '0'); --NOP
+				instruction_sans_aleas <= (others => '0'); --NOP
+--				instruction <= (others => '0'); --NOP
 			else
+				instruction_sans_aleas <= instruction;
 				num_inst <= num_inst + 1;
 			end if;
 		end if;
