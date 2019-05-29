@@ -11,7 +11,7 @@ typedef struct Element_asm Element_asm;
 typedef struct LList_asm LList_asm;
 
 typedef enum op_codes {
-    ADD, MUL, SOU, DIV, COP,
+    NOP, ADD, MUL, SOU, DIV, COP,
     AFC, LOAD, STORE, EQU,
     INF, INFE, SUP, SUPE,
     JMP, JMPC, PRI

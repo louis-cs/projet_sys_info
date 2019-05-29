@@ -1,6 +1,6 @@
 #include "./LList_asm.h"
 
-const char* tableIns[] = {"ADD", "MUL", "SUB", "DIV", "COP", "AFC", "LOAD", "STORE", "EQU", "INF", "INFE", "SUP", "SUPE", "JMP", "JMPC", "PRI", NULL };
+const char* tableIns[] = {"NOP", "ADD", "MUL", "SUB", "DIV", "COP", "AFC", "LOAD", "STORE", "EQU", "INF", "INFE", "SUP", "SUPE", "JMP", "JMPC", "PRI", NULL };
 
 
 int bin_fprintf(FILE * fp, int n) {
@@ -136,14 +136,14 @@ int file_hex_write(char * fname, LList_asm * llist_asm) {
             case LOAD:
             case STORE:
             case JMPC:
-            fprintf(fp,"%hhX%hhX%hhX\n", aux->op_code, aux->Ri, aux->Rj);
+            fprintf(fp,"%02hhX%02hhX%02hhX%02hhX\n", aux->op_code, aux->Ri, aux->Rj, 0);
             break;
             case JMP:
             case PRI:
-            fprintf(fp,"%hhX%hhX\n", aux->op_code, aux->Ri);
+            fprintf(fp,"%02hhX%02hhX%02hhX%02hhX\n", aux->op_code, aux->Ri, 0, 0);
             break;
             default:
-            fprintf(fp,"%hhX%hhX%hhX%hhX\n", aux->op_code, aux->Ri, aux->Rj, aux->Rk);
+            fprintf(fp,"%02hhX%02hhX%02hhX%02hhX\n", aux->op_code, aux->Ri, aux->Rj, aux->Rk);
         }
         aux = aux->suivant;
     }
