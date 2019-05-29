@@ -622,7 +622,7 @@
       <wvobject fp_name="/processor_test/uut/Memoire_Donnees/indata" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">indata[7:0]</obj_property>
          <obj_property name="ObjectShortName">indata[7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/processor_test/uut/Memoire_Donnees/outdata" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">outdata[7:0]</obj_property>
@@ -1659,6 +1659,7 @@
          <wvobject fp_name="/processor_test/uut/Memoire_Donnees/dm[0]" type="array" db_ref_id="1">
             <obj_property name="ElementShortName">[0]</obj_property>
             <obj_property name="ObjectShortName">dm[0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="/processor_test/uut/Memoire_Donnees/taille_addr" type="other" db_ref_id="1">

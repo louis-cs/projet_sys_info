@@ -18,7 +18,7 @@ end entity;
 
 architecture beh of instr_memory is
 
---	signal instr_memory: instrArray := init_rom(filename => "<path_to_your_code>");
+	signal instr_memory: instrArray := init_rom(filename => "./mini1.hex");
 
 -- ***** Test COP *****
 --		signal instr_memory: instrArray := (
@@ -97,17 +97,17 @@ architecture beh of instr_memory is
 --		6 => x"00010102",
 --		others => x"FFFFFFFF"
 --	);
--- ***** Test n°1 *****
-		signal instr_memory: instrArray := (
-		0 => x"060109FD", --AFC R1 <- 9
-		1 => x"060204EE", --AFC R2 <- 4
-		2 => x"02030102", --MUL R3 <- R1 * R2
-		3 => x"080203EE", --STORE [@2] <- R3
-		4 => x"070202EE", --LOAD R2 <- [@2]
-		5 => x"03060201", --SUB R6 <- R2 - R1
-		6 => x"080106EE", --STORE [@1] <- R6
-		others => x"FFFFFFFF"
-	);
+---- ***** Test n°1 *****
+--		signal instr_memory: instrArray := (
+--		0 => x"060109FD", --AFC R1 <- 9
+--		1 => x"060204EE", --AFC R2 <- 4
+--		2 => x"02030102", --MUL R3 <- R1 * R2
+--		3 => x"080203EE", --STORE [@2] <- R3
+--		4 => x"070202EE", --LOAD R2 <- [@2]
+--		5 => x"03060201", --SUB R6 <- R2 - R1
+--		6 => x"080106EE", --STORE [@1] <- R6
+--		others => x"FFFFFFFF"
+--	);
 -- ***** Test n°2 *****
 -- 		signal instr_memory: instrArray := (
 --		0 => x"060109FD", --AFC R1 <- 9
@@ -115,7 +115,38 @@ architecture beh of instr_memory is
 --		2 => x"02030102", --MUL R3 <- R1 * R2
 --		others => x"FFFFFFFF"
 --	);
-
+-- ***** Test mini1.asm *****
+-- 		signal instr_memory: instrArray := (
+--		0 => x"06000AFD", --AFC   0   10
+--		1 => x"080000fd", --STORE 0   0
+--		2 => x"070000df", --LOAD  0   0
+--		3 => x"080100ff", --STORE 1   0
+--		4 => x"060011aa", --AFC   0   17
+--		5 => x"080200aa", --STORE 2   0
+--		6 => x"070002bb", --LOAD  0   2
+--		7 => x"080300aa", --STORE 3   0
+--		8 => x"060001FD", --AFC   0   1
+--		9 => x"080400aa", --STORE 4   0
+--	  10 => x"070004bb", --LOAD  0   4
+--	  11 => x"080500aa", --STORE 5   0
+--	  12 => x"070001bb", --LOAD  0   1
+--	  13 => x"080600aa", --STORE 6   0
+--	  14 => x"070003bb", --LOAD  0   3
+--	  15 => x"080700aa", --STORE 7   0
+--	  16 => x"070006bb", --LOAD  0   6
+--	  17 => x"070107bb", --LOAD  1   7
+--	  18 => x"01020001", --ADD   2   0   1
+--	  19 => x"080602aa", --STORE 6   2
+--	  20 => x"070006bb", --LOAD  0   6
+--	  21 => x"080500aa", --STORE 5   0
+--	  22 => x"060012aa", --AFC   0   18
+--	  23 => x"080800aa", --STORE 8   0
+--	  24 => x"070008bb", --LOAD  0   8
+--	  25 => x"080300aa", --STORE 3   0
+--	  others => x"FFFFFFFF"
+--	);
+   
+ 
 
 
 begin

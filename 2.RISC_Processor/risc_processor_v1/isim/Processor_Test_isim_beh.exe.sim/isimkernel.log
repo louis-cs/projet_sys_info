@@ -2,12 +2,12 @@ Command line:
    Processor_Test_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  59879
+     -socket  49352
 
-Wed May 29 09:43:22 2019
+Wed May 29 11:05:06 2019
 
 
- Elaboration Time: 1.71 sec
+ Elaboration Time: 1.7 sec
 
  Current Memory Usage: 1751.78 Meg
 
@@ -20,9 +20,9 @@ Wed May 29 09:43:22 2019
  Total Traceable Variables  : 34
  Total Scalar Nets and Variables : 2100744
 
- Total Simulation Time: 2.45 sec
+ Total Simulation Time: 2.14 sec
 
  Current Memory Usage: 1827.28 Meg
 
-Wed May 29 09:52:10 2019
+Wed May 29 11:06:43 2019
 
