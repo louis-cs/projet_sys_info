@@ -18,7 +18,7 @@ Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Pro
 Starting static elaboration
 Completed static elaboration
 Fuse Memory Usage: 113784 KB
-Fuse CPU Usage: 1150 ms
+Fuse CPU Usage: 1120 ms
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package numeric_std
@@ -43,9 +43,9 @@ Compiling architecture behavioral of entity Multiplexeur [\Multiplexeur(4)\]
 Compiling architecture struct of entity Processor [processor_default]
 Compiling architecture behavior of entity processor_test
 Time Resolution for simulation is 1ps.
-Waiting for 2 sub-compilation(s) to finish...
+Waiting for 3 sub-compilation(s) to finish...
 Compiled 35 VHDL Units
 Built simulation executable /home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Test_isim_beh.exe
-Fuse Memory Usage: 702712 KB
-Fuse CPU Usage: 1830 ms
-GCC CPU Usage: 1240 ms
+Fuse Memory Usage: 702716 KB
+Fuse CPU Usage: 1750 ms
+GCC CPU Usage: 1150 ms

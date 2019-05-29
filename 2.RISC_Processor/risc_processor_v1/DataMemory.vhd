@@ -54,15 +54,19 @@ begin
         if RST = '0' then
             dm <= (others => X"00"); -- pas générique pour des tailles de N bits
         elsif RST = '1' then
-            -- Read at @addresse
-            if RW = '0' then 
-					OUTDATA <= dm(to_integer(unsigned(addresse)));
-				-- Write at @addresse
-				elsif RW = '1' then           
+--            -- Read at @addresse
+--            if RW = '0' then 
+--					OUTDATA <= dm(to_integer(unsigned(addresse)));
+--				-- Write at @addresse
+--				elsif RW = '1' then           
+--					dm(to_integer(unsigned(addresse))) <= INDATA;
+--				end if;
+				if RW = '1' then           
 					dm(to_integer(unsigned(addresse))) <= INDATA;
 				end if;
         end if;
     end process;
+	 OUTDATA <= dm(to_integer(unsigned(addresse))) when RW='0' else INDATA;
 
     -- Bypass du composant
     -- OUTDATA <= INDATA;

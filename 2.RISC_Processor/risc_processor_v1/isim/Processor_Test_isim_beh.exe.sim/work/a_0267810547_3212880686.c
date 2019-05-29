@@ -189,12 +189,11 @@ static void work_a_0267810547_3212880686_p_0(char *t0)
     char *t170;
     char *t171;
     unsigned char t172;
-    char *t173;
+    unsigned char t173;
     char *t174;
     char *t175;
-    char *t176;
-    char *t177;
-    char *t178;
+    unsigned char t177;
+    unsigned int t178;
     char *t179;
     char *t180;
     char *t181;
@@ -202,6 +201,21 @@ static void work_a_0267810547_3212880686_p_0(char *t0)
     char *t183;
     char *t184;
     char *t185;
+    char *t186;
+    unsigned char t187;
+    char *t188;
+    char *t189;
+    char *t190;
+    char *t191;
+    char *t192;
+    char *t193;
+    char *t194;
+    char *t195;
+    char *t196;
+    char *t197;
+    char *t198;
+    char *t199;
+    char *t200;
 
 LAB0:    xsi_set_current_line(47, ng0);
     t2 = (1 == 1);
@@ -306,23 +320,32 @@ LAB111:    t157 = (unsigned char)0;
 LAB112:    if (t157 != 0)
         goto LAB108;
 
-LAB109:    t172 = (1 == 4);
-    if (t172 != 0)
+LAB109:    t173 = (1 == 4);
+    if (t173 == 1)
+        goto LAB121;
+
+LAB122:    t172 = (unsigned char)0;
+
+LAB123:    if (t172 != 0)
         goto LAB119;
 
-LAB120:
-LAB121:    t179 = (t0 + 1192U);
-    t180 = *((char **)t179);
-    t179 = (t0 + 3184);
-    t181 = (t179 + 56U);
-    t182 = *((char **)t181);
-    t183 = (t182 + 56U);
-    t184 = *((char **)t183);
-    memcpy(t184, t180, 8U);
-    xsi_driver_first_trans_fast_port(t179);
+LAB120:    t187 = (1 == 4);
+    if (t187 != 0)
+        goto LAB130;
 
-LAB2:    t185 = (t0 + 3104);
-    *((int *)t185) = 1;
+LAB131:
+LAB132:    t194 = (t0 + 1192U);
+    t195 = *((char **)t194);
+    t194 = (t0 + 3184);
+    t196 = (t194 + 56U);
+    t197 = *((char **)t196);
+    t198 = (t197 + 56U);
+    t199 = *((char **)t198);
+    memcpy(t199, t195, 8U);
+    xsi_driver_first_trans_fast_port(t194);
+
+LAB2:    t200 = (t0 + 3104);
+    *((int *)t200) = 1;
 
 LAB1:    return;
 LAB3:    t10 = (t0 + 1352U);
@@ -738,18 +761,56 @@ LAB117:    t164 = (t160 + t163);
 LAB118:    t163 = (t163 + 1);
     goto LAB116;
 
-LAB119:    t173 = (t0 + 1192U);
-    t174 = *((char **)t173);
-    t173 = (t0 + 3184);
-    t175 = (t173 + 56U);
-    t176 = *((char **)t175);
-    t177 = (t176 + 56U);
-    t178 = *((char **)t177);
-    memcpy(t178, t174, 8U);
-    xsi_driver_first_trans_fast_port(t173);
+LAB119:    t181 = (t0 + 1352U);
+    t182 = *((char **)t181);
+    t181 = (t0 + 3184);
+    t183 = (t181 + 56U);
+    t184 = *((char **)t183);
+    t185 = (t184 + 56U);
+    t186 = *((char **)t185);
+    memcpy(t186, t182, 8U);
+    xsi_driver_first_trans_fast_port(t181);
     goto LAB2;
 
-LAB122:    goto LAB2;
+LAB121:    t174 = (t0 + 1032U);
+    t175 = *((char **)t174);
+    t174 = (t0 + 5452);
+    t177 = 1;
+    if (8U == 8U)
+        goto LAB124;
+
+LAB125:    t177 = 0;
+
+LAB126:    t172 = t177;
+    goto LAB123;
+
+LAB124:    t178 = 0;
+
+LAB127:    if (t178 < 8U)
+        goto LAB128;
+    else
+        goto LAB126;
+
+LAB128:    t179 = (t175 + t178);
+    t180 = (t174 + t178);
+    if (*((unsigned char *)t179) != *((unsigned char *)t180))
+        goto LAB125;
+
+LAB129:    t178 = (t178 + 1);
+    goto LAB127;
+
+LAB130:    t188 = (t0 + 1192U);
+    t189 = *((char **)t188);
+    t188 = (t0 + 3184);
+    t190 = (t188 + 56U);
+    t191 = *((char **)t190);
+    t192 = (t191 + 56U);
+    t193 = *((char **)t192);
+    memcpy(t193, t189, 8U);
+    xsi_driver_first_trans_fast_port(t188);
+    goto LAB2;
+
+LAB133:    goto LAB2;
 
 }
 

@@ -57,6 +57,7 @@ begin
 					 B 	 when etage = 3 and OP = X"08" else --STORE
 					 val_B when etage = 3 else
 					 val_B when etage = 4 and OP = X"07" else --LOAD
+					 val_B when etage = 4 and OP = X"00" else --NOP
 					 B 	 when etage = 4 else
 				    B;
 end Behavioral;

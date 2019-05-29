@@ -264,7 +264,7 @@ architecture struct of Processor is
 										  Mux_MEM1_out);
   Memoire_Donnees: DataMemory port map(CLK,
 													RST_DM, --RST
-													LC_MEM_out(1), --RW
+													LC_MEM_out(3), --RW
 													Mux_MEM1_out, --addr
 													EX_MEM_out(FORMAT_INST-1 downto 0), --in
 													DM_out);
@@ -300,14 +300,19 @@ architecture struct of Processor is
 		elsif RST = '1' then
 			RST_BR <= '1';
 			RST_DM <= '1';
-			if aleas = '1' then
-				instruction_sans_aleas <= (others => '0'); --NOP
---				instruction <= (others => '0'); --NOP
-			else
-				instruction_sans_aleas <= instruction;
-				num_inst <= num_inst + 1;
-			end if;
+		if aleas = '0' then
+			num_inst <= num_inst + 1;
+		end if;
+--			if aleas = '1' then
+--				instruction_sans_aleas <= (others => '0'); --NOP
+----				instruction <= (others => '0'); --NOP
+--			else
+--				instruction_sans_aleas <= instruction;
+--				num_inst <= num_inst + 1;
+--			end if;
 		end if;
 	end process;
+	instruction_sans_aleas <= (others => '0') when aleas = '1' else
+									   instruction;
 
 end struct;
