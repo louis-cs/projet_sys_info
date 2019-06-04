@@ -5,9 +5,12 @@
 
     /* Définition de la table des symboles */
     LList * ts;
+    /* Définition de la table des instructions */
     LList_asm * tins;
 
+    /* Profondeur actuelle dans le programme */
     int currentdepth;
+    /* Type associé à la variable de la règle considérée */
     Types currenttype;
 
     int yylex(void);
@@ -37,7 +40,7 @@
 %left tPLUS tMINUS
 %left tDIV tMUL
 
-/* Priorité pour résoudre le problème de if-else imbriqués et associer le else avec le if le pkus proche */
+/* Priorité pour résoudre le problème de if-else imbriqués et associer le else avec le if le plus proche */
 %nonassoc tNO_ELSE
 %nonassoc tELSE
 
@@ -242,6 +245,6 @@ int main(int argc, char const **argv) {
   file_bin_write("out.bin",tins);
 
   print_asm(tins);
-  print_hex(tins);
+  /* print_hex(tins); */
   return 0;
 }

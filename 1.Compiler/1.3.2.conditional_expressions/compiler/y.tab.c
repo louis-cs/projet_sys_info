@@ -70,15 +70,18 @@
 
     /* Définition de la table des symboles */
     LList * ts;
+    /* Définition de la table des instructions */
     LList_asm * tins;
 
+    /* Profondeur actuelle dans le programme */
     int currentdepth;
+    /* Type associé à la variable de la règle considérée */
     Types currenttype;
 
     int yylex(void);
     void yyerror(const char* error);
 
-#line 82 "./compiler/y.tab.c" /* yacc.c:339  */
+#line 85 "./compiler/y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -176,12 +179,12 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 20 "./compiler/compiler.y" /* yacc.c:355  */
+#line 23 "./compiler/compiler.y" /* yacc.c:355  */
 
   int entier;
   char* str;
 
-#line 185 "./compiler/y.tab.c" /* yacc.c:355  */
+#line 188 "./compiler/y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -198,7 +201,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 202 "./compiler/y.tab.c" /* yacc.c:358  */
+#line 205 "./compiler/y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -498,12 +501,12 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    48,    48,    49,    50,    52,    52,    54,    54,    56,
-      57,    58,    60,    60,    61,    61,    62,    62,    63,    67,
-      69,    70,    70,    71,    75,    90,    90,    91,    91,    91,
-      91,    92,    92,   104,   104,   105,   105,   106,   108,   110,
-     118,   126,   134,   142,   150,   158,   166,   174,   182,   187,
-     200,   202,   208,   209,   209,   217,   217,   217
+       0,    51,    51,    52,    53,    55,    55,    57,    57,    59,
+      60,    61,    63,    63,    64,    64,    65,    65,    66,    70,
+      72,    73,    73,    74,    78,    93,    93,    94,    94,    94,
+      94,    95,    95,   107,   107,   108,   108,   109,   111,   113,
+     121,   129,   137,   145,   153,   161,   169,   177,   185,   190,
+     203,   205,   211,   212,   212,   220,   220,   220
 };
 #endif
 
@@ -1350,54 +1353,54 @@ yyreduce:
   switch (yyn)
     {
         case 5:
-#line 52 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 55 "./compiler/compiler.y" /* yacc.c:1646  */
     {currentdepth++;}
-#line 1356 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1359 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 52 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 55 "./compiler/compiler.y" /* yacc.c:1646  */
     {currentdepth--;}
-#line 1362 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1365 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 54 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 57 "./compiler/compiler.y" /* yacc.c:1646  */
     {currentdepth++;}
-#line 1368 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1371 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 54 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 57 "./compiler/compiler.y" /* yacc.c:1646  */
     {currentdepth--;}
-#line 1374 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1377 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 63 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 66 "./compiler/compiler.y" /* yacc.c:1646  */
     {printf("tid %s = elemId %d\n",(yyvsp[-2].str),(yyvsp[0].entier));
                                       int index = add(ts, (yyvsp[-2].str), currenttype, currentdepth, true, false);
                                       ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[0].entier)),-1);
                                       ins_add(tins,STORE,get_addr(ts,index),0,-1);}
-#line 1383 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1386 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 67 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 70 "./compiler/compiler.y" /* yacc.c:1646  */
     {add(ts, (yyvsp[0].str), currenttype, currentdepth, false, false);}
-#line 1389 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1392 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 71 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 74 "./compiler/compiler.y" /* yacc.c:1646  */
     {int index = add(ts, (yyvsp[-2].str), currenttype, currentdepth, true, true);
                                       ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[0].entier)),-1);
                                       ins_add(tins,STORE,get_addr(ts,index),0,-1);}
-#line 1397 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1400 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 75 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 78 "./compiler/compiler.y" /* yacc.c:1646  */
     {int index = get_id_by_name(ts,(yyvsp[-3].str));
                                           if (index == -1) {
                                             yyerror("Variable non déclarée");
@@ -1412,11 +1415,11 @@ yyreduce:
                                             }
                                           };
                                         }
-#line 1416 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1419 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 92 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 95 "./compiler/compiler.y" /* yacc.c:1646  */
     {
                             int index = get_id_by_name(ts, (yyvsp[0].str));
                             if (index == -1) {
@@ -1428,17 +1431,17 @@ yyreduce:
                                 ins_add(tins, PRI, get_addr(ts,index), -1, -1);
                             };
                         }
-#line 1432 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1435 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 108 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 111 "./compiler/compiler.y" /* yacc.c:1646  */
     {currenttype = TypeInt;}
-#line 1438 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1441 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 110 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 113 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                        ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                        ins_add(tins,ADD,2,0,1);
@@ -1447,11 +1450,11 @@ yyreduce:
                                        llist_remove(ts,(yyvsp[0].entier));
                                        (yyval.entier)=(yyvsp[-2].entier);
                                      }
-#line 1451 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1454 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 118 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 121 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                         ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                         ins_add(tins,SOU,2,0,1);
@@ -1460,11 +1463,11 @@ yyreduce:
                                         llist_remove(ts,(yyvsp[0].entier));
                                         (yyval.entier)=(yyvsp[-2].entier);
                                       }
-#line 1464 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1467 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 126 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 129 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                       ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                       ins_add(tins,DIV,2,0,1);
@@ -1473,11 +1476,11 @@ yyreduce:
                                       llist_remove(ts,(yyvsp[0].entier));
                                       (yyval.entier)=(yyvsp[-2].entier);
                                     }
-#line 1477 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1480 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 134 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 137 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                       ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                       ins_add(tins,MUL,2,0,1);
@@ -1486,11 +1489,11 @@ yyreduce:
                                       llist_remove(ts,(yyvsp[0].entier));
                                       (yyval.entier)=(yyvsp[-2].entier);
                                     }
-#line 1490 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1493 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 142 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 145 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                        ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                        ins_add(tins,EQU,2,0,1);
@@ -1499,11 +1502,11 @@ yyreduce:
                                        llist_remove(ts,(yyvsp[0].entier));
                                        (yyval.entier)=(yyvsp[-2].entier);
                                      }
-#line 1503 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1506 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 150 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 153 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                       ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                       ins_add(tins,INF,2,0,1);
@@ -1512,11 +1515,11 @@ yyreduce:
                                       llist_remove(ts,(yyvsp[0].entier));
                                       (yyval.entier)=(yyvsp[-2].entier);
                                     }
-#line 1516 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1519 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 158 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 161 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                       ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                       ins_add(tins,SUP,2,0,1);
@@ -1525,11 +1528,11 @@ yyreduce:
                                       llist_remove(ts,(yyvsp[0].entier));
                                       (yyval.entier)=(yyvsp[-2].entier);
                                     }
-#line 1529 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1532 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 166 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 169 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                        ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                        ins_add(tins,INFE,2,0,1);
@@ -1538,11 +1541,11 @@ yyreduce:
                                        llist_remove(ts,(yyvsp[0].entier));
                                        (yyval.entier)=(yyvsp[-2].entier);
                                      }
-#line 1542 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1545 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 174 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 177 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_add(tins,LOAD,0,get_addr(ts,(yyvsp[-2].entier)),-1);
                                        ins_add(tins,LOAD,1,get_addr(ts,(yyvsp[0].entier)),-1);
                                        ins_add(tins,SUPE,2,0,1);
@@ -1551,21 +1554,21 @@ yyreduce:
                                        llist_remove(ts,(yyvsp[0].entier));
                                        (yyval.entier)=(yyvsp[-2].entier);
                                      }
-#line 1555 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1558 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 182 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 185 "./compiler/compiler.y" /* yacc.c:1646  */
     {int index_var_tmp = add_tmp(ts,TypeInt,currentdepth);
                              printf("tmp_var n° %d = %d\n",index_var_tmp,(yyvsp[0].entier));
                              ins_add(tins,AFC,0,(yyvsp[0].entier),-1);
                              ins_add(tins,STORE,get_addr(ts,index_var_tmp),0,-1);
                              (yyval.entier) = index_var_tmp;}
-#line 1565 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1568 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 187 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 190 "./compiler/compiler.y" /* yacc.c:1646  */
     {int index = get_id_by_name(ts,(yyvsp[0].str));
                         if (index == -1) {
                           yyerror("Variable non déclarée");
@@ -1579,77 +1582,77 @@ yyreduce:
                           ins_add(tins,STORE,get_addr(ts,index_var_tmp),0,-1);
                           (yyval.entier) = index_var_tmp;};
                         }
-#line 1583 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1586 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 200 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 203 "./compiler/compiler.y" /* yacc.c:1646  */
     {(yyval.entier)=(yyvsp[-1].entier);}
-#line 1589 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1592 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 202 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 205 "./compiler/compiler.y" /* yacc.c:1646  */
     {
                          ins_add(tins, LOAD, 0, get_addr(ts,(yyvsp[-1].entier)), -1);
                          int index = ins_add(tins, JMPC, 0xFFFF, 0, -1);
                          llist_remove(ts, (yyvsp[-1].entier));
                          (yyval.entier) = index;}
-#line 1599 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1602 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 208 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 211 "./compiler/compiler.y" /* yacc.c:1646  */
     {ins_update_Ri(tins, (yyvsp[-1].entier), ins_get_next_index(tins));}
-#line 1605 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1608 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 209 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 212 "./compiler/compiler.y" /* yacc.c:1646  */
     {
                         int index = ins_add(tins, JMP, 0xFFFF, -1, -1);
                         ins_update_Ri(tins, (yyvsp[-2].entier), ins_get_next_index(tins));
                         (yyvsp[0].entier) = index;
                         }
-#line 1615 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1618 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 213 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 216 "./compiler/compiler.y" /* yacc.c:1646  */
     {
                           ins_update_Ri(tins, (yyvsp[-2].entier), ins_get_next_index(tins));
                         }
-#line 1623 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1626 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 217 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 220 "./compiler/compiler.y" /* yacc.c:1646  */
     {(yyvsp[0].entier) = ins_get_next_index(tins);}
-#line 1629 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1632 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 217 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 220 "./compiler/compiler.y" /* yacc.c:1646  */
     {
                          ins_add(tins, LOAD, 0, get_addr(ts,(yyvsp[-1].entier)), -1);
                          int index = ins_add(tins, JMPC, 0xFFFF, 0, -1);
                          llist_remove(ts, (yyvsp[-1].entier));
                          (yyvsp[-2].entier) = index;
                         }
-#line 1640 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1643 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 222 "./compiler/compiler.y" /* yacc.c:1646  */
+#line 225 "./compiler/compiler.y" /* yacc.c:1646  */
     {
                           ins_add(tins, JMP, (yyvsp[-6].entier), -1, -1);
                           ins_update_Ri(tins, (yyvsp[-4].entier), ins_get_next_index(tins));
                         }
-#line 1649 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1652 "./compiler/y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1653 "./compiler/y.tab.c" /* yacc.c:1646  */
+#line 1656 "./compiler/y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1877,7 +1880,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 226 "./compiler/compiler.y" /* yacc.c:1906  */
+#line 229 "./compiler/compiler.y" /* yacc.c:1906  */
 
 
 void yyerror(const char* error) {
@@ -1897,6 +1900,6 @@ int main(int argc, char const **argv) {
   file_bin_write("out.bin",tins);
 
   print_asm(tins);
-  print_hex(tins);
+  /* print_hex(tins); */
   return 0;
 }

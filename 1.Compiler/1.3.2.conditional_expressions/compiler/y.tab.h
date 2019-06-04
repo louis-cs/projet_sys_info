@@ -108,7 +108,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 20 "./compiler/compiler.y" /* yacc.c:1909  */
+#line 23 "./compiler/compiler.y" /* yacc.c:1909  */
 
   int entier;
   char* str;
