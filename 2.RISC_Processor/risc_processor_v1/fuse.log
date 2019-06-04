@@ -18,7 +18,7 @@ Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Pro
 Starting static elaboration
 Completed static elaboration
 Fuse Memory Usage: 113784 KB
-Fuse CPU Usage: 1130 ms
+Fuse CPU Usage: 1090 ms
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package numeric_std
@@ -46,6 +46,6 @@ Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 35 VHDL Units
 Built simulation executable /home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor_Test_isim_beh.exe
-Fuse Memory Usage: 703292 KB
-Fuse CPU Usage: 1890 ms
-GCC CPU Usage: 1220 ms
+Fuse Memory Usage: 703260 KB
+Fuse CPU Usage: 1480 ms
+GCC CPU Usage: 580 ms

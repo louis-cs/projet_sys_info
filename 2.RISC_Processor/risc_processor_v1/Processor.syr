@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Reading design: Processor.prj
@@ -114,6 +114,9 @@ Parsing package <Processor_Constants>.
 Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/common.vhd" into library work
 Parsing package <common>.
 Parsing package body <common>.
+Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Superviseur.vhd" into library work
+Parsing entity <Superviseur>.
+Parsing architecture <Behavioral> of entity <superviseur>.
 Parsing VHDL file "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/RegistersBank.vhd" into library work
 Parsing entity <RegistersBank>.
 Parsing architecture <Behavioral> of entity <registersbank>.
@@ -147,6 +150,8 @@ Elaborating entity <Processor> (architecture <struct>) from library <work>.
 
 Elaborating entity <instr_memory> (architecture <beh>) with generics from library <work>.
 
+Elaborating entity <Superviseur> (architecture <Behavioral>) from library <work>.
+
 Elaborating entity <Pipeline> (architecture <Behavioral>) from library <work>.
 
 Elaborating entity <RegistersBank> (architecture <Behavioral>) from library <work>.
@@ -164,21 +169,22 @@ Elaborating entity <Multiplexeur> (architecture <Behavioral>) with generics from
 Elaborating entity <DataMemory> (architecture <Behavioral>) with generics from library <work>.
 
 Elaborating entity <Multiplexeur> (architecture <Behavioral>) with generics from library <work>.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 150. All outputs of instance <Memoire_Inst> of block <instr_memory> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 151. All outputs of instance <LI_DI> of block <Pipeline> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 160. All outputs of instance <Banc_Registres> of block <RegistersBank> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 169. All outputs of instance <Mux_DI> of block <Multiplexeur> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 174. All outputs of instance <DI_EX> of block <Pipeline> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 183. All outputs of instance <LC_EX> of block <ControlUnit> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 185. All outputs of instance <UAL> of block <ALU> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 190. All outputs of instance <Mux_EX> of block <Multiplexeur> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 195. All outputs of instance <EX_MEM> of block <Pipeline> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 204. All outputs of instance <LC_MEM> of block <ControlUnit> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 206. All outputs of instance <Mux_MEM1> of block <Multiplexeur> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 211. All outputs of instance <Memoire_Donnees> of block <DataMemory> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 217. All outputs of instance <Mux_MEM2> of block <Multiplexeur> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 222. All outputs of instance <MEM_ER> of block <Pipeline> are unconnected in block <Processor>. Underlying logic will be removed.
-WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 231. All outputs of instance <LC_ER> of block <ControlUnit> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 179. All outputs of instance <Memoire_Inst> of block <instr_memory> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 180. All outputs of instance <Gestion_Aleas> of block <Superviseur> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 205. All outputs of instance <LI_DI> of block <Pipeline> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 214. All outputs of instance <Banc_Registres> of block <RegistersBank> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 223. All outputs of instance <Mux_DI> of block <Multiplexeur> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 228. All outputs of instance <DI_EX> of block <Pipeline> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 237. All outputs of instance <LC_EX> of block <ControlUnit> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 239. All outputs of instance <UAL> of block <ALU> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 244. All outputs of instance <Mux_EX> of block <Multiplexeur> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 249. All outputs of instance <EX_MEM> of block <Pipeline> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 258. All outputs of instance <LC_MEM> of block <ControlUnit> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 260. All outputs of instance <Mux_MEM1> of block <Multiplexeur> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 265. All outputs of instance <Memoire_Donnees> of block <DataMemory> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 271. All outputs of instance <Mux_MEM2> of block <Multiplexeur> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 276. All outputs of instance <MEM_ER> of block <Pipeline> are unconnected in block <Processor>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 285. All outputs of instance <LC_ER> of block <ControlUnit> are unconnected in block <Processor>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -186,9 +192,9 @@ WARNING:Xst:2972 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Pr
 
 Synthesizing Unit <Processor>.
     Related source file is "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd".
-INFO:Xst:3210 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 185: Output port <FLAGS> of the instance <UAL> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 195: Output port <C_out> of the instance <EX_MEM> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 222: Output port <C_out> of the instance <MEM_ER> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 239: Output port <FLAGS> of the instance <UAL> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 249: Output port <C_out> of the instance <EX_MEM> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd" line 276: Output port <C_out> of the instance <MEM_ER> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <Processor> synthesized.
@@ -314,15 +320,15 @@ Cross Clock Domains Report:
 =========================================================================
 
 
-Total REAL time to Xst completion: 64.00 secs
-Total CPU time to Xst completion: 60.64 secs
+Total REAL time to Xst completion: 58.00 secs
+Total CPU time to Xst completion: 54.75 secs
  
 --> 
 
 
-Total memory usage is 518748 kilobytes
+Total memory usage is 519664 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   15 (   0 filtered)
+Number of warnings :   16 (   0 filtered)
 Number of infos    :    4 (   0 filtered)
 

@@ -8,5 +8,62 @@
 <msg type="info" file="Xst" num="0" delta="new" >Part-select index evaluated to out of bound value may lead to incorrect synthesis results; it is recommended not to use them in RTL
 </msg>
 
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">179</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Memoire_Inst</arg>&gt; of block &lt;<arg fmt="%s" index="4">instr_memory</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">180</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Gestion_Aleas</arg>&gt; of block &lt;<arg fmt="%s" index="4">Superviseur</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">205</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">LI_DI</arg>&gt; of block &lt;<arg fmt="%s" index="4">Pipeline</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">214</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Banc_Registres</arg>&gt; of block &lt;<arg fmt="%s" index="4">RegistersBank</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">223</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Mux_DI</arg>&gt; of block &lt;<arg fmt="%s" index="4">Multiplexeur</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">228</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">DI_EX</arg>&gt; of block &lt;<arg fmt="%s" index="4">Pipeline</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">237</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">LC_EX</arg>&gt; of block &lt;<arg fmt="%s" index="4">ControlUnit</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">239</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">UAL</arg>&gt; of block &lt;<arg fmt="%s" index="4">ALU</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">244</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Mux_EX</arg>&gt; of block &lt;<arg fmt="%s" index="4">Multiplexeur</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">249</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">EX_MEM</arg>&gt; of block &lt;<arg fmt="%s" index="4">Pipeline</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">258</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">LC_MEM</arg>&gt; of block &lt;<arg fmt="%s" index="4">ControlUnit</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">260</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Mux_MEM1</arg>&gt; of block &lt;<arg fmt="%s" index="4">Multiplexeur</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">265</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Memoire_Donnees</arg>&gt; of block &lt;<arg fmt="%s" index="4">DataMemory</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">271</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Mux_MEM2</arg>&gt; of block &lt;<arg fmt="%s" index="4">Multiplexeur</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">276</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">MEM_ER</arg>&gt; of block &lt;<arg fmt="%s" index="4">Pipeline</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%d" index="2">285</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">LC_ER</arg>&gt; of block &lt;<arg fmt="%s" index="4">ControlUnit</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">Processor</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%s" index="2">239</arg>: Output port &lt;<arg fmt="%s" index="3">FLAGS</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">UAL</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%s" index="2">249</arg>: Output port &lt;<arg fmt="%s" index="3">C_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">EX_MEM</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">/home/mhiri/Documents/git_projects/projet_sys_info/2.RISC_Processor/risc_processor_v1/Processor.vhd</arg>&quot; line <arg fmt="%s" index="2">276</arg>: Output port &lt;<arg fmt="%s" index="3">C_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">MEM_ER</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
 </messages>
 

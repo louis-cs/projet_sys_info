@@ -1,0 +1,45 @@
+Release 13.4 Map O.87xd (lin64)
+Xilinx Mapping Report File for Design 'Processor'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc7a8-csg324-3 -w -logic_opt off -ol high
+-t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power
+off -o Processor_map.ncd Processor.ngd Processor.pcf 
+Target Device  : xc7a8
+Target Package : csg324
+Target Speed   : -3
+Mapper Version : artix7 -- $Revision: 1.55 $
+Mapped Date    : Tue Jun  4 11:25:30 2019
+
+Design Summary
+--------------
+Number of errors   :   1
+Number of warnings :   0
+
+Section 1 - Errors
+------------------
+ERROR:Security:11 - No 'xc7a8' feature version 2012.01 was available for 'ISE',
+ERROR:Map:258 - A problem was encountered attempting to get the license for this
+   architecture.
+
+
+
+Section 2 - Warnings
+--------------------
+WARNING:Security:43 - No license file was found in the standard Xilinx license
+directory.
+WARNING:Security:44 - Since no license file was found,
+WARNING:Security:42 - Your software subscription period has lapsed. Your current
+version of Xilinx tools will continue to function, but you no longer qualify for
+Xilinx software updates or new releases.
+
+Section 3 - Informational
+-------------------------
+INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable is set to
+'2100@srv-gei-ens1'.
+INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
+'2100@srv-gei-ens1'.
+INFO:Security:54 - 'xc7a8' is a Beta WebPack part.
+INFO:Security:54b - Beta part 'xc7a8' is not eligible for a WebPack license.
+INFO:Security:68a - user is mhiri, on host unknown.

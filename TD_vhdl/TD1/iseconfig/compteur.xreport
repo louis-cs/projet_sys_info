@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2019-04-19T13:40:53</DateModified>
+  <DateModified>2019-05-28T12:58:04</DateModified>
   <ModuleName>compteur</ModuleName>
   <SummaryTimeStamp>2019-03-28T11:54:28</SummaryTimeStamp>
-  <SavedFilePath>/home/gascou/git_projects/projet_sys_info/TD_vhdl/TD1/iseconfig/compteur.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/gascou/git_projects/projet_sys_info/TD_vhdl/TD1/</ImplementationReportsDirectory>
+  <SavedFilePath>/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/iseconfig/compteur.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/mhiri/Documents/git_projects/projet_sys_info/TD_vhdl/TD1/</ImplementationReportsDirectory>
   <DateInitialized>2019-03-20T08:50:13</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

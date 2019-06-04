@@ -63,6 +63,30 @@ void print_element(Element_asm* aux) {
     }
 }
 
+void print_element_hex(Element_asm* aux) {
+    if (aux != NULL) {
+        if (aux->suivant != NULL) {
+            print_element_hex(aux->suivant);
+        }
+        switch (aux->op_code) {
+            case COP:
+            case AFC:
+            case LOAD:
+            case STORE:
+            case JMPC:
+            printf("%02hhX%02hhX%02hhX%02hhX\n",aux->op_code,aux->Ri,aux->Rj,0);
+            break;
+            case JMP:
+            case PRI:
+            printf("%02hhX%02hhX%02hhX%02hhX\n",aux->op_code,aux->Ri,0,0);
+            break;
+            default:
+            printf("%02hhX%02hhX%02hhX%02hhX\n",aux->op_code,aux->Ri, aux->Rj, aux->Rk);
+        }
+    }
+}
+
+
 int print_asm(LList_asm* list) {
     if (list == NULL) {
         printf("\x1b[1m\x1b[91mERROR : LList_asm vide! \x1b[0m\n");
@@ -88,6 +112,16 @@ int print_asm(LList_asm* list) {
     //   }
     //   aux = aux->suivant;
     // }
+    return 0;
+}
+
+int print_hex(LList_asm* list) {
+    if (list == NULL) {
+        printf("\x1b[1m\x1b[91mERROR : LList_asm vide! \x1b[0m\n");
+        return -1;
+    }
+    printf("Taille de la liste: %d\n",list->size);
+    print_element_hex(list->first);
     return 0;
 }
 
