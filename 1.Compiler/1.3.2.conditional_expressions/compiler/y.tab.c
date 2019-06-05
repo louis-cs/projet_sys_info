@@ -1899,7 +1899,7 @@ int main(int argc, char const **argv) {
   file_asm_write("out.asm",tins);
   file_bin_write("out.bin",tins);
 
-  print_asm(tins);
+  /* print_asm(tins); */
   /* print_hex(tins); */
   return 0;
 }

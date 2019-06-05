@@ -1,0 +1,37 @@
+Après avoir compilé le compilateur avec le makefile (qui exécute yacc et lex), nous utilisons le script compile.sh pour compiler un programme écrit dans notre langage C simplifié en fichier assembleur (et hexadécimal pour l’utiliser dans ISE). Le programme testé contient une boucle while de 10 itérations avec deux boucles if imbriquées. Nous effectuons des opérations arithmétiques sur les variables a, b, c et d déclarée en début de programme et affichons leurs valeurs si certaines conditions sont respectées. L’affichage des valeurs sous certaines conditions permet de vérifier que notre programme s’exécute correctement avec notre interpréteur.
+Compilation du programme C: ./compile.sh ./testcases/good_miniprog11.c
+Cette commande génère 3 fichiers : out.asm, out.hex et out.bin et affiche les actions effectuées avec la table des symboles et son contenu à la fin de la compilation. Ainsi, nous pouvons voir :
+-	les valeurs des variables temporaires (tmp_var n°1 = 10 signifie que l’élément avec l’identifiant n°1 de la table des symboles est une variable temporaire qui contient la valeur 10 ; tmp_var n°7 <-> elemId 2 signifie que l’élément avec l’identifiant n°7 est une variable temporaire dont la valeur correspondra à celle de l’élément avec l’identifiant n°2),
+-	les valeurs des variables déclarées (tid b = elemId 5 signifie que l’élément dont le nom est b c’est-à-dire la variable b, a la valeur de l’élément avec l’identifiant n°5 qui est une variable temporaire contenant une valeur, ici 10),
+-	les adresses des variables déclarées (adresse de b : 6) et
+-	les opérations effectuées (elemId 7 + elemId 8 signifie que la somme des valeurs contenues dans les éléments aux identifiants 7 et 8 est mise dans l’élément à l’identifiant 7).
+Nous utilisons ensuite le fichier au format .asm avec notre interpréteur pour l’exécuter.
+Exécution du programme avec l’interpréteur : ./interpreter.sh ./testcases/mini11.asm. Nous pouvons voir l’affichage des valeurs des variables correspondant à l’exécution. Les 2 premières lignes permettent de vérifier la déclaration et l’affectation des variables b et a. Nous pouvons ensuite identifier la valeur de la variable a qui s’incrémente de 1 dans la boucle while (allant de 10 à l’entrée de la boucle et 20 à la sortie), ce qui permet de s’assurer du fonctionnement de la boucle while. Nous pouvons aussi vérifier que la valeur de c est affichée tant que celle-ci est positive (de 4 à 0) puis plusieurs fois l’affichage de la variable d et une fois celle de b, ce qui correspond au comportement attendu des blocs conditions if-else.
+12 -> b
+10 -> a
+11 -> a
+4 -> c
+12 -> a
+3 -> c
+13 -> a
+2 -> c
+14 -> a
+1 -> c
+15 -> a
+0 -> c
+16 -> a
+1458 -> d b=192
+17 -> a
+4374 -> d b=3264
+18 -> a
+13122 -> d b=58752
+19 -> a
+58752 -> b !! d=39366
+20 -> a
+118098 -> d b=1175040
+20 -> a
+-6 -> c
+118098 -> d
+
+Nous n’utilisons pas ce programme pour la partie avec ISE car nous n’avons pas implémenté les instructions de saut et les opérations logiques dans notre processeur. Cependant, le fichier hexadécimal utilisé est généré de la même façon avec la commande ./compile.sh ./testcases/good_miniprog1.c.
+Ce programme est constitué de la création de 3 variables a, d et b, de leur addition et d’une affectation. Ainsi, nous pouvons suivre l’évolution du banc de registres, de la mémoire de données et de l’UAL de façon claire mais aussi vérifier que l’unité de gestion des aléas fonctionne correctement.

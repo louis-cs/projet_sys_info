@@ -923,7 +923,7 @@ YY_RULE_SETUP
 case 28:
 YY_RULE_SETUP
 #line 34 "./compiler/lexicograph.l"
-{printf("something \n");}
+{/*printf("something \n")*/;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
