@@ -18,7 +18,7 @@ end entity;
 
 architecture beh of instr_memory is
 
-	signal instr_memory: instrArray := init_rom(filename => "./good11.hex");
+	signal instr_memory: instrArray := init_rom(filename => "./good1.hex");
 
 -- ***** Test COP *****
 --		signal instr_memory: instrArray := (
